@@ -8,12 +8,25 @@ class Tours extends CI_Controller {
 		$this->is_logged_in();
 	}
 	function index(){
+		$this->list_tours();
+	}
+	function list_tours(){
+		$this->load->model('tour');
+		$data['tours'] = $this->tour->show_tours();
 		$data['main_content'] = 'backend/tours/tours';
 		$data['title'] = 'Tours';
 		$this->load->view('includes/template', $data);
 	}
-	function add_to(){
-		echo 'add to';
+	function add_tour(){
+		$data['main_content'] = 'backend/tours/add_tour';
+		$data['title'] = 'Create tour';
+		$this->load->view('includes/template', $data);
+
+	}function edit_tour(){
+
+	}
+	function delete_tour(){
+		
 	}
 	
 
