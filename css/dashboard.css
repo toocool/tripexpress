@@ -1,0 +1,147 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+
+  background-color: #2b2b2b; 
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  color: #505458;
+}
+p {
+  font-family: 'Open Sans', sans-serif;
+   font-weight: 300;
+  color: #505458;
+}
+.content_box {
+  background-color: #FFF; 
+  padding: 30px; 
+  border: 1px solid #d9d9d9;
+}
+.nav-icon{
+  font-size:22px;
+  text-align: center;
+}
+.nav-title{
+  text-align: center;
+}
+.top-nav > ul > li  {
+  float: right;
+  margin-left: 2px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.top-nav a {
+display: block;
+padding: 5px 10px;
+color: #f74e4d;
+}
+/*
+ * Global add-ons
+ */
+
+.sub-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/*
+ * Top navigation
+ * Hide default border to remove 1px line.
+ */
+.navbar-fixed-top {
+  border: 0;
+  background: #FFF;
+}
+.navbar-header {
+  background: #22262e;
+}
+.navbar-header a {
+  color: #FFF;
+}
+.sidebar a {
+ color: #999;
+}
+/*
+ * Sidebar
+ */
+
+/* Hide for mobile, show later */
+.sidebar {
+  display: none;
+ }
+@media (min-width: 768px) {
+  .sidebar {
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    }
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+  margin-right: -15px; /* 20px padding + 1px border */
+  margin-bottom: 20px;
+  margin-left: -20px;
+}
+.nav-sidebar > li > a {
+  padding-right: 20px;
+  padding-left: 30px;
+}
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
+  color: #fff;
+ }
+.nav>li>a:hover, .nav>li>a:focus {
+  background: none;
+  color: #FFF;
+}
+
+/*
+ * Main content
+ */
+
+.main {
+  padding: 20px;
+  background: #FFF;
+  -webkit-border-top-left-radius: 2px;
+  -webkit-border-bottom-left-radius: 2px;
+  -moz-border-radius-topleft: 2px;
+  -moz-border-radius-bottomleft: 2px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding-right: 40px;
+    padding-left: 40px;
+    min-height: 600px;
+  }
+}
+.main .page-header {
+  margin-top: 0;
+  border-bottom: none;
+}
+.top_button {
+margin: 7px -13px 0 0;
+float: right;
+}
+.page-header a {
+color: #505458;
+text-decoration: none;
+}
+.text-danger {
+color: #f74e4d !important;
+
+}
