@@ -46,11 +46,43 @@ class Tours extends CI_Controller {
 			redirect('admin/tours', 'refresh');
 		}
 	}
-	function edit_tour(){
+	function edit_tour($id)
+	{
+		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
+		$this->form_validation->set_rules('from', 'Departure city', 'trim|required|callback__citynull_check');
+		$this->form_validation->set_rules('to', 'Arrival city', 'trim|required|callback__citynull_check');
+		$this->form_validation->set_rules('from_start_date', 'Start date', 'trim|required');
+		$this->form_validation->set_rules('from_start_time', 'Start time', 'trim|required');
+		$this->form_validation->set_rules('return_start_date', 'Return date', 'trim|required');
+		$this->form_validation->set_rules('return_start_time', 'Return time', 'trim|required');
+		$this->form_validation->set_rules('available_seats', 'Available seats', 'trim|required');
+		$this->form_validation->set_rules('start_price', 'Start price', 'trim|required');
+		$this->form_validation->set_rules('return_price', 'Return Price', 'trim|required');
 
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->load->model('tour');
+			$data['cities'] = $this->tour->list_cities();
+			$data['tour'] = $this->tour->get_tour($id);
+			$data['main_content'] = 'backend/tours/edit_tour';
+			$data['title'] = 'Edit Tour';
+			$this->load->view('includes/template', $data);
+		}
+		else
+		{
+			$id = $this->uri->segment(4);
+			$this->load->model('tour');
+			$data = $this->input->post();
+			$this->tour->save_tour($data, $id);
+			$this->session->set_flashdata('message', 'Tour successfully edited');
+			redirect('admin/tours', 'refresh');
+		}
 	}
-	function delete_tour(){
-		
+	function delete_tour($id){
+		$this->load->model('tour');
+		$this->session->set_flashdata('message', 'Tour successfully deleted');
+		$this->tour->delete_tour($id);
+		redirect('admin/tours', 'refresh');
 	}
 	
 	public function _citynull_check($str)

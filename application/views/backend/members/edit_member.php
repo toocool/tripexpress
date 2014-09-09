@@ -6,7 +6,6 @@
             </div>
           </div>  
           <div class="row">
-            <?php //echo  validation_errors(); ?>
             <div class="col-sm-5 col-md-5">
              <?php echo form_open('admin/members/edit_member/'.$this->uri->segment(4)); ?>
                 <div class="form-group">

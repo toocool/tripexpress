@@ -10,7 +10,7 @@ Class Tour extends CI_Model
 	 	return $query->result();
 
 	}
-	function get_tours($id)
+	function get_tour($id)
 	{
 		$this->db->where('tour_id', $id);
 		$query = $this->db->get('tours');
@@ -24,8 +24,8 @@ Class Tour extends CI_Model
 	function save_tour($data, $id)
 	{
 		
-		$this->db->where('destination_id', $id);
-		$this->db->update('destinations', $data);
+		$this->db->where('tour_id', $id);
+		$this->db->update('tours', $data);
 	}
 	function create_tour($data)
 	{
@@ -37,8 +37,8 @@ Class Tour extends CI_Model
 	}
 	function delete_tour($id)
 	{
-		$this->db->where('destination_id', $id);
-     	$this->db->delete('destinations');
+		$this->db->where('tour_id', $id);
+     	$this->db->delete('tours');
 	}
 	function get_city_name($id){
 		$this->db->select('city');
