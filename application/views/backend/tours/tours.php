@@ -38,12 +38,18 @@
                       <td><?php echo $i ?></td>
                       <td><?php echo $this->tour->get_city_name($tour->from) ?></td>
                       <td><?php echo $this->tour->get_city_name($tour->to) ?></td>
-                      <td><?php echo date('d.m.Y [ H:i ]', strtotime($tour->from_start_time)) ?></td>
-                      <td><?php echo date('d.m.Y [ H:i ]', strtotime($tour->return_start_time)) ?></td>
+                      <td>
+                        <span class="icon-calendar" style="color:red;"></span> <?php echo date('d/m/Y', strtotime($tour->from_start_time)) ?> 
+                        <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($tour->from_start_time)) ?></div>
+                      </td>
+                      <td>
+                        <span class="icon-calendar" style="color:red;"></span> <?php echo date('d/m/Y', strtotime($tour->return_start_time)) ?>
+                        <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($tour->return_start_time)) ?></div>
+                      </td>
                       <td><?php echo strtoupper($tour->available_seats) ?></td>
                       <td><?php echo strtoupper($tour->start_price) ?></td>
                       <td><?php echo strtoupper($tour->return_price) ?></td>
-                      <td><?php echo date('d.m.Y', strtotime($tour->date_created))  ?></td>
+                      <td><?php echo date('d/m/Y', strtotime($tour->date_created))  ?></td>
                       <td>
                         <a href="<?php echo base_url('admin/tours/edit_tour/'.$tour->tour_id); ?>"><button type="button" class="btn btn-success btn-xs"><span class="icon-pencil"></span> Edit</button></a>
                         <a href="<?php echo base_url('admin/tours/delete_tour/'.$tour->tour_id); ?>" onclick="return confirm('Are you sure you want to delete this destination?')"><button type="button" class="btn btn-danger btn-xs"><span class="icon-cancel-2"></span> Delete</button></a>

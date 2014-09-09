@@ -143,5 +143,5 @@ text-decoration: none;
 }
 .text-danger {
 color: #f74e4d !important;
-
+display: table-row; //fix for date and time input fiels with icons next to them
 }

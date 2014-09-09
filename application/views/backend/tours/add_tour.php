@@ -11,20 +11,22 @@
              
                 <div class="form-group">
                   <label for="city">Departure city</label>
-                  <select class="form-control" name="city" value="<?php echo set_value('city'); ?>">
+                  <select class="form-control" name="from" >
+                    <option value="0"></option>
                     <?php foreach($cities as $city):?>
-                      <option value="<?php echo $city->destination_id ?>"><?php echo $city->city ?></option>
+                      <option value="<?php echo $city->destination_id ?>" <?php echo set_select('from',  $city->destination_id); ?> ><?php echo $city->city ?></option>
                     <?php endforeach; ?>
                   </select>
-                  <?php echo form_error('city'); ?>
+                  <?php echo form_error('from'); ?>
                 </div>
                 <div  class="form-group">
-                  <label for="iso">Departure date and time</label>
+                  <label for="dateandtime">Departure date and time</label>
                   <div class="row">
                       <div class="col-md-6  date" id='datepicker1'>
-                          <input type="text" class="form-control" name="date" data-date-format="DD/MM/YYYY">
+                          <input type="text" class="form-control" name="from_start_date" data-date-format="DD/MM/YYYY" value="<?php echo set_value('from_start_date'); ?>">
                           <span class="input-group-addon"><span class="icon-calendar"></span>
                           </span>
+                          <?php echo form_error('from_start_date'); ?>
                       </div>
                         <script type="text/javascript">
                           $(function () {
@@ -35,9 +37,10 @@
                           });
                         </script>
                       <div class="col-md-6  date" id='timepicker1'>
-                          <input type="text" class="form-control" name="time" data-date-format="HH:mm" >
+                          <input type="text" class="form-control" name="from_start_time" data-date-format="HH:mm" value="<?php echo set_value('from_start_time'); ?>">
                           <span class="input-group-addon"><span class="icon-clock"></span>
                           </span>
+                           <?php echo form_error('from_start_time'); ?>
                       </div>
                         <script type="text/javascript">
                             $(function () {
@@ -52,38 +55,38 @@
                             });
                         </script>
                   </div>
-      
-                  <?php echo form_error('iso'); ?>
                 </div>
                 <div class="form-group">
-                  <label for="iso">One-way price</label>
-                  <input type="text" class="form-control" name="iso" value="<?php echo set_value('iso'); ?>">
-                  <?php echo form_error('iso'); ?>
+                  <label for="start_price">One-way price</label>
+                  <input type="text" class="form-control" name="start_price" value="<?php echo set_value('start_price'); ?>">
+                  <?php echo form_error('start_price'); ?>
                 </div>
                 <div class="form-group">
-                  <label for="iso">Total available seats</label>
-                  <input type="text" class="form-control" name="iso" value="<?php echo set_value('iso'); ?>">
-                  <?php echo form_error('iso'); ?>
+                  <label for="available_seats">Total available seats</label>
+                  <input type="text" class="form-control" name="available_seats" value="<?php echo set_value('available_seats'); ?>">
+                  <?php echo form_error('available_seats'); ?>
                 </div>           
               </div>
 
               <div class="col-sm-4 col-md-4">
                 <div class="form-group">
                   <label for="city">Arrival/return city</label>
-                   <select class="form-control" name="city" value="<?php echo set_value('city'); ?>">
+                   <select class="form-control" name="to" value="<?php echo set_value('city'); ?>">
+                      <option value="0"></option>
                     <?php foreach($cities as $city):?>
-                      <option value="<?php echo $city->destination_id ?>"><?php echo $city->city ?></option>
+                      <option value="<?php echo $city->destination_id ?>" <?php echo set_select('to',  $city->destination_id); ?>><?php echo $city->city ?></option>
                     <?php endforeach; ?>
                   </select>
-                  <?php echo form_error('city'); ?>
+                  <?php echo form_error('to'); ?>
                 </div>
                 <div class="form-group">
-                  <label for="iso">Return date and time</label>
+                  <label for="dateandtime">Return date and time</label>
                    <div class="row">
                       <div class="col-md-6 date" id='datepicker2'>
-                          <input type="text" class="form-control" name="date" data-date-format="DD/MM/YYYY">
+                          <input type="text" class="form-control" name="return_start_date" data-date-format="DD/MM/YYYY" value="<?php echo set_value('return_start_date'); ?>">
                           <span class="input-group-addon"><span class="icon-calendar"></span>
                           </span>
+                          <?php echo form_error('return_start_date'); ?>
                       </div>
                         <script type="text/javascript">
                           $(function () {
@@ -94,9 +97,10 @@
                           });
                         </script>
                       <div class="col-md-6  date" id='timepicker2'>
-                          <input type="text" class="form-control" name="time"  >
+                          <input type="text" class="form-control" name="return_start_time"  data-date-format="HH:mm" value="<?php echo set_value('return_start_time'); ?>">
                           <span class="input-group-addon"><span class="icon-clock"></span>
                           </span>
+                          <?php echo form_error('return_start_time'); ?>
                       </div>
                         <script type="text/javascript">
                             $(function () {
@@ -113,9 +117,9 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="iso">Return price</label>
-                  <input type="text" class="form-control" name="iso" value="<?php echo set_value('iso'); ?>">
-                  <?php echo form_error('iso'); ?>
+                  <label for="return_price">Return price</label>
+                  <input type="text" class="form-control" name="return_price" value="<?php echo set_value('return_price'); ?>">
+                  <?php echo form_error('return_price'); ?>
                 </div>                               
               </div>
 
