@@ -13,18 +13,21 @@
 
     <!-- Open sans google fonts -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
 
     <!-- METRO UI CSS 2.0 FONTS -->
     <link href="<?php echo base_url(); ?>css/iconFont.min.css" rel="stylesheet">
-
+      
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url(); ?>css/dashboard.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>css/datetimepicker.min.css" rel="stylesheet">
   
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="<?php echo base_url(); ?>js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

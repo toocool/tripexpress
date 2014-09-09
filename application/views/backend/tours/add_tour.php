@@ -11,12 +11,48 @@
              
                 <div class="form-group">
                   <label for="city">Departure city</label>
-                  <input type="text" class="form-control" name="city" value="<?php echo set_value('city'); ?>">
+                  <select class="form-control" name="city" value="<?php echo set_value('city'); ?>">
+                    <?php foreach($cities as $city):?>
+                      <option value="<?php echo $city->destination_id ?>"><?php echo $city->city ?></option>
+                    <?php endforeach; ?>
+                  </select>
                   <?php echo form_error('city'); ?>
                 </div>
-                <div class="form-group">
+                <div  class="form-group">
                   <label for="iso">Departure date and time</label>
-                  <input type="text" class="form-control" name="iso" value="<?php echo set_value('iso'); ?>">
+                  <div class="row">
+                      <div class="col-md-6  date" id='datepicker1'>
+                          <input type="text" class="form-control" name="date" data-date-format="DD/MM/YYYY">
+                          <span class="input-group-addon"><span class="icon-calendar"></span>
+                          </span>
+                      </div>
+                        <script type="text/javascript">
+                          $(function () {
+                            $('#datepicker1').datetimepicker({
+                              pickTime: false,
+                              useCurrent: false
+                            });
+                          });
+                        </script>
+                      <div class="col-md-6  date" id='timepicker1'>
+                          <input type="text" class="form-control" name="time" data-date-format="HH:mm" >
+                          <span class="input-group-addon"><span class="icon-clock"></span>
+                          </span>
+                      </div>
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#timepicker1').datetimepicker({
+                                    pickDate: false,
+                                    useCurrent: false,
+                                    icons: {
+                                      up: "icon-arrow-up",
+                                      down: "icon-arrow-down"
+                                    }
+                                });
+                            });
+                        </script>
+                  </div>
+      
                   <?php echo form_error('iso'); ?>
                 </div>
                 <div class="form-group">
@@ -34,13 +70,47 @@
               <div class="col-sm-4 col-md-4">
                 <div class="form-group">
                   <label for="city">Arrival/return city</label>
-                  <input type="text" class="form-control" name="city" value="<?php echo set_value('city'); ?>">
+                   <select class="form-control" name="city" value="<?php echo set_value('city'); ?>">
+                    <?php foreach($cities as $city):?>
+                      <option value="<?php echo $city->destination_id ?>"><?php echo $city->city ?></option>
+                    <?php endforeach; ?>
+                  </select>
                   <?php echo form_error('city'); ?>
                 </div>
                 <div class="form-group">
                   <label for="iso">Return date and time</label>
-                  <input type="text" class="form-control" name="iso" value="<?php echo set_value('iso'); ?>">
-                  <?php echo form_error('iso'); ?>
+                   <div class="row">
+                      <div class="col-md-6 date" id='datepicker2'>
+                          <input type="text" class="form-control" name="date" data-date-format="DD/MM/YYYY">
+                          <span class="input-group-addon"><span class="icon-calendar"></span>
+                          </span>
+                      </div>
+                        <script type="text/javascript">
+                          $(function () {
+                            $('#datepicker2').datetimepicker({
+                              pickTime: false,
+                              useCurrent: false
+                            });
+                          });
+                        </script>
+                      <div class="col-md-6  date" id='timepicker2'>
+                          <input type="text" class="form-control" name="time"  >
+                          <span class="input-group-addon"><span class="icon-clock"></span>
+                          </span>
+                      </div>
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#timepicker2').datetimepicker({
+                                    pickDate: false,
+                                    useCurrent: false,
+                                    icons: {
+                                      up: "icon-arrow-up",
+                                      down: "icon-arrow-down"
+                                    }
+                                });
+                            });
+                        </script>
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="iso">Return price</label>
@@ -55,3 +125,4 @@
             </form>
           </div> 
          </div>
+

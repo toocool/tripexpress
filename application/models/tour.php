@@ -48,5 +48,12 @@ Class Tour extends CI_Model
 		}
 
 	}
+	function list_cities(){
+		$query = $this->db->get('destinations');
+		if ($query->num_rows() > 0)
+		{
+		   return $query->result(); 
+		}
+	}
 }
 ?>

@@ -18,6 +18,8 @@ class Tours extends CI_Controller {
 		$this->load->view('includes/template', $data);
 	}
 	function add_tour(){
+		$this->load->model('tour');
+		$data['cities'] = $this->tour->list_cities();
 		$data['main_content'] = 'backend/tours/add_tour';
 		$data['title'] = 'Create tour';
 		$this->load->view('includes/template', $data);
