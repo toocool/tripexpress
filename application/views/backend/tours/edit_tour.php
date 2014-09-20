@@ -23,7 +23,7 @@
                   <label for="dateandtime">Departure date and time</label>
                   <div class="row">
                       <div class="col-md-6  date" id='datepicker1'>
-                          <input type="text" class="form-control" name="from_start_date" data-date-format="DD/MM/YYYY" value="<?php echo set_value('from_start_date'); ?>">
+                          <input type="text" class="form-control" name="from_start_date" data-date-format="DD/MM/YYYY" value="<?php echo set_value('from_start_date', date('d/m/Y', strtotime($tour->from_start_time))); ?>">
                           <span class="input-group-addon"><span class="icon-calendar"></span>
                           </span>
                           <?php echo form_error('from_start_date'); ?>
@@ -37,7 +37,7 @@
                           });
                         </script>
                       <div class="col-md-6  date" id='timepicker1'>
-                          <input type="text" class="form-control" name="from_start_time" data-date-format="HH:mm" value="<?php echo set_value('from_start_time'); ?>">
+                          <input type="text" class="form-control" name="from_start_time" data-date-format="HH:mm" value="<?php echo set_value('from_start_time', date('H:i', strtotime($tour->from_start_time))); ?>">
                           <span class="input-group-addon"><span class="icon-clock"></span>
                           </span>
                            <?php echo form_error('from_start_time'); ?>
@@ -83,7 +83,7 @@
                   <label for="dateandtime">Return date and time</label>
                    <div class="row">
                       <div class="col-md-6 date" id='datepicker2'>
-                          <input type="text" class="form-control" name="return_start_date" data-date-format="DD/MM/YYYY" value="<?php echo set_value('return_start_date'); ?>">
+                          <input type="text" class="form-control" name="return_start_date" data-date-format="DD/MM/YYYY" value="<?php echo set_value('return_start_date', date('d/m/Y', strtotime($tour->return_start_time))); ?>">
                           <span class="input-group-addon"><span class="icon-calendar"></span>
                           </span>
                           <?php echo form_error('return_start_date'); ?>
@@ -97,7 +97,7 @@
                           });
                         </script>
                       <div class="col-md-6  date" id='timepicker2'>
-                          <input type="text" class="form-control" name="return_start_time"  data-date-format="HH:mm" value="<?php echo set_value('return_start_time'); ?>">
+                          <input type="text" class="form-control" name="return_start_time"  data-date-format="HH:mm" value="<?php echo set_value('return_start_time', date('H:i', strtotime($tour->return_start_time))); ?>">
                           <span class="input-group-addon"><span class="icon-clock"></span>
                           </span>
                           <?php echo form_error('return_start_time'); ?>
