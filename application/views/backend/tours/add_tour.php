@@ -23,7 +23,7 @@
                   <label for="dateandtime">Departure date and time</label>
                   <div class="row">
                       <div class="col-md-6  date" id='datepicker1'>
-                          <input type="text" class="form-control" name="from_start_date" data-date-format="DD/MM/YYYY" value="<?php echo set_value('from_start_date'); ?>">
+                          <input type="text" class="form-control" name="from_start_date" data-date-format="DD-MM-YYYY" value="<?php echo set_value('from_start_date'); ?>">
                           <span class="input-group-addon"><span class="icon-calendar"></span>
                           </span>
                           <?php echo form_error('from_start_date'); ?>
@@ -83,7 +83,7 @@
                   <label for="dateandtime">Return date and time</label>
                    <div class="row">
                       <div class="col-md-6 date" id='datepicker2'>
-                          <input type="text" class="form-control" name="return_start_date" data-date-format="DD/MM/YYYY" value="<?php echo set_value('return_start_date'); ?>">
+                          <input type="text" class="form-control" name="return_start_date" data-date-format="DD-MM-YYYY" value="<?php echo set_value('return_start_date'); ?>">
                           <span class="input-group-addon"><span class="icon-calendar"></span>
                           </span>
                           <?php echo form_error('return_start_date'); ?>
