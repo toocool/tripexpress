@@ -145,3 +145,8 @@ text-decoration: none;
 color: #f74e4d !important;
 display: table-row; //fix for date and time input fiels with icons next to them
 }
+.available_tours {
+border: 1px dotted #000;
+padding: 20px;
+
+}
