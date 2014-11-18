@@ -23,15 +23,14 @@ Class Booking extends CI_Model
 
 	}
 	function check_available_tours($from){
-		$this->db->select('from_start_time');
-		$this->db->where('from', $from);
-		$query = $this->db->get('tours');
-		if ($query->num_rows() > 0)
-		{
-		   $row = $query->row(); 
-		   return $row->from_start_time;
-		 
-		}
+	$data = array();
+	$query = $this->db->query("SELECT from_start_time,start_price FROM tours WHERE `from` = '$from' AND `from_start_time` >= CURDATE()");
+	if ($query->num_rows() > 0) {
+		foreach($query->result() as $row) {
+    		$data[$row->from_start_time] = $row->start_price;
+    	}
+	}
+	return $json = json_encode($data);
 	}
 	function get_booking($id)
 	{

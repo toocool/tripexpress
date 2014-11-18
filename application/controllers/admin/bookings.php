@@ -24,13 +24,16 @@ class Bookings extends CI_Controller {
 		//$data['from_tour'] = $this->booking->check_available_tours();
 	    if($_POST['firstname'] == "")
 	    {
-	        $message = "You can't send empty text";
+	      echo $message = "You can't send empty text";
 	    }
 	    else
-	    {
+	    {	
+	    	//header('Content-type: application/json');
 	        $message = $this->booking->check_available_tours($_POST['firstname']);
+	        $data_json = json_encode($message);
+       		 echo $data_json;
 	    }
-	    echo $message;
+	    
 	}
 
 	function add_ticket(){
