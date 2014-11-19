@@ -22,14 +22,31 @@ class Bookings extends CI_Controller {
 	{   
 		$this->load->model('booking');
 		//$data['from_tour'] = $this->booking->check_available_tours();
-	    if($_POST['firstname'] == "")
+	    if($_POST['from'] == "")
 	    {
 	      echo $message = "You can't send empty text";
 	    }
 	    else
 	    {	
 	    	//header('Content-type: application/json');
-	        $message = $this->booking->check_available_tours($_POST['firstname']);
+	        $message = $this->booking->check_available_tours($_POST['from'], $_POST['to']);
+	        $data_json = json_encode($message);
+       		 echo $data_json;
+	    }
+	    
+	}
+	function ajax_check_tours_back()
+	{   
+		$this->load->model('booking');
+		//$data['from_tour'] = $this->booking->check_available_tours();
+	    if($_POST['to'] == "")
+	    {
+	      echo $message = "You can't send empty text";
+	    }
+	    else
+	    {	
+	    	//header('Content-type: application/json');
+	        $message = $this->booking->check_available_tours_back($_POST['to'],$_POST['selected_back']);
 	        $data_json = json_encode($message);
        		 echo $data_json;
 	    }

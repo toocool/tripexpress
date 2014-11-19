@@ -22,15 +22,25 @@ Class Booking extends CI_Model
 		}
 
 	}
-	function check_available_tours($from){
+	function check_available_tours($from, $to){
 	$data = array();
-	$query = $this->db->query("SELECT from_start_time,start_price FROM tours WHERE `from` = '$from' AND `from_start_time` >= CURDATE()");
-	if ($query->num_rows() > 0) {
-		foreach($query->result() as $row) {
-    		$data[$row->from_start_time] = $row->start_price;
-    	}
+	$query = $this->db->query("SELECT from_start_time,start_price FROM tours WHERE (`from` = '$from' AND `to` ='$to') AND `from_start_time` >= CURDATE()");
+		if ($query->num_rows() > 0) {
+			foreach($query->result() as $row) {
+    			$data[$row->from_start_time] = $row->start_price;
+    		}
+		}
+		return $json = json_encode($data);
 	}
-	return $json = json_encode($data);
+	function check_available_tours_back($back, $selected_departure){
+	$data = array();
+	$query = $this->db->query("SELECT from_start_time,start_price FROM tours WHERE `from` = '$back' AND `from_start_time` >= '$selected_departure'");
+		if ($query->num_rows() > 0) {
+			foreach($query->result() as $row) {
+	    		$data[$row->from_start_time] = $row->start_price;
+	    	}
+		}
+		return $json = json_encode($data);
 	}
 	function get_booking($id)
 	{
