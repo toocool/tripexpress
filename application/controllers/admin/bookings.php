@@ -57,14 +57,12 @@ class Bookings extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 		$this->form_validation->set_rules('from', 'Departure city', 'trim|required|callback__citynull_check');
 		$this->form_validation->set_rules('to', 'Arrival city', 'trim|required|callback__citynull_check');
-		$this->form_validation->set_rules('from_start_date', 'Start date', 'trim|required');
-		$this->form_validation->set_rules('from_start_time', 'Start time', 'trim|required');
-		$this->form_validation->set_rules('return_start_date', 'Return date', 'trim|required');
-		$this->form_validation->set_rules('return_start_time', 'Return time', 'trim|required');
-		$this->form_validation->set_rules('available_seats', 'Available seats', 'trim|required');
-		$this->form_validation->set_rules('start_price', 'Start price', 'trim|required');
-		$this->form_validation->set_rules('return_price', 'Return Price', 'trim|required');
-
+		$this->form_validation->set_rules('client_firstname', 'First name', 'trim|required');
+		$this->form_validation->set_rules('client_lastname', 'Last name', 'trim|required');
+		$this->form_validation->set_rules('identification_nr', 'Identification number', 'trim|required');
+		$this->form_validation->set_rules('booked_seats', 'Seats to book', 'trim|required');
+		$this->form_validation->set_rules('returning', 'Returning ticket', 'trim|required');
+		
 		if ($this->form_validation->run() == FALSE)
 		{
 			$this->load->model('booking');
@@ -75,11 +73,11 @@ class Bookings extends CI_Controller {
 		}
 		else
 		{
-			$this->load->model('tour');
+			$this->load->model('booking');
 			$data = $this->input->post();
-			$this->tour->create_tour($data);
-			$this->session->set_flashdata('message', 'Tour successfully created');
-			redirect('admin/tours', 'refresh');
+			$this->booking->create_booking($data);
+			$this->session->set_flashdata('message', 'Ticket successfully created');
+			redirect('admin/bookings', 'refresh');
 		}
 	}
 	function edit_tour($id)

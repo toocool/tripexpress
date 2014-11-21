@@ -6,12 +6,12 @@
           </div>  
           <div class="row">
             <?php //echo  validation_errors(); ?>
-            <?php echo form_open('admin/tours/add_ticket'); ?>
+            <?php echo form_open('admin/bookings/add_ticket'); ?>
               <div class="col-sm-4 col-md-4">
                 <div class="form-group">
                   <label for="firstname">First name</label>
-                   <input type="text" class="form-control" name="firstname" id="firstname" value="<?php echo set_value('firstname'); ?>">
-                  <?php echo form_error('firstname'); ?>
+                   <input type="text" class="form-control" name="client_firstname" id="client_firstname" value="<?php echo set_value('client_firstname'); ?>">
+                  <?php echo form_error('client_firstname'); ?>
                 </div>
                 
                 <div class="form-group">
@@ -25,9 +25,9 @@
                   <?php echo form_error('from'); ?>
                 </div>
                 <div class="form-group">
-                  <label for="start_price">ID number</label>
-                  <input type="text" class="form-control" name="start_price" value="<?php echo set_value('start_price'); ?>">
-                  <?php echo form_error('start_price'); ?>
+                  <label for="start_price">Identification number</label>
+                  <input type="text" class="form-control" name="identification_nr" id="identification_nr" value="<?php echo set_value('identification_nr'); ?>">
+                  <?php echo form_error('identification_nr'); ?>
                 </div>
                  <div class="form-group">
                   <label for="returning">Returning ticket?</label>
@@ -42,9 +42,9 @@
 
               <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                  <label for="lastname">Last name</label>
-                   <input type="text" class="form-control" name="lastname" value="<?php echo set_value('lastname'); ?>">
-                  <?php echo form_error('lastname'); ?>
+                  <label for="client_lastname">Last name</label>
+                   <input type="text" class="form-control" name="client_lastname" value="<?php echo set_value('client_lastname'); ?>">
+                  <?php echo form_error('client_lastname'); ?>
                 </div>
                
                 <div class="form-group">
@@ -58,9 +58,9 @@
                   <?php echo form_error('to'); ?>
                 </div>
                  <div class="form-group">
-                  <label for="available_seats">Seats to book</label>
-                  <input type="text" class="form-control" name="available_seats" value="<?php echo set_value('available_seats'); ?>">
-                  <?php echo form_error('available_seats'); ?>
+                  <label for="booked_seats">Seats to book</label>
+                  <input type="text" class="form-control" name="booked_seats" id="booked_seats" value="<?php echo set_value('booked_seats'); ?>">
+                  <?php echo form_error('booked_seats'); ?>
                 </div>
                 <p></p>
                  <button type="button" id="check" style="margin-top: 25px;" class="btn btn-primary" value="submit"><span class="icon-spin"></span> Check available tours</button>
@@ -103,9 +103,9 @@ $(document).ready(function(){
          success: 
             function(data){
               var obj = jQuery.parseJSON( data);
-              
               $.each( obj, function( key, value ) {
-              $("#from_results").append('<div class="radio list-group-item"><label> <input type="radio" name="choose_from" id="choose_from" value="' + key + '" >Date: ' + key + '<br/> Price: ' + value + '</label></div> ' ); //.hide().slideDown('slow') to add effects but I have to remember to use the hide() first
+              var to_info = value.split('|');
+              $("#from_results").append('<div class="radio list-group-item"><label> <input type="radio" name="choose_from" id="choose_from" value="' + key + '" >Date: ' + to_info[0] + '<br/> Price: ' + to_info[1] + '</label></div> ' ); //.hide().slideDown('slow') to add effects but I have to remember to use the hide() first
              });
             }
     });// .ajax
@@ -127,7 +127,8 @@ $(document).ready(function(){
                 function(data){
                   var obj = jQuery.parseJSON( data);
                   $.each( obj, function( key, value ) {
-                  $("#return_results").append('<div class="radio list-group-item"><label> <input type="radio" name="choose_back" id="choose_back" value="' + key + '" >Date: ' + key + '<br/> Price: ' + value + '</label></div> ' ); //.hide().slideDown('slow') to add effects but I have to remember to use the hide() first
+                  var back_info = value.split('|');
+                  $("#return_results").append('<div class="radio list-group-item"><label> <input type="radio" name="choose_back" id="choose_back" value="' + key + '" >Date: ' + back_info[0] + '<br/> Price: ' + back_info[1] + '</label></div> ' ); //.hide().slideDown('slow') to add effects but I have to remember to use the hide() first
                  });
                 }
         });// .ajax

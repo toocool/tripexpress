@@ -22,8 +22,8 @@
                     <th>First name</th>
                     <th>Last name</th>
                     <th>ID number</th>
-                    <th>From</th>
-                    <th>To</th>
+                    <th>Departure</th>
+                    <th>Arrival</th>
                     <th>Departure time</th>
                     <th>Return time</th>
                     <th>Seats booked</th>
@@ -41,14 +41,16 @@
                       <td><?php echo $booking->identification_nr ?></td>
                       
                       <td><?php echo $this->booking->get_city_name($booking->from) ?></td>
-                      <td><?php echo $this->booking->get_city_name($booking->to) ?></td>
+                      <td><?php echo $this->booking->get_city_name($booking->to).''.$this->booking->show_booking_date('8') ?></td>
                       <td>
-                        <span class="icon-calendar" style="color:red;"></span> <?php echo date('d/m/Y', strtotime($booking->from_start_time)) ?> 
-                        <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($booking->from_start_time)) ?></div>
+                        <span class="icon-calendar" style="color:red;"></span> <?php echo date('d/m/Y', strtotime($this->booking->show_booking_date($booking->from))) ?> 
+                        <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($this->booking->show_booking_date($booking->from))) ?></div>
                       </td>
                       <td>
-                         <span class="icon-calendar" style="color:red;"></span> <?php echo date('d/m/Y', strtotime($booking->return_start_time)) ?>
-                        <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($booking->return_start_time)) ?></div>
+                        <?php if($booking->returning == '2') { ?>
+                        <span class="icon-calendar" style="color:red;"></span> <?php echo date('d/m/Y', strtotime($this->booking->show_booking_date($booking->to))) ?>
+                        <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($this->booking->show_booking_date($booking->to))) ?></div>
+                        <?php } ?>
                       </td>
                       <td><?php echo $booking->booked_seats ?></td>
                       <td>

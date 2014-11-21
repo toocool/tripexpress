@@ -9,7 +9,16 @@ Class Booking extends CI_Model
 	 	$this->db->join('tours', 'tours.tour_id = bookings.tour_id');
 	 	$query = $this->db->get();
 	 	return $query->result();
-
+	}
+	function show_booking_date($tour_id){
+		$this->db->select('from_start_time');
+		$this->db->where('tour_id', $tour_id);
+	 	$query = $this->db->get('tours');
+	 	if ($query->num_rows() > 0)
+		{
+		   $row = $query->row(); 
+		   return $row->from_start_time;
+		}
 	}
     function get_city_name($id){
 		$this->db->select('city');
@@ -24,20 +33,20 @@ Class Booking extends CI_Model
 	}
 	function check_available_tours($from, $to){
 	$data = array();
-	$query = $this->db->query("SELECT from_start_time,start_price FROM tours WHERE (`from` = '$from' AND `to` ='$to') AND `from_start_time` >= CURDATE()");
+	$query = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE (`from` = '$from' AND `to` ='$to') AND `from_start_time` >= CURDATE()");
 		if ($query->num_rows() > 0) {
 			foreach($query->result() as $row) {
-    			$data[$row->from_start_time] = $row->start_price;
+    			$data[$row->tour_id] = $row->from_start_time.'|'.$row->start_price;
     		}
 		}
 		return $json = json_encode($data);
 	}
 	function check_available_tours_back($back, $selected_departure){
 	$data = array();
-	$query = $this->db->query("SELECT from_start_time,start_price FROM tours WHERE `from` = '$back' AND `from_start_time` >= '$selected_departure'");
+	$query = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE `from` = '$back' AND `from_start_time` >= '$selected_departure'");
 		if ($query->num_rows() > 0) {
 			foreach($query->result() as $row) {
-	    		$data[$row->from_start_time] = $row->start_price;
+	    		$data[$row->tour_id] = $row->from_start_time.'|'.$row->start_price;
 	    	}
 		}
 		return $json = json_encode($data);
@@ -66,11 +75,11 @@ Class Booking extends CI_Model
 	}
 	function create_booking($data)
 	{
-		$data['from_start_time'] = date('Y-m-d', strtotime(element('from_start_date', $data))). ' ' .element('from_start_time', $data);
-		$data['return_start_time']  = date('Y-m-d', strtotime(element('return_start_date', $data))). ' ' .element('return_start_time', $data);
-		$crop_data = elements(array('from','to','available_seats','start_price','return_price','from_start_time','return_start_time'), $data);
-		$add_tour = $this->db->insert_string('tours', $crop_data);
-		$this->db->query($add_tour);
+		$data['tour_id'] = element('choose_from', $data);
+		$data['tour_back_id']  = element('choose_back', $data);
+		$crop_data = elements(array('tour_id','tour_back_id','booked_seats','client_firstname','client_lastname','identification_nr','returning'), $data);
+		$add_booking = $this->db->insert_string('bookings', $crop_data);
+		$this->db->query($add_booking);
 	}
 	function delete_booking($id)
 	{
