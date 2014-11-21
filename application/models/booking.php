@@ -53,8 +53,11 @@ Class Booking extends CI_Model
 	}
 	function get_booking($id)
 	{
-		$this->db->where('tour_id', $id);
-		$query = $this->db->get('tours');
+		$this->db->from('bookings', 'tours');
+	 	$this->db->join('tours', 'tours.tour_id = bookings.tour_id');
+
+		$this->db->where('booking_id', $id);
+		$query = $this->db->get();
 		if($query->num_rows() > 0)
 		{
 			$row = $query->row();
@@ -65,12 +68,11 @@ Class Booking extends CI_Model
 	function save_booking($data, $id)
 	{
 		
-		$data['from_start_time'] = date('Y-m-d', strtotime(element('from_start_date', $data))). ' ' .strtotime(element('from_start_time', $data));
-		//$data['from_start_time'] = '2014-10-17 14:16';
-		$data['return_start_time']  = date('Y-m-d', strtotime(element('return_start_date', $data))). ' ' .element('return_start_time', $data);
-		$crop_data = elements(array('from','to','available_seats','start_price','return_price','from_start_time','return_start_time'), $data);
-		$this->db->where('tour_id', $id);
-		$this->db->update('tours', $crop_data);
+		$data['tour_id'] = element('choose_from', $data);
+		$data['tour_back_id']  = element('choose_back', $data);
+		$crop_data = elements(array('tour_id','tour_back_id','booked_seats','client_firstname','client_lastname','identification_nr','returning'), $data);
+		$this->db->where('booking_id', $id);
+		$this->db->update('bookings', $crop_data);
 		
 	}
 	function create_booking($data)
@@ -83,8 +85,8 @@ Class Booking extends CI_Model
 	}
 	function delete_booking($id)
 	{
-		$this->db->where('tour_id', $id);
-     	$this->db->delete('tours');
+		$this->db->where('booking_id', $id);
+     	$this->db->delete('bookings');
 	}
 	
 	function list_cities(){

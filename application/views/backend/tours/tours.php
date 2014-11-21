@@ -22,10 +22,8 @@
                     <th>From</th>
                     <th>To</th>
                     <th>Departure time</th>
-                    <th>Return time</th>
                     <th>Total seats</th>
-                    <th>Departure price</th>
-                    <th>Return price</th>
+                    <th>Price</th>
                     <th>Date created</th>
                     <th>Options</th>
                   </tr>
@@ -42,13 +40,9 @@
                         <span class="icon-calendar" style="color:red;"></span> <?php echo date('d/m/Y', strtotime($tour->from_start_time)) ?> 
                         <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($tour->from_start_time)) ?></div>
                       </td>
-                      <td>
-                        <span class="icon-calendar" style="color:red;"></span> <?php echo date('d/m/Y', strtotime($tour->return_start_time)) ?>
-                        <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($tour->return_start_time)) ?></div>
-                      </td>
+                      
                       <td><?php echo strtoupper($tour->available_seats) ?></td>
                       <td><?php echo strtoupper($tour->start_price) ?></td>
-                      <td><?php echo strtoupper($tour->return_price) ?></td>
                       <td><?php echo date('d/m/Y', strtotime($tour->date_created))  ?></td>
                       <td>
                         <a href="<?php echo base_url('admin/tours/edit_tour/'.$tour->tour_id); ?>"><button type="button" class="btn btn-success btn-xs"><span class="icon-pencil"></span> Edit</button></a>

@@ -8,12 +8,14 @@ class Clients extends CI_Controller {
 		$this->is_logged_in();
 	}
 	function index(){
+		$this->list_clients();
+	}
+	function list_clients(){
+		$this->load->model('client');
+		$data['clients'] = $this->client->show_clients();
 		$data['main_content'] = 'backend/clients/clients';
 		$data['title'] = 'Clients';
 		$this->load->view('includes/template', $data);
-	}
-	function add_to(){
-		echo 'add to';
 	}
 	
 

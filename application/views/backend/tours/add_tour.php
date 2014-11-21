@@ -10,7 +10,7 @@
               <div class="col-sm-4 col-md-4">
              
                 <div class="form-group">
-                  <label for="city">Departure city</label>
+                  <label for="city">Departure</label>
                   <select class="form-control" name="from" >
                     <option value="0"></option>
                     <?php foreach($cities as $city):?>
@@ -57,20 +57,15 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="start_price">One-way price</label>
+                  <label for="start_price">Ticket price</label>
                   <input type="text" class="form-control" name="start_price" value="<?php echo set_value('start_price'); ?>">
                   <?php echo form_error('start_price'); ?>
                 </div>
-                <div class="form-group">
-                  <label for="available_seats">Total available seats</label>
-                  <input type="text" class="form-control" name="available_seats" value="<?php echo set_value('available_seats'); ?>">
-                  <?php echo form_error('available_seats'); ?>
-                </div>           
               </div>
 
               <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                  <label for="city">Arrival/return city</label>
+                  <label for="city">Arrival</label>
                    <select class="form-control" name="to" value="<?php echo set_value('city'); ?>">
                       <option value="0"></option>
                     <?php foreach($cities as $city):?>
@@ -80,47 +75,10 @@
                   <?php echo form_error('to'); ?>
                 </div>
                 <div class="form-group">
-                  <label for="dateandtime">Return date and time</label>
-                   <div class="row">
-                      <div class="col-md-6 date" id='datepicker2'>
-                          <input type="text" class="form-control" name="return_start_date" data-date-format="DD-MM-YYYY" value="<?php echo set_value('return_start_date'); ?>">
-                          <span class="input-group-addon"><span class="icon-calendar"></span>
-                          </span>
-                          <?php echo form_error('return_start_date'); ?>
-                      </div>
-                        <script type="text/javascript">
-                          $(function () {
-                            $('#datepicker2').datetimepicker({
-                              pickTime: false,
-                              useCurrent: false
-                            });
-                          });
-                        </script>
-                      <div class="col-md-6  date" id='timepicker2'>
-                          <input type="text" class="form-control" name="return_start_time"  data-date-format="HH:mm" value="<?php echo set_value('return_start_time'); ?>">
-                          <span class="input-group-addon"><span class="icon-clock"></span>
-                          </span>
-                          <?php echo form_error('return_start_time'); ?>
-                      </div>
-                        <script type="text/javascript">
-                            $(function () {
-                                $('#timepicker2').datetimepicker({
-                                    pickDate: false,
-                                    useCurrent: false,
-                                    icons: {
-                                      up: "icon-arrow-up",
-                                      down: "icon-arrow-down"
-                                    }
-                                });
-                            });
-                        </script>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="return_price">Return price</label>
-                  <input type="text" class="form-control" name="return_price" value="<?php echo set_value('return_price'); ?>">
-                  <?php echo form_error('return_price'); ?>
-                </div>                               
+                  <label for="available_seats">Total available seats</label>
+                  <input type="text" class="form-control" name="available_seats" value="<?php echo set_value('available_seats'); ?>">
+                  <?php echo form_error('available_seats'); ?>
+                </div> 
               </div>
 
               <div class="col-sm-12 col-md-12">

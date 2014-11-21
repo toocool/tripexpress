@@ -23,11 +23,8 @@ class Tours extends CI_Controller {
 		$this->form_validation->set_rules('to', 'Arrival city', 'trim|required|callback__citynull_check');
 		$this->form_validation->set_rules('from_start_date', 'Start date', 'trim|required');
 		$this->form_validation->set_rules('from_start_time', 'Start time', 'trim|required');
-		$this->form_validation->set_rules('return_start_date', 'Return date', 'trim|required');
-		$this->form_validation->set_rules('return_start_time', 'Return time', 'trim|required');
 		$this->form_validation->set_rules('available_seats', 'Available seats', 'trim|required');
 		$this->form_validation->set_rules('start_price', 'Start price', 'trim|required');
-		$this->form_validation->set_rules('return_price', 'Return Price', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -53,11 +50,8 @@ class Tours extends CI_Controller {
 		$this->form_validation->set_rules('to', 'Arrival city', 'trim|required|callback__citynull_check');
 		$this->form_validation->set_rules('from_start_date', 'Start date', 'trim|required');
 		$this->form_validation->set_rules('from_start_time', 'Start time', 'trim|required');
-		$this->form_validation->set_rules('return_start_date', 'Return date', 'trim|required');
-		$this->form_validation->set_rules('return_start_time', 'Return time', 'trim|required');
 		$this->form_validation->set_rules('available_seats', 'Available seats', 'trim|required');
 		$this->form_validation->set_rules('start_price', 'Start price', 'trim|required');
-		$this->form_validation->set_rules('return_price', 'Return Price', 'trim|required');
 
 		if ($this->form_validation->run() == FALSE)
 		{

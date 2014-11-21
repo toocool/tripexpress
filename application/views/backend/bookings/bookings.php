@@ -41,13 +41,13 @@
                       <td><?php echo $booking->identification_nr ?></td>
                       
                       <td><?php echo $this->booking->get_city_name($booking->from) ?></td>
-                      <td><?php echo $this->booking->get_city_name($booking->to).''.$this->booking->show_booking_date('8') ?></td>
+                      <td><?php echo $this->booking->get_city_name($booking->to) ?></td>
                       <td>
                         <span class="icon-calendar" style="color:red;"></span> <?php echo date('d/m/Y', strtotime($this->booking->show_booking_date($booking->from))) ?> 
                         <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($this->booking->show_booking_date($booking->from))) ?></div>
                       </td>
                       <td>
-                        <?php if($booking->returning == '2') { ?>
+                        <?php if($booking->returning == '2') { //1 = one way; 2 = returning ticket ?>
                         <span class="icon-calendar" style="color:red;"></span> <?php echo date('d/m/Y', strtotime($this->booking->show_booking_date($booking->to))) ?>
                         <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($this->booking->show_booking_date($booking->to))) ?></div>
                         <?php } ?>
@@ -55,7 +55,7 @@
                       <td><?php echo $booking->booked_seats ?></td>
                       <td>
                         <a href="<?php echo base_url('admin/bookings/edit_booking/'.$booking->booking_id); ?>"><button type="button" class="btn btn-success btn-xs"><span class="icon-pencil"></span> Edit</button></a>
-                        <a href="<?php echo base_url('admin/bookings/delete_booking/'.$booking->booking_id); ?>" onclick="return confirm('Are you sure you want to cancel this booking ticket?')"><button type="button" class="btn btn-danger btn-xs"><span class="icon-cancel-2"></span> Cancel</button></a>
+                        <a href="<?php echo base_url('admin/bookings/delete_booking/'.$booking->booking_id); ?>" onclick="return confirm('Are you sure you want to delete this booking ticket?')"><button type="button" class="btn btn-danger btn-xs"><span class="icon-cancel-2"></span> Delete</button></a>
                       </td>
                     </tr> 
                   <?php $i++; endforeach; ?>
