@@ -14,6 +14,7 @@
                     <th>Last name</th>
                     <th>Total tickets</th>
                     <th>Total seats</th>
+                    <th>Options</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -27,6 +28,9 @@
                       <td><?php echo $client->client_lastname ?></td>
                       <td><?php echo $client->total_tickets ?></td>
                       <td><?php echo $client->total_seats ?></td>
+                      <td>
+                          <a href="<?php echo base_url('admin/clients/list_tickets/'.$client->identification_nr); ?>"><button type="button" class="btn btn-info btn-xs"><span class="icon-history"></span> Booking history</button></a>
+                      </td>
                     </tr> 
                   <?php $i++; endforeach; ?>
 
