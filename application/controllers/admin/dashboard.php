@@ -8,6 +8,8 @@ class Dashboard extends CI_Controller {
 		$this->is_logged_in();
 	}
 	function index(){
+		$this->load->model('dashboard_stats');
+		$data['upcoming_tours'] = $this->dashboard_stats->upcoming_tours();
 		$data['main_content'] = 'backend/dashboard/dashboard';
 		$data['title'] = 'Dashboard';
 		$this->load->view('includes/template', $data);

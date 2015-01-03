@@ -31,7 +31,7 @@ Class Client extends CI_Model
 
 	}
 
-	function get_departure_from($id) {
+	function get_from($id) {
 		$this->db->select('from');
 		$this->db->where('tour_id', $id);
 		$query = $this->db->get('tours');
@@ -43,5 +43,16 @@ Class Client extends CI_Model
 
 	}
 	
+	function get_to($id) {
+		$this->db->select('to');
+		$this->db->where('tour_id', $id);
+		$query = $this->db->get('tours');
+		if ($query->num_rows() > 0)
+		{
+		   $row = $query->row(); 
+		   return $row->to;
+		}
+
+	}
 }
 ?>

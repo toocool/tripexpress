@@ -4,7 +4,7 @@ Class Booking extends CI_Model
 	
 	function show_bookings()
 	{
-		//$this->db->order_by('booking_id','desc');
+		$this->db->order_by('created_time','desc');
 		$this->db->from('bookings', 'tours');
 	 	$this->db->join('tours', 'tours.tour_id = bookings.tour_id');
 	 	$query = $this->db->get();

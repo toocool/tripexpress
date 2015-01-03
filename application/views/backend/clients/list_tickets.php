@@ -21,8 +21,8 @@
                   <?php $i = 1; foreach($clients as $client): ?>
                       <tr>
                       <td><?php echo $i ?></td>
-                      <td><?php echo $this->client->get_city_name($this->client->get_departure_from($client->tour_id)) ?></td>
-                      <td><?php echo $this->client->get_city_name($this->client->get_departure_from($client->tour_back_id)); ?></td>
+                      <td><?php echo $this->client->get_city_name($this->client->get_from($client->tour_id)) ?></td>
+                      <td><?php echo $this->client->get_city_name($this->client->get_to($client->tour_id)); ?></td>
                       <td><?php if($client->returning == '1' ) echo 'One way'; else echo 'Returning'; ?></td>
                       <td><?php echo $client->booked_seats ?></td>
                     </tr> 
