@@ -55,5 +55,27 @@ Class User extends CI_Model
 		$this->db->where('id', $id);
      	$this->db->delete('users');
 	}
+	function member_role($username){
+		$this->db->select('role');
+		$this->db->where('username',$username);
+		$query = $this->db->get('users');
+
+		if ($query->num_rows() > 0)
+		{
+		   $row = $query->row(); 
+		   return $row->role;
+		}
+	}
+	function member_id($username){
+		$this->db->select('id');
+		$this->db->where('username',$username);
+		$query = $this->db->get('users');
+
+		if ($query->num_rows() > 0)
+		{
+		   $row = $query->row(); 
+		   return $row->id;
+		}
+	}
 }
 ?>

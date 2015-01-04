@@ -16,7 +16,7 @@ class Members extends CI_Controller {
 		$this->load->library('pagination');
 		$config['base_url'] = base_url().'admin/members/list_members';
 		$config['total_rows'] = $this->db->count_all('users');
-		$config['per_page'] = 5; 
+		$config['per_page'] = 10; 
 		$config["uri_segment"] = 4;
 		//pagination styling
 		$config['num_tag_open'] = '<li>'; $config['num_tag_close'] = '</li>';

@@ -2,14 +2,25 @@
 Class Client extends CI_Model
 {
 	
-	function show_clients()
+	function show_clients($limit, $start)
 	{
+		$this->db->limit($limit, $start);
 		$this->db->select('identification_nr, client_firstname, client_lastname, SUM(booked_seats) as total_seats, COUNT(booking_id) as total_tickets');
 		$this->db->from('bookings');
 		$this->db->group_by("identification_nr");
 		$this->db->order_by("client_firstname", "desc");  
 		$query = $this->db->get();
 	 	return $query->result();
+	}
+	function total_clients()
+	{
+		
+		$this->db->select('identification_nr, client_firstname, client_lastname, SUM(booked_seats) as total_seats, COUNT(booking_id) as total_tickets');
+		$this->db->from('bookings');
+		$this->db->group_by("identification_nr");
+		$this->db->order_by("client_firstname", "desc");  
+		$query = $this->db->get();
+	 	return $query->num_rows();
 	}
 	function list_tickets($identification_nr){
 		$this->db->select("tour_id,tour_back_id,returning,client_firstname,client_lastname,booked_seats");

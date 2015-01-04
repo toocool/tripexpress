@@ -2,17 +2,20 @@
 Class Booking extends CI_Model
 {
 	
-	function show_bookings()
+	function show_bookings($limit, $start)
 	{
+		$this->db->limit($limit, $start);
 		$this->db->order_by('created_time','desc');
 		$this->db->from('bookings', 'tours');
 	 	$this->db->join('tours', 'tours.tour_id = bookings.tour_id');
+
 	 	$query = $this->db->get();
 	 	return $query->result();
 	}
 	function show_booking_date($tour_id){
 		$this->db->select('from_start_time');
 		$this->db->where('tour_id', $tour_id);
+
 	 	$query = $this->db->get('tours');
 	 	if ($query->num_rows() > 0)
 		{
@@ -28,6 +31,17 @@ Class Booking extends CI_Model
 		{
 		   $row = $query->row(); 
 		   return $row->city;
+		}
+
+	}
+	function get_username($id){
+		$this->db->select('username');
+		$this->db->where('id', $id);
+		$query = $this->db->get('users');
+		if ($query->num_rows() > 0)
+		{
+		   $row = $query->row(); 
+		   return $row->username;
 		}
 
 	}
@@ -70,7 +84,8 @@ Class Booking extends CI_Model
 		
 		$data['tour_id'] = element('choose_from', $data);
 		$data['tour_back_id']  = element('choose_back', $data);
-		$crop_data = elements(array('tour_id','tour_back_id','booked_seats','client_firstname','client_lastname','identification_nr','returning'), $data);
+		$data['modified_by'] = $this->session->userdata['user_id'];
+		$crop_data = elements(array('tour_id','tour_back_id','booked_seats','client_firstname','client_lastname','identification_nr','returning','modified_by'), $data);
 		$this->db->where('booking_id', $id);
 		$this->db->update('bookings', $crop_data);
 		
@@ -79,7 +94,8 @@ Class Booking extends CI_Model
 	{
 		$data['tour_id'] = element('choose_from', $data);
 		$data['tour_back_id']  = element('choose_back', $data);
-		$crop_data = elements(array('tour_id','tour_back_id','booked_seats','client_firstname','client_lastname','identification_nr','returning'), $data);
+		$data['created_by'] = $this->session->userdata['user_id'];
+		$crop_data = elements(array('tour_id','tour_back_id','booked_seats','client_firstname','client_lastname','identification_nr','returning','created_by'), $data);
 		$add_booking = $this->db->insert_string('bookings', $crop_data);
 		$this->db->query($add_booking);
 	}

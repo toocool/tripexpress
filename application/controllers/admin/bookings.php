@@ -11,8 +11,26 @@ class Bookings extends CI_Controller {
 		$this->list_bookings();
 	}
 	function list_bookings(){
+		$this->load->library('pagination');
+		$config['base_url'] = base_url().'admin/bookings/list_bookings';
+		$config['total_rows'] = $this->db->count_all('bookings');
+		$config['per_page'] = 10; 
+		$config["uri_segment"] = 4;
+		//pagination styling
+		$config['num_tag_open'] = '<li>'; $config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active"><a href"#">'; $config['cur_tag_close'] = '</a></li>';
+		$config['next_tag_open'] = '<li>'; $config['next_tag_close'] = '</li>';
+		$config['prev_tag_open'] = '<li>'; $config['prev_tag_close'] = '</li>';
+		$config['prev_link'] = '&laquo;';
+		$config['next_link'] = '&raquo;';
+		//pagination styling
+		$this->pagination->initialize($config);
 		$this->load->model('booking');
-		$data['bookings'] = $this->booking->show_bookings();
+		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+		//$data['bookings'] = $this->booking->show_bookings();
+		$data['bookings'] = $this->booking->show_bookings($config['per_page'], $page);
+		$data['links'] = $this->pagination->create_links();
+
 		$data['main_content'] = 'backend/bookings/bookings';
 		$data['title'] = 'Bookings';
 		$this->load->view('includes/template', $data);
@@ -114,7 +132,7 @@ class Bookings extends CI_Controller {
 		$this->load->model('booking');
 		$this->session->set_flashdata('message', 'Ticket successfully deleted');
 		$this->booking->delete_booking($id);
-		redirect('admin/booking', 'refresh');
+		redirect('admin/bookings', 'refresh');
 	}
 	
 	public function _citynull_check($str)

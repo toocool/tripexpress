@@ -18,6 +18,8 @@ class Login extends CI_Controller {
 	 		$data = array(
 	 				'username' => $this->input->post('username'),
 	 				'is_logged_in' => true,
+	 				'role' => $this->user->member_role($this->input->post('username')),
+	 				'user_id' => $this->user->member_id($this->input->post('username'))
 	 				);
 	 		$this->session->set_userdata($data);
 	 		redirect('admin/dashboard');

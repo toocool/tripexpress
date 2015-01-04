@@ -13,8 +13,25 @@ class Clients extends CI_Controller {
 	}
 	function list_clients()
 	{
-		$this->load->model('client');
-		$data['clients'] = $this->client->show_clients();
+		$this->load->library('pagination');
+			$this->load->model('client');
+		$config['base_url'] = base_url().'admin/clients/list_clients';
+		$config['total_rows'] = $this->client->total_clients();
+		$config['per_page'] = 10; 
+		$config["uri_segment"] = 4;
+		//pagination styling
+		$config['num_tag_open'] = '<li>'; $config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active"><a href"#">'; $config['cur_tag_close'] = '</a></li>';
+		$config['next_tag_open'] = '<li>'; $config['next_tag_close'] = '</li>';
+		$config['prev_tag_open'] = '<li>'; $config['prev_tag_close'] = '</li>';
+		$config['prev_link'] = '&laquo;';
+		$config['next_link'] = '&raquo;';
+		//pagination styling
+		$this->pagination->initialize($config);
+		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+		
+		$data['clients'] = $this->client->show_clients($config['per_page'], $page);
+		$data['links'] = $this->pagination->create_links();
 		$data['main_content'] = 'backend/clients/clients';
 		$data['title'] = 'Clients';
 		$this->load->view('includes/template', $data);

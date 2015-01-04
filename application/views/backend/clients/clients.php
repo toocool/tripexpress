@@ -20,7 +20,11 @@
                 <tbody>
                   <?php $this->load->model('client'); ?>
 
-                  <?php $i = 1; foreach($clients as $client): ?>
+                  <?php 
+                    if ($this->pagination->per_page > $this->pagination->total_rows) $i =1 ; 
+                    else $i = 1 + ($this->pagination->cur_page-1)*$this->pagination->per_page; 
+                    foreach($clients as $client): 
+                  ?>
                       <tr>
                       <td><?php echo $i ?></td>
                       <td><?php echo $client->identification_nr ?></td>
@@ -37,5 +41,6 @@
                 </tbody>
               </table>
             </div>
+            <ul class="pagination"><?php echo $links ?></ul>
           </div> 
          </div>

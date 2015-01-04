@@ -28,7 +28,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $i = 1 + ($this->pagination->cur_page-1)*$this->pagination->per_page; foreach($users as $user): ?>
+                  <?php 
+                    if ($this->pagination->per_page > $this->pagination->total_rows) $i =1 ; 
+                    else $i = 1 + ($this->pagination->cur_page-1)*$this->pagination->per_page;  
+                    foreach($users as $user): 
+                  ?>
                   <?php 
                     if ($user->role == '0') {
                       $user->role = 'Administrator';
