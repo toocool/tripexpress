@@ -48,6 +48,17 @@ Class Dashboard_stats extends CI_Model
 		   return $row->total;
 		}
 	}
+	function member_role($username){
+		$this->db->select('role');
+		$this->db->where('username',$username);
+		$query = $this->db->get('users');
+
+		if ($query->num_rows() > 0)
+		{
+		   $row = $query->row(); 
+		   return $row->role;
+		}
+	}
 	
 	function get_city_name($id){
 		$this->db->select('city');

@@ -5,6 +5,7 @@ class Login extends CI_Controller {
 	function index()
 	{
 	   $data['title'] = 'Login';
+	   $data['error'] = '';
 	   $this->load->view('backend/login_form', $data);
 	}
 
@@ -15,7 +16,7 @@ class Login extends CI_Controller {
 	 	if($query)
 	 	{
 	 		$data = array(
-	 				'username' => $this->input->post('username'), 
+	 				'username' => $this->input->post('username'),
 	 				'is_logged_in' => true,
 	 				);
 	 		$this->session->set_userdata($data);
@@ -25,7 +26,7 @@ class Login extends CI_Controller {
 	 	{
 	 		$data['error'] = 'Invalid Username or Password';
 	     	$data['main_content'] = 'login_form';
-	 		$this->load->view('includes/template', $data);
+	 		$this->load->view('backend/login_form', $data);
 	 	}
 	}
 

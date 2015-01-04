@@ -13,21 +13,31 @@
                   
                   <tbody>
                     <?php $this->load->model('dashboard_stats'); ?>
-
                       <tr>
-                        <td>Your role:</td>
-                        <td>Agent</td>
+                        <td>Your username:</td>
+                        <td><?php echo $this->session->userdata['username'] ?></td>
+                      </tr>
+                      <tr>
+                        <td>Your role</td>
+                        <td>
+                          <?php 
+                            if($this->dashboard_stats->member_role($this->session->userdata['username']) == 0) echo 'Administrator';
+                              elseif($this->dashboard_stats->member_role($this->session->userdata['username']) == 1) echo 'Empoyee';
+                                elseif($this->dashboard_stats->member_role($this->session->userdata['username']) == 2) echo 'Reseller';
+                                  else echo 'Error';
+                          ?>
+                        </td>
                       </tr> 
                       <tr>
-                        <td>Total tickets sold last 7 days:</td>
+                        <td>Total tickets sold last 7 days</td>
                         <td><?php echo $this->dashboard_stats->total_tickets_per_week() ?></td>
                       </tr>
                       <tr>
-                        <td>Total tickets sold this month:</td>
+                        <td>Total tickets sold this month</td>
                         <td><?php echo $this->dashboard_stats->total_tickets_per_month() ?></td>
                       </tr>  
                       <tr>
-                        <td>Total tickets sold:</td>
+                        <td>Total tickets sold</td>
                         <td><?php echo $this->dashboard_stats->total_tickets() ?></td>
                       </tr> 
                       
