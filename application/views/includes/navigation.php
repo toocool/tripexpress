@@ -38,6 +38,12 @@
                 <div class="nav-title">Clients</div>
               </a>
             </li>
+            <li <?php if ($page == "statistics"){ echo "class='active'";} ?>>
+              <a href="<?php echo base_url() ?>admin/statistics">
+                <div class="nav-icon"><span class="icon-stats"></span></div>
+                <div class="nav-title">Statistics</div>
+              </a>
+            </li>
           </ul>                 
         </div> 
 <?php } elseif ($this->session->userdata['role'] == 1) { //EMPLOYEE ?>
