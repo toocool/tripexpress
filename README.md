@@ -17,5 +17,11 @@ Airplane/Bus tour reservation management system.<br/><br/>
 4. Go to the Tours page and create new tours<br/>
 5. Go to the Bookings page to make new reservations based on the available tours you created earlier<br/><br/>
 
+<strong>Demo?</strong><br/>
+To log in as an administrator:<br/>
+username: admin<br/>
+password: shift<br/>
+link: http://tripexpress.githost.me/demo<br/><br/>
+
 <strong>Screenshot:</strong><br/>
 ![ScreenShot](https://raw.github.com/toocool/tripexpress/master/screenshot.png)
