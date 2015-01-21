@@ -7,7 +7,7 @@ function pdf_create($html, $filename='', $stream=TRUE)
     $dompdf->load_html($html);
     $dompdf->render();
     if ($stream) {
-        $dompdf->stream($filename.".pdf", array('Attachment'=>0));
+        $dompdf->stream($filename.".pdf", array('Attachment'=>0)); //array('Attachment'=>0) to view the pdf in browser
     } else {
         return $dompdf->output();
     }

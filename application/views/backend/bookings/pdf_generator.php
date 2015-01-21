@@ -41,7 +41,7 @@
         <td>Created on: <strong> <?php echo $booking->created_time?></strong></td>
       </tr>
        <tr>
-        <td>Created by: <strong> <?php echo $booking->created_by?></strong></td>
+        <td>Created by: <strong> <?php echo $this->booking->get_username($booking->created_by) ?></strong></td>
       </tr>
     </table>
 
@@ -53,14 +53,14 @@
       <tr>
         <td>from: <br/> <strong><?php echo $this->booking->get_city_name($booking->from) ?></strong> </td>
         <td>to: <br/> <strong><?php echo $this->booking->get_city_name($booking->to) ?></strong> </td>
-        <td>Departing: <br /><strong> <?php echo $booking->from_start_time ?></strong></td>
+        <td>Departing: <br /><strong> <?php echo date("d.m.Y H:i",strtotime($booking->from_start_time)) ?></strong></td>
         <td>Price: <br /><strong> <?php echo $booking->start_price ?></strong></td>
       </tr>
       <?php if($booking->returning == 2 ) {?>
       <tr>
         <td>from: <br/> <strong><?php echo $this->booking->get_city_name($booking_returned->from) ?></strong> </td>
         <td>to: <br/> <strong><?php echo $this->booking->get_city_name($booking_returned->to) ?></strong> </td>
-        <td>Departing: <br /><strong> <?php echo $booking_returned->from_start_time ?></strong></td>
+        <td>Departing: <br /><strong> <?php echo date("d.m.Y H:i",strtotime($booking_returned->from_start_time)) ?></strong></td>
         <td>Price: <br /><strong> <?php echo $booking_returned->start_price ?></strong></td>
       </tr>
       <?php } ?>

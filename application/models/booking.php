@@ -91,9 +91,13 @@ Class Booking extends CI_Model
 		if($query->num_rows() > 0)
 		{
 			$row = $query->row();
+			return $row;
+		}
+		else{
+			return false;
 		}
 
-	 	return $row;
+	 	
 	}
 	function save_booking($data, $id)
 	{
