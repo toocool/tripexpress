@@ -62,6 +62,7 @@
                       <td><?php echo $this->booking->get_username($booking->created_by) ?></td>
                       <td><?php echo $this->booking->get_username($booking->modified_by) ?></td>
                       <td>
+                        <a href="<?php echo base_url('admin/bookings/pdf/'.$booking->booking_id); ?>"><button type="button" class="btn btn-primary btn-xs"><span class="icon-pencil"></span> Invoice</button></a>
                         <a href="<?php echo base_url('admin/bookings/edit_booking/'.$booking->booking_id); ?>"><button type="button" class="btn btn-success btn-xs"><span class="icon-pencil"></span> Edit</button></a>
                         <a href="<?php echo base_url('admin/bookings/delete_booking/'.$booking->booking_id); ?>" onclick="return confirm('Are you sure you want to delete this booking ticket?')"><button type="button" class="btn btn-danger btn-xs"><span class="icon-cancel-2"></span> Delete</button></a>
                       </td>

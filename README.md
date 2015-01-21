@@ -1,4 +1,4 @@
-Tripexpress ver: 1.0
+Trip express ver: 1.0
 ===========
 
 Airplane/Bus tour reservation management system.<br/><br/>

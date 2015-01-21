@@ -12,6 +12,8 @@ Class Booking extends CI_Model
 	 	$query = $this->db->get();
 	 	return $query->result();
 	}
+
+	
 	function show_booking_date($tour_id){
 		$this->db->select('from_start_time');
 		$this->db->where('tour_id', $tour_id);
@@ -69,6 +71,20 @@ Class Booking extends CI_Model
 	{
 		$this->db->from('bookings', 'tours');
 	 	$this->db->join('tours', 'tours.tour_id = bookings.tour_id');
+
+		$this->db->where('booking_id', $id);
+		$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+			$row = $query->row();
+		}
+
+	 	return $row;
+	}
+	function get_booking_returned($id)
+	{
+		$this->db->from('bookings', 'tours');
+	 	$this->db->join('tours', 'tours.tour_id = bookings.tour_back_id');
 
 		$this->db->where('booking_id', $id);
 		$query = $this->db->get();

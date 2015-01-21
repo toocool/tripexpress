@@ -10,6 +10,21 @@ class Bookings extends CI_Controller {
 	function index(){
 		$this->list_bookings();
 	}
+	function pdf($id)
+	{
+	     $this->load->helper('dompdf');
+	     $this->load->helper('file'); 
+	     $this->load->model('booking');
+	     $data['booking'] = $this->booking->get_booking($id);
+	     $data['booking_returned'] = $this->booking->get_booking_returned($id); 
+	     $data['id'] = $id;     
+	     $html = $this->load->view('backend/bookings/pdf_generator', $data, true);
+	     pdf_create($html, 'filename', TRUE);
+	     
+	     //$data = pdf_create($html, 'sss', TRUE);
+	     //write_file('name', $data);
+	     //if you want to write it to disk and/or send it as an attachment    
+	}
 	function list_bookings(){
 		$this->load->library('pagination');
 		$config['base_url'] = base_url().'admin/bookings/list_bookings';
