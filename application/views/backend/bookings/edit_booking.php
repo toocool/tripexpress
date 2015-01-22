@@ -19,7 +19,6 @@
                   <select class="form-control" name="from" id="from" >
                     <option value="0"></option>
                     <?php foreach($cities as $city):?>
-                                                                                                                      <!-- $this->booking->get_city_name($booking->from) -->
                       <option value="<?php echo $city->destination_id ?>" <?php echo set_select('from', $city->destination_id, $booking->from == $city->destination_id)?> ><?php echo $city->city ?></option>
                     <?php endforeach; ?>
                   </select>

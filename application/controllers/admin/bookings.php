@@ -16,7 +16,8 @@ class Bookings extends CI_Controller {
 	     $this->load->helper('file'); 
 	     $this->load->model('booking');
 	     $data['booking'] = $this->booking->get_booking($id);
-	     $data['booking_returned'] = $this->booking->get_booking_returned($id); 
+	     $data['booking_returned'] = $this->booking->get_booking_returned($id);
+	     $data['company_info'] = $this->booking->get_company_info();
 	     $data['id'] = $id;     
 	     $html = $this->load->view('backend/bookings/pdf_generator', $data, true);
 	     pdf_create($html, 'filename', TRUE);

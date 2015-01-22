@@ -44,6 +44,12 @@
                 <div class="nav-title">Statistics</div>
               </a>
             </li>
+            <li <?php if ($page == "settings"){ echo "class='active'";} ?>>
+              <a href="<?php echo base_url() ?>admin/settings">
+                <div class="nav-icon"><span class="icon-tools"></span></div>
+                <div class="nav-title">Settings</div>
+              </a>
+            </li>
           </ul>                 
         </div> 
 <?php } elseif ($this->session->userdata['role'] == 1) { //EMPLOYEE ?>

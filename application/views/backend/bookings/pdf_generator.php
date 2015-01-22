@@ -23,11 +23,12 @@
     <table style="width: 100%;" class="header">
       <tr>
         <td style="border: 1px solid #000;padding:10px;">
-          EXAMPLE TRAVEL<br/>
-          SUITE 2<br/>
-          NAPIER CL<br/>
-          DEKTING ACT 2304<br/>
-          AUSTRALIA<br/>
+          <?php echo strtoupper($company_info->company_name) ?><br/>
+          <?php echo ucfirst($company_info->company_street) ?>, <?php echo $company_info->company_zip ?><br/>
+          <?php echo ucfirst($company_info->company_city) ?>, <?php echo $company_info->company_state ?><br/>
+          Phone 1: <?php echo $company_info->company_phone_one ?><br/>
+          Phone 2:<?php echo $company_info->company_phone_two ?><br/>
+          E-mail: <?php echo $company_info->company_email ?><br/>
         </td>
         <td><h1 style="text-align: right;margin:0;padding:0;"><img style="margin:0;padding:0;" src="images/bus_example_logo.png" /></h1></td>
       </tr>
@@ -54,14 +55,14 @@
         <td>from: <br/> <strong><?php echo $this->booking->get_city_name($booking->from) ?></strong> </td>
         <td>to: <br/> <strong><?php echo $this->booking->get_city_name($booking->to) ?></strong> </td>
         <td>Departing: <br /><strong> <?php echo date("d.m.Y H:i",strtotime($booking->from_start_time)) ?></strong></td>
-        <td>Price: <br /><strong> <?php echo $booking->start_price ?></strong></td>
+        <td>Price: <br /><strong> <?php echo $booking->start_price ?> <?php echo $this->booking->show_symbol($company_info->company_currency) ?></strong></td>
       </tr>
       <?php if($booking->returning == 2 ) {?>
       <tr>
         <td>from: <br/> <strong><?php echo $this->booking->get_city_name($booking_returned->from) ?></strong> </td>
         <td>to: <br/> <strong><?php echo $this->booking->get_city_name($booking_returned->to) ?></strong> </td>
         <td>Departing: <br /><strong> <?php echo date("d.m.Y H:i",strtotime($booking_returned->from_start_time)) ?></strong></td>
-        <td>Price: <br /><strong> <?php echo $booking_returned->start_price ?></strong></td>
+        <td>Price: <br /><strong> <?php echo $booking_returned->start_price ?> <?php echo $this->booking->show_symbol($company_info->company_currency) ?></strong></td>
       </tr>
       <?php } ?>
        <tr>
@@ -69,7 +70,7 @@
         <td> </td>
         <td ></td>
         <?php if($booking->returning == 2 ) {?>
-          <td>Total:<br/><strong> <?php echo $booking->start_price + $booking_returned->start_price ?>.00 </strong></td>
+          <td>Total:<br/><strong> <?php echo $booking->start_price + $booking_returned->start_price ?>.00 <?php echo $this->booking->show_symbol($company_info->company_currency) ?></strong></td>
         <?php } else { ?>
           <td>Total:<br/><strong> <?php echo $booking->start_price ?> </strong></td>
         <?php } ?>
@@ -97,15 +98,11 @@
     <hr style="border: 1px solid #000;border-bottom: 0px;"/>
     
     <h2>RULES AND REGULATIONS</h2>
-    <ul style="margin-left:0px;padding-left:20px;">
-      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor purus quis lacus semper, id commodo urna accumsan. Fusce a auctor augue. In at libero tempor, molestie lorem non, bibendum quam. Morbi at dui dignissim, auctor turpis id, tempus nulla. Mauris tincidunt ac purus nec dapibus. Mauris dapibus sed urna id placerat. Curabitur in interdum lacus. In hac habitasse platea dictumst. Curabitur placerat quis nibh eu viverra. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-      <li>Vestibulum posuere, tellus quis consectetur interdum, purus nisl molestie velit, lacinia hendrerit sapien justo id neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed ornare ligula nisl, a laoreet nisi molestie at. Aliquam eu orci arcu. In dictum quam id lacinia pellentesque. Cras a varius lacus. Suspendisse sagittis risus eget volutpat bibendum. Suspendisse facilisis urna sit amet diam viverra porta non a ante. Vivamus vel volutpat libero.</li>
-      <li>Fusce consequat mi erat, vel pharetra quam gravida sit amet. Integer interdum mi eu nibh ultrices laoreet. Aliquam massa eros, tempor mattis dapibus eget, commodo at diam. Maecenas sagittis ex nec arcu ultrices interdum. Maecenas tortor arcu, eleifend in elementum vel, sagittis id risus. Suspendisse suscipit lectus et odio viverra convallis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum eget justo maximus, pretium elit quis, consectetur odio. Aenean rhoncus blandit erat, ac ultrices purus tincidunt in. Integer quam arcu, blandit et auctor et, vestibulum in massa. In dictum lacus nec nisi ornare sodales. Nunc et nisi ex.</li>
-      <li>Vestibulum tempus, justo sit amet varius molestie, metus eros sollicitudin odio, id ullamcorper nulla lectus in orci. Proin ac mi mauris. Aenean maximus vitae dui eu scelerisque. Ut faucibus pharetra sem, lacinia blandit erat porttitor eu. Nunc et sollicitudin massa. Sed eu imperdiet tellus. Quisque ut facilisis lacus. Donec ut justo eget nulla interdum aliquam. Etiam a ex nec urna varius interdum. Cras dictum ante in nunc tristique, nec lacinia sapien tempor. Aliquam sit amet orci quis arcu rutrum ornare. Fusce condimentum tempor ipsum id cursus. Pellentesque sed malesuada libero.</li>
-      <li>Donec quis dolor neque. Vivamus vulputate scelerisque nisl, at consectetur felis semper vel. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Maecenas dapibus risus sit amet fringilla pretium. Suspendisse non interdum erat, at cursus est. Morbi porttitor dapibus tempus. Duis vulputate et dui sit amet imperdiet.
+    <p>
+      <?php echo $company_info->company_rules ?>
+    </p>
 
-</li>
-    </ul>
+    <h1 style="text-align:center;margin-top:50px;">Thank you! </h1>
     
 
   </div>

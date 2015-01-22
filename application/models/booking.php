@@ -12,8 +12,16 @@ Class Booking extends CI_Model
 	 	$query = $this->db->get();
 	 	return $query->result();
 	}
-
-	
+	function get_company_info()
+	{
+		$this->db->from('settings');
+	 	$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+			$row = $query->row();
+			return $row;
+		}
+	}
 	function show_booking_date($tour_id){
 		$this->db->select('from_start_time');
 		$this->db->where('tour_id', $tour_id);
@@ -130,6 +138,17 @@ Class Booking extends CI_Model
 		if ($query->num_rows() > 0)
 		{
 		   return $query->result(); 
+		}
+	}
+
+	function show_symbol($id){
+		$this->db->select('symbol');
+		$this->db->where('currency_id', $id);
+		$query = $this->db->get('currency');
+		if ($query->num_rows() > 0)
+		{
+		   $row = $query->row(); 
+		   return $row->symbol;
 		}
 	}
 }
