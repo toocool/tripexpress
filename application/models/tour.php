@@ -60,5 +60,25 @@ Class Tour extends CI_Model
 		   return $query->result(); 
 		}
 	}
+	function get_company_info()
+	{
+		$this->db->from('settings');
+	 	$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+			$row = $query->row();
+			return $row;
+		}
+	}
+	function show_symbol($id){
+		$this->db->select('symbol');
+		$this->db->where('currency_id', $id);
+		$query = $this->db->get('currency');
+		if ($query->num_rows() > 0)
+		{
+		   $row = $query->row(); 
+		   return $row->symbol;
+		}
+	}
 }
 ?>

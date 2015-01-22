@@ -105,7 +105,7 @@ $(document).ready(function(){
               var obj = jQuery.parseJSON( data);
               $.each( obj, function( key, value ) {
               var to_info = value.split('|');
-              $("#from_results").append('<div class="radio list-group-item"><label> <input type="radio" name="choose_from" id="choose_from" value="' + key + '" >Date: ' + to_info[0] + '<br/> Price: ' + to_info[1] + '</label></div> ' ); //.hide().slideDown('slow') to add effects but I have to remember to use the hide() first
+              $("#from_results").append('<div class="radio list-group-item"><label> <input type="radio" name="choose_from" id="choose_from" value="' + key + '" >Date: ' + to_info[0] + '<br/> Price: ' + to_info[1] + ' <?php echo $this->booking->show_symbol($company_info->company_currency) ?></label></div> ' ); //.hide().slideDown('slow') to add effects but I have to remember to use the hide() first
              });
             }
     });// .ajax
@@ -128,7 +128,7 @@ $(document).ready(function(){
                   var obj = jQuery.parseJSON( data);
                   $.each( obj, function( key, value ) {
                   var back_info = value.split('|');
-                  $("#return_results").append('<div class="radio list-group-item"><label> <input type="radio" name="choose_back" id="choose_back" value="' + key + '" >Date: ' + back_info[0] + '<br/> Price: ' + back_info[1] + '</label></div> ' ); //.hide().slideDown('slow') to add effects but I have to remember to use the hide() first
+                  $("#return_results").append('<div class="radio list-group-item"><label> <input type="radio" name="choose_back" id="choose_back" value="' + key + '" >Date: ' + back_info[0] + '<br/> Price: ' + back_info[1] + ' <?php echo $this->booking->show_symbol($company_info->company_currency) ?></label></div> ' ); //.hide().slideDown('slow') to add effects but I have to remember to use the hide() first
                  });
                 }
         });// .ajax

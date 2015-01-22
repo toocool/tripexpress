@@ -1,5 +1,5 @@
   
-    <p class="copyright pull-right"><strong>Trip Express</strong> version: 1.0</p>
+    <p class="copyright pull-right"><strong>Trip Express</strong> version: 1.1</p>
     </div><!-- #endof container-fluid-->
         <!-- Bootstrap core JavaScript
     ================================================== -->

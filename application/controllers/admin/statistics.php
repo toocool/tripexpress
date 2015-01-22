@@ -14,6 +14,7 @@ class Statistics extends CI_Controller {
 		$data['title'] = 'Statistics';
 		$data['from'] = date('Y-m-01');
 		$data['to'] = date('Y-m-t');
+		$data['company_info'] = $this->stats->get_company_info();
 		$this->load->view('includes/template', $data);
 	}
 	function show_stats()
@@ -26,6 +27,7 @@ class Statistics extends CI_Controller {
 		$data['title'] = 'Statistics';
 		$data['from'] = $from_date;
 		$data['to'] = $to_date;
+		$data['company_info'] = $this->stats->get_company_info();
 		$this->load->view('includes/template', $data);
 	}
 	

@@ -102,6 +102,7 @@ class Bookings extends CI_Controller {
 			$this->load->model('booking');
 			$data['cities'] = $this->booking->list_cities();
 			$data['main_content'] = 'backend/bookings/add_ticket';
+			$data['company_info'] = $this->booking->get_company_info();
 			$data['title'] = 'Book a ticket';
 			$this->load->view('includes/template', $data);
 		}
@@ -130,6 +131,7 @@ class Bookings extends CI_Controller {
 			$this->load->model('booking');
 			$data['cities'] = $this->booking->list_cities();
 			$data['booking'] = $this->booking->get_booking($id);
+			$data['company_info'] = $this->booking->get_company_info();
 			$data['main_content'] = 'backend/bookings/edit_booking';
 			$data['title'] = 'Edit ticket';
 			$this->load->view('includes/template', $data);

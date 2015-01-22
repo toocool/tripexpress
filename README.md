@@ -1,4 +1,4 @@
-Trip express ver: 1.0
+Trip express ver: 1.1
 ===========
 
 Airplane/Bus tour reservation management system.<br/><br/>
@@ -22,6 +22,7 @@ To log in as an administrator:<br/>
 username: admin<br/>
 password: shift<br/>
 link: http://tripexpress.githost.me/demo<br/><br/>
+web site: http://tripexpress.githost.me<br/><br/>
 
 <strong>Screenshot:</strong><br/>
 ![ScreenShot](https://raw.github.com/toocool/tripexpress/master/screenshot.png)

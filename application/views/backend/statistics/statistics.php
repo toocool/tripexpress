@@ -57,9 +57,9 @@
                     <tr>
                       <td><?php echo $this->stats->total_tickets($from, $to) ?></td>
                       <td><?php echo $this->stats->total_seats($from, $to) ?></td>
-                      <td><?php echo $this->stats->total_income_one_way($from, $to) ?></td>
-                      <td><?php echo $this->stats->total_income_round_trip($from, $to) ?></td>
-                      <td><?php echo $this->stats->total_income_one_way($from, $to) + $this->stats->total_income_round_trip($from, $to) ?>.00</td>
+                      <td><?php echo $this->stats->total_income_one_way($from, $to) ?> <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
+                      <td><?php echo $this->stats->total_income_round_trip($from, $to) ?> <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
+                      <td><?php echo $this->stats->total_income_one_way($from, $to) + $this->stats->total_income_round_trip($from, $to) ?>.00 <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
                     </tr> 
                   
 

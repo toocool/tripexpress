@@ -42,7 +42,7 @@
                       </td>
                       
                       <td><?php echo strtoupper($tour->available_seats) ?></td>
-                      <td><?php echo strtoupper($tour->start_price) ?></td>
+                      <td><?php echo strtoupper($tour->start_price) ?> <?php echo $this->tour->show_symbol($company_info->company_currency) ?></td>
                       <td><?php echo date('d/m/Y', strtotime($tour->date_created))  ?></td>
                       <td>
                         <a href="<?php echo base_url('admin/tours/edit_tour/'.$tour->tour_id); ?>"><button type="button" class="btn btn-success btn-xs"><span class="icon-pencil"></span> Edit</button></a>

@@ -13,6 +13,7 @@ class Tours extends CI_Controller {
 	function list_tours(){
 		$this->load->model('tour');
 		$data['tours'] = $this->tour->show_tours();
+		$data['company_info'] = $this->tour->get_company_info();
 		$data['main_content'] = 'backend/tours/tours';
 		$data['title'] = 'Tours';
 		$this->load->view('includes/template', $data);

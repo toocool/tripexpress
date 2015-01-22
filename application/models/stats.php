@@ -62,6 +62,26 @@ Class Stats extends CI_Model
 		   else return '0.00';
 		}
 	}
+	function get_company_info()
+	{
+		$this->db->from('settings');
+	 	$query = $this->db->get();
+		if($query->num_rows() > 0)
+		{
+			$row = $query->row();
+			return $row;
+		}
+	}
+	function show_symbol($id){
+		$this->db->select('symbol');
+		$this->db->where('currency_id', $id);
+		$query = $this->db->get('currency');
+		if ($query->num_rows() > 0)
+		{
+		   $row = $query->row(); 
+		   return $row->symbol;
+		}
+	}
 	
 		
 }
