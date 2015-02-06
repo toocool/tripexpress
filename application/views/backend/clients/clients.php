@@ -2,6 +2,16 @@
         <div class="col-sm-10 col-md-11 main">
           <div class="row" style="margin-right:0px;">
             <h1 class="page-header">Clients</h1>
+          </div>
+          <div class="row" style="margin-right:0px;margin-bottom: 10px;">
+            <div class="col-sm-4 col-md-4" style="padding-left:0px;">
+              <form class="form-inline" method="POST" action="clients/list_client">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="client_search" name="client_search">
+                </div>
+                <button type="submit" class="btn btn-primary">Search client</button>
+              </form>
+            </div>
           </div>  
           <div class="row">
             <div class="table-responsive">

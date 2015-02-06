@@ -1,14 +1,30 @@
 <?php
 Class Client extends CI_Model
 {
-	
-	function show_clients($limit, $start)
+	public function get_results($search_term='default')
+    {
+        // Use the Active Record class for safer queries.
+        $this->db->select('*');
+        $this->db->from('members');
+        $this->db->like('username',$search_term);
+
+        // Execute the query.
+        $query = $this->db->get();
+
+        // Return the results.
+        return $query->result_array();
+    }
+
+	function show_clients($limit, $start, $only=null)
 	{
 		$this->db->limit($limit, $start);
 		$this->db->select('identification_nr, client_firstname, client_lastname, SUM(booked_seats) as total_seats, COUNT(booking_id) as total_tickets');
 		$this->db->from('bookings');
 		$this->db->group_by("identification_nr");
-		$this->db->order_by("client_firstname", "desc");  
+		$this->db->order_by("client_firstname", "desc");
+		if($only != null) $this->db->like('identification_nr',$only);
+
+
 		$query = $this->db->get();
 	 	return $query->result();
 	}
@@ -65,5 +81,7 @@ Class Client extends CI_Model
 		}
 
 	}
+
+
 }
 ?>
