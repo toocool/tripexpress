@@ -18,6 +18,14 @@ class Tours extends CI_Controller {
 		$data['title'] = 'Tours';
 		$this->load->view('includes/template', $data);
 	}
+	function list_passangers($id){
+		$this->load->model('tour');
+		$data['clients'] = $this->tour->show_passangers($id);
+		//$data['company_info'] = $this->tour->get_company_info();
+		$data['main_content'] = 'backend/tours/passangers_list';
+		$data['title'] = 'Passangers list';
+		$this->load->view('includes/template', $data);
+	}
 	function add_tour(){
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 		$this->form_validation->set_rules('from', 'Departure city', 'trim|required|callback__citynull_check');

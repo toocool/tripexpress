@@ -10,6 +10,15 @@ Class Tour extends CI_Model
 	 	return $query->result();
 
 	}
+	function show_passangers($id)
+	{
+		$this->db->order_by('booking_id','desc');
+		$this->db->where('tour_id', $id);
+		$query = $this->db->get('bookings');
+	 	
+	 	return $query->result();
+
+	}
 	function get_tour($id)
 	{
 		$this->db->where('tour_id', $id);

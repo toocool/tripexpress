@@ -45,6 +45,7 @@
                       <td><?php echo strtoupper($tour->start_price) ?> <?php echo $this->tour->show_symbol($company_info->company_currency) ?></td>
                       <td><?php echo date('d/m/Y', strtotime($tour->date_created))  ?></td>
                       <td>
+                        <a href="<?php echo base_url('admin/tours/list_passangers/'.$tour->tour_id); ?>" ><button type="button" class="btn btn-primary btn-xs"><span class="icon-list"></span> Passangers list</button></a>
                         <a href="<?php echo base_url('admin/tours/edit_tour/'.$tour->tour_id); ?>"><button type="button" class="btn btn-success btn-xs"><span class="icon-pencil"></span> Edit</button></a>
                         <a href="<?php echo base_url('admin/tours/delete_tour/'.$tour->tour_id); ?>" onclick="return confirm('Are you sure you want to delete this tour?')"><button type="button" class="btn btn-danger btn-xs"><span class="icon-cancel-2"></span> Delete</button></a>
                       </td>
