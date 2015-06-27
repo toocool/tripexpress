@@ -50,7 +50,6 @@
             <div class="col-md-8">
               <div class="panel panel-default">
                 <div class="panel-heading"><strong>Available tours</strong></div>
-                
 
                 <table class="table table-bordered">
                   <thead>
