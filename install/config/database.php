@@ -37,10 +37,10 @@ $active_group = 'default';
 $active_record = TRUE;
 
 // The following values will probably need to be changed.
-$db['default']['hostname'] = "localhost";
-$db['default']['username'] = "root";
-$db['default']['password'] = "root";
-$db['default']['database'] = "tripexpress";
+$db['default']['hostname'] = "%HOSTNAME%";
+$db['default']['username'] = "%USERNAME%";
+$db['default']['password'] = "%PASSWORD%";
+$db['default']['database'] = "%DATABASE%";
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 
