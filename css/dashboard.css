@@ -154,3 +154,11 @@ color: #f74e4d;
 thead {
   background-color:#f5f5f5;
 }
+
+.search_box {
+  background: #f5f5f5;
+  margin:20px 0;
+  margin-left: -15px;
+  padding: 10px 0;
+  border: 1px solid #ddd;
+}

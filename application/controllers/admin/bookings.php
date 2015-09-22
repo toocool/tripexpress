@@ -175,5 +175,7 @@ class Bookings extends CI_Controller {
 			die();
 		}
 	}
+
+	
 }
 ?>
