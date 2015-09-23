@@ -60,7 +60,7 @@ Class Booking extends CI_Model
 	$query = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE (`from` = '$from' AND `to` ='$to') AND `from_start_time` >= CURDATE()");
 		if ($query->num_rows() > 0) {
 			foreach($query->result() as $row) {
-    			$data[$row->tour_id] = $row->from_start_time.'|'.$row->start_price;
+    			$data[$row->tour_id] = ['start_time' => $row->from_start_time, 'start_price' => $row->start_price];
     		}
 		}
 		return $json = json_encode($data);

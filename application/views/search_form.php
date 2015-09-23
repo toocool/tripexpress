@@ -49,7 +49,9 @@
 </form>
 
 	<div class="row">
-                  <div class="col-sm-4 col-md-4" id="from_results"></div>
+                  <div class="col-sm-4 col-md-4">
+                    <ul id="from_results"></ul>
+                  </div>
                   <div class="col-sm-4 col-md-4" id="return_results"></div>
                 </div>
 
