@@ -49,8 +49,18 @@
 </form>
 
 	<div class="row">
-                  <div class="col-sm-4 col-md-4">
-                    <ul id="from_results"></ul>
+                  <div class="col-sm-12 col-md-12">
+                    <table class="table">
+                      <thead>
+                        <th></th>
+                        <th>Destination</th>
+                        <th>Time</th>
+                        <th>Price</th>   
+                      </thead>
+                      <tbody id="from_results">
+                        
+                      </tbody>
+                    </table>
                   </div>
                   <div class="col-sm-4 col-md-4" id="return_results"></div>
                 </div>

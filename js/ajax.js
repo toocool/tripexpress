@@ -15,19 +15,26 @@ $(document).ready(function(){
          cache:false,
          success: 
             function(data){
+              
               var obj = jQuery.parseJSON(data);
-              if(obj.length === 0) alert('No available tours to book');
-              console.log(data);
-              $.each( obj, function(index, value) {
-                alert(value.start_time);
-                
-               // /   tour.push(value.start_time + " " + value.start_price) ;
-                
-               
-                $("#from_results").append("<li>" + value.start_time + " " + value.start_price + "</li>");
-             });
+              var tours = '';
+              
+              if(obj.length === 0){
+                tours = 'Currently there are no tours for this destination';
+              } 
+              else{
+                $.each( obj, function(index, value) {
+                  tours += ("<tr>");
+                  tours += ('<td><input type="radio" name="selected_one_way_destination" value="' + index + '"></td>');
+                  tours += ("<td>" + $("#from option:selected").text() + " > " + $("#to option:selected").text() + "</td>");
+                  tours += ("<td>" + value.start_time + "</td>");
+                  tours += ("<td>" + value.start_price + "</td>");
+                  tours += ("</tr>");
+                });  
+              }
+              $("#from_results").html(tours);
             }
-    });// .ajax
+    });
      return false;
 	});
 });
