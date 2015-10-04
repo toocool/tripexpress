@@ -58,9 +58,12 @@ Class Booking extends CI_Model
 	function check_available_tours($from, $to){
 	$data = array();
 	$query = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE (`from` = '$from' AND `to` ='$to') AND `from_start_time` >= CURDATE()");
+	$query_currency = $this->db->query("SELECT symbol,iso FROM currency JOIN settings ON settings.company_currency = currency.currency_id LIMIT 1");
+	$currency = $query_currency->row();
+
 		if ($query->num_rows() > 0) {
 			foreach($query->result() as $row) {
-    			$data[$row->tour_id] = ['start_time' => $row->from_start_time, 'start_price' => $row->start_price];
+    			$data[$row->tour_id] = ['start_time' => date('d.m.Y', strtotime($row->from_start_time)), 'start_price' => $row->start_price, 'currency' =>  $currency->symbol.' ('.$currency->iso.')'];
     		}
 		}
 		return $json = json_encode($data);

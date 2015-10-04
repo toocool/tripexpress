@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller {
 	}
 	function index(){
 		$this->load->model('dashboard_stats');
-		$this->load->model('search');
+		
 
 		$data['upcoming_tours'] = $this->dashboard_stats->upcoming_tours();
 		$data['main_content'] = 'backend/dashboard/dashboard';

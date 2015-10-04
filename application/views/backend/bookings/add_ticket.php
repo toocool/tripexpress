@@ -3,87 +3,11 @@
             <div class="col-sm-12 col-md-12" style="padding-left:0px;">
                 <h1 class="page-header"><a href="<?php echo base_url().'admin/bookings' ?>"><i class="icon-arrow-left-3"></i></a> Book a ticket</h1>
             </div>
-          </div>  
-          <div class="row">
-            <?php //echo  validation_errors(); ?>
-            <?php echo form_open('admin/bookings/add_ticket'); ?>
-              <div class="col-sm-4 col-md-4">
-                <div class="form-group">
-                  <label for="firstname">First name</label>
-                   <input type="text" class="form-control" name="client_firstname" id="client_firstname" value="<?php echo set_value('client_firstname'); ?>">
-                  <?php echo form_error('client_firstname'); ?>
-                </div>
-                
-                <div class="form-group">
-                  <label for="city">Departure city</label>
-                  <select class="form-control" name="from" id="from" >
-                    <option value="0"></option>
-                    <?php foreach($cities as $city):?>
-                      <option value="<?php echo $city->destination_id ?>" <?php echo set_select('from',  $city->destination_id); ?> ><?php echo $city->city ?></option>
-                    <?php endforeach; ?>
-                  </select>
-                  <?php echo form_error('from'); ?>
-                </div>
-                <div class="form-group">
-                  <label for="start_price">Identification number</label>
-                  <input type="text" class="form-control" name="identification_nr" id="identification_nr" value="<?php echo set_value('identification_nr'); ?>">
-                  <?php echo form_error('identification_nr'); ?>
-                </div>
-                 <div class="form-group">
-                  <label for="returning">Returning ticket?</label>
-                   <select class="form-control" name="returning" id="returning" value="<?php echo set_value('returning'); ?>">
-                      <option value="1">One way</option>
-                      <option value="2">Returning ticket</option>
-                   </select>
-                  <?php echo form_error('returning'); ?>
-                </div>
-                          
-              </div>
-
-              <div class="col-sm-4 col-md-4">
-                <div class="form-group">
-                  <label for="client_lastname">Last name</label>
-                   <input type="text" class="form-control" name="client_lastname" value="<?php echo set_value('client_lastname'); ?>">
-                  <?php echo form_error('client_lastname'); ?>
-                </div>
-               
-                <div class="form-group">
-                  <label for="city">Arrival city</label>
-                   <select class="form-control" name="to" id="to" value="<?php echo set_value('city'); ?>">
-                      <option value="0"></option>
-                    <?php foreach($cities as $city):?>
-                      <option value="<?php echo $city->destination_id ?>" <?php echo set_select('to',  $city->destination_id); ?>><?php echo $city->city ?></option>
-                    <?php endforeach; ?>
-                  </select>
-                  <?php echo form_error('to'); ?>
-                </div>
-                 <div class="form-group">
-                  <label for="booked_seats">Seats to book</label>
-                  <input type="text" class="form-control" name="booked_seats" id="booked_seats" value="<?php echo set_value('booked_seats'); ?>">
-                  <?php echo form_error('booked_seats'); ?>
-                </div>
-                <p></p>
-                 <button type="button" id="check" style="margin-top: 25px;" class="btn btn-primary" value="submit"><span class="icon-spin"></span> Check available tours</button>
-              </div>
-              
-              <div class="col-sm-12 col-md-12">
-                <div class="row">
-                  <div class="col-sm-4 col-md-4" id="from_results"></div>
-                  <div class="col-sm-4 col-md-4" id="return_results"></div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12 col-md-12" style="margin-top:30px;" >
-                    <button type="submit" class="btn btn-success btn-lg" disabled="disabled" id="book_ticket" value="submit"><span class="icon-checkmark"></span> Book ticket</button>
-                  </div>
-                </div>
-
-              </div>
-
-
-              
-            </form>
           </div> 
-         </div>
+          
+          <?php echo Search::search_form() ?>
+
+         
 <script>
 $(document).ready(function(){   
 

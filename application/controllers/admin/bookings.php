@@ -100,6 +100,7 @@ class Bookings extends CI_Controller {
 		if ($this->form_validation->run() == FALSE)
 		{
 			$this->load->model('booking');
+			$this->load->model('search');
 			$data['cities'] = $this->booking->list_cities();
 			$data['main_content'] = 'backend/bookings/add_ticket';
 			$data['company_info'] = $this->booking->get_company_info();
