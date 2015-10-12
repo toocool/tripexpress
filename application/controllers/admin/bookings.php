@@ -63,7 +63,7 @@ class Bookings extends CI_Controller {
 	    else
 	    {	
 	    	//header('Content-type: application/json');
-	        $message = $this->booking->check_available_tours($_POST['from'], $_POST['to']);
+	        $message = $this->booking->check_available_tours($_POST['from'], $_POST['to'], $_POST['returning']);
 	        $data_json = json_encode($message);
        		 echo $data_json;
 	    }

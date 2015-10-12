@@ -55,19 +55,38 @@ Class Booking extends CI_Model
 		}
 
 	}
-	function check_available_tours($from, $to){
+
+	function check_available_tours($from, $to, $returning){
 	$data = array();
-	$query = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE (`from` = '$from' AND `to` ='$to') AND `from_start_time` >= CURDATE()");
+		
 	$query_currency = $this->db->query("SELECT symbol,iso FROM currency JOIN settings ON settings.company_currency = currency.currency_id LIMIT 1");
 	$currency = $query_currency->row();
+	
+	$query = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE (`from` = '$from' AND `to` = '$to') AND `from_start_time` >= CURDATE()");
+	
 
+	if($returning == 'true'){ //false in quotes because php doest read it as boolean
+		$query_back = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE (`from` = '$to' AND `to` = '$from') AND `from_start_time` >= CURDATE()");
+	}
+	
 		if ($query->num_rows() > 0) {
+			$one_way = [];
 			foreach($query->result() as $row) {
-    			$data[$row->tour_id] = ['start_time' => date('d.m.Y', strtotime($row->from_start_time)), 'start_price' => $row->start_price, 'currency' =>  $currency->symbol.' ('.$currency->iso.')'];
+    			$data[$row->tour_id] = ['ticket_type' => 'one_way', 'start_time' => date('d.m.Y', strtotime($row->from_start_time)), 'start_price' => $row->start_price, 'currency' =>  $currency->symbol.' ('.$currency->iso.')'];
     		}
 		}
+
+		if ($returning == 'true' && $query_back->num_rows() > 0) {
+			$returning = [];
+			foreach($query_back->result() as $row_back) {
+    			$data[$row_back->tour_id] = ['ticket_type' => 'returning', 'start_time' => date('d.m.Y', strtotime($row_back->from_start_time)), 'start_price' => $row_back->start_price, 'currency' =>  $currency->symbol.' ('.$currency->iso.')'];
+    			
+    		}
+		}
+
 		return $json = json_encode($data);
 	}
+
 	function check_available_tours_back($back, $selected_departure){
 	$data = array();
 	$query = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE `from` = '$back' AND `from_start_time` >= '$selected_departure'");

@@ -10,7 +10,8 @@ $(document).ready(function(){
      $.ajax({
          type: "POST",
          url: base_url + "bookings/ajax_check_tours", 
-         data: {from: $("#from").val(), to: $("#to").val()},
+         data: {from: $("#from").val(), to: $("#to").val(), returning: $("#returning").prop('checked')},
+
          dataType: 'json',  
          cache:false,
          success: 
@@ -18,11 +19,12 @@ $(document).ready(function(){
               
               var obj = jQuery.parseJSON(data);
               var tours = '';
-              $('.booking_results').css({"margin-left":"-30px","margin-top":"-25px"});
+              
               if(obj.length === 0){
                 tours = 'Currently there are no tours for this destination';
               } 
               else{
+
                 tours += ('<div class="col-sm-12 col-md-12">');
                 tours += ('<div class="table-responsive ">');
                 tours += ('<table class="table table-bordered">');
@@ -35,12 +37,14 @@ $(document).ready(function(){
                 tours += ('<tbody id="from_results">');
                 
                 $.each( obj, function(index, value) {
-                  tours += ("<tr>");
-                  tours += ('<td><input type="radio" name="selected_one_way_destination" value="' + index + '"></td>');
-                  tours += ('<td>' + $("#from option:selected").text() + ' <span class="icon-arrow-right" aria-hidden="true"></span> ' + $("#to option:selected").text() + '</td>');
-                  tours += ("<td>" + value.start_time + "</td>");
-                  tours += ("<td>" + value.start_price + " " + value.currency + "</td>");
-                  tours += ("</tr>");
+                  if(value.ticket_type == 'one_way') {
+                    tours += ("<tr>");
+                    tours += ('<td style="text-align:center;"><input type="radio" name="selected_one_way" value="' + index + '"></td>');
+                    tours += ('<td>' + $("#from option:selected").text() + ' <span class="icon-arrow-right"></span> ' + $("#to option:selected").text() + '</td>');
+                    tours += ("<td>" + value.start_time + "</td>");
+                    tours += ("<td>" + value.start_price + " " + value.currency + "</td>");
+                    tours += ("</tr>");
+                  }
                 });
 
                 tours += ('</tbody>');
@@ -48,10 +52,43 @@ $(document).ready(function(){
                 tours += ('</div>');
                 tours += ('</div><!-- col-sm -->');
                 tours += ('</div><!-- .table-responsive -->');
+
+                  //RETURNING TABLE
+                  if($('input[name="returning"]:checked').length > 0) {
+                    tours += ('<div class="col-sm-12 col-md-12">');
+                    tours += ('<div class="table-responsive ">');
+                    tours += ('<table class="table table-bordered">');
+                    tours += ('<thead>');
+                    tours += ('<th></th>');
+                    tours += ('<th>Destination</th>');
+                    tours += ('<th>Time</th>');
+                    tours += ('<th>Price</th> ');  
+                    tours += ('</thead>');
+                    tours += ('<tbody id="from_results">');
+                    
+                    $.each( obj, function(index, value) {
+                      if(value.ticket_type == 'returning') {
+                        tours += ("<tr>");
+                        tours += ('<td style="text-align:center;"><input type="radio" name="selected_returning" value="' + index + '"></td>');
+                        tours += ('<td>' + $("#to option:selected").text() + ' <span class="icon-arrow-right"></span> ' + $("#from option:selected").text() + '</td>');
+                        tours += ("<td>" + value.start_time + "</td>");
+                        tours += ("<td>" + value.start_price + " " + value.currency + "</td>");
+                        tours += ("</tr>");
+                      }
+                    });
+
+                    tours += ('</tbody>');
+                    tours += ('</table>');
+                    tours += ('</div>');
+                    tours += ('</div><!-- col-sm -->');
+                    tours += ('</div><!-- .table-responsive -->');
+                  }
               }
               $('.booking_results').html(tours);
               // /$("#from_results").html(tours);
+               
             }
+
     });
      return false;
 	});
