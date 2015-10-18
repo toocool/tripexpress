@@ -56,17 +56,27 @@ Class Booking extends CI_Model
 
 	}
 
-	function check_available_tours($from, $to, $returning){
+	function check_available_tours($from, $to, $returning, $depart_date='', $return_date=''){
 	$data = array();
 		
 	$query_currency = $this->db->query("SELECT symbol,iso FROM currency JOIN settings ON settings.company_currency = currency.currency_id LIMIT 1");
 	$currency = $query_currency->row();
 	
-	$query = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE (`from` = '$from' AND `to` = '$to') AND `from_start_time` >= CURDATE()");
+	if(isset($depart_date) && !empty($depart_date)) 
+		$start_time = $depart_date;
+	else 
+		$start_time =  date('Y-m-d');
+	
+	$query = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE (`from` = '$from' AND `to` = '$to') AND `from_start_time` >= '$start_time'");
 	
 
 	if($returning == 'true'){ //false in quotes because php doest read it as boolean
-		$query_back = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE (`from` = '$to' AND `to` = '$from') AND `from_start_time` >= CURDATE()");
+		if(isset($depart_date) && !empty($depart_date)) 
+			$start_time = $depart_date;
+		else 
+			$start_time =  date('Y-m-d');
+
+		$query_back = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE (`from` = '$to' AND `to` = '$from') AND `from_start_time` > '$start_time'");
 	}
 	
 		if ($query->num_rows() > 0) {
@@ -87,16 +97,6 @@ Class Booking extends CI_Model
 		return $json = json_encode($data);
 	}
 
-	function check_available_tours_back($back, $selected_departure){
-	$data = array();
-	$query = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE `from` = '$back' AND `from_start_time` >= '$selected_departure'");
-		if ($query->num_rows() > 0) {
-			foreach($query->result() as $row) {
-	    		$data[$row->tour_id] = $row->from_start_time.'|'.$row->start_price;
-	    	}
-		}
-		return $json = json_encode($data);
-	}
 	function get_booking($id)
 	{
 		$this->db->from('bookings', 'tours');

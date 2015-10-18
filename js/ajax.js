@@ -10,7 +10,7 @@ $(document).ready(function(){
      $.ajax({
          type: "POST",
          url: base_url + "bookings/ajax_check_tours", 
-         data: {from: $("#from").val(), to: $("#to").val(), returning: $("#returning").prop('checked')},
+         data: {from: $("#from").val(), to: $("#to").val(), returning: $("#returning").prop('checked'), from_date: $('#from_date').val(), back_date: $('#from_back_date').val()},
 
          dataType: 'json',  
          cache:false,

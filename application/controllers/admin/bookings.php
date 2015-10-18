@@ -63,7 +63,7 @@ class Bookings extends CI_Controller {
 	    else
 	    {	
 	    	//header('Content-type: application/json');
-	        $message = $this->booking->check_available_tours($_POST['from'], $_POST['to'], $_POST['returning']);
+	        $message = $this->booking->check_available_tours($_POST['from'], $_POST['to'], $_POST['returning'], $_POST['from_date']);
 	        $data_json = json_encode($message);
        		 echo $data_json;
 	    }
@@ -116,6 +116,17 @@ class Bookings extends CI_Controller {
 			redirect('admin/bookings', 'refresh');
 		}
 	}
+
+	function process_ticket(){
+		
+		$data['main_content'] = 'backend/bookings/process_ticket';
+		$data['title'] = 'Book a ticket';
+		$this->load->model('search');
+		$data['db_data'] = Search::find($this->input->get());
+		$data['get_data'] = $this->input->get();
+		$this->load->view('includes/template', $data);
+	}
+
 	function edit_booking($id)
 	{
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');

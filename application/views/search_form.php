@@ -34,7 +34,7 @@
     <div class="col-sm-4 col-md-6">
     <label>Departure date <span class="text-muted">(Optional)</span></label>
       <div class="form-group date" id="datepicker1">
-         <input type="text" class="form-control" name="from_date" data-date-format="YYYY-MM-DD" value="">
+         <input type="text" class="form-control" name="from_date" id="from_date" data-date-format="YYYY-MM-DD" value="">
           <span class="input-group-addon"><span class="icon-calendar"></span></span>
           <script type="text/javascript">
               $(function () {
@@ -50,7 +50,7 @@
     <div class="col-sm-4 col-md-6">
     <label>Return date</label>
       <div class="form-group date" id="datepicker2">
-         <input type="text" class="form-control" name="from_back_date" data-date-format="YYYY-MM-DD" value="">
+         <input type="text" class="form-control" name="from_back_date" id="from_back_date" data-date-format="YYYY-MM-DD" value="">
           <span class="input-group-addon"><span class="icon-calendar"></span></span>
           <script type="text/javascript">
               $(function () {
