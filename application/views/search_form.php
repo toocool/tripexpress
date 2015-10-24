@@ -93,6 +93,7 @@
 
 <div class="col-sm-12 col-md-7" >
   <div class="row booking_results"></div>
+  <button  class="btn btn-success btn-lg" id="next_step" ><span class="icon-arrow-right-3"></span> Next</button>
   
 </div>
 

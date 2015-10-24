@@ -1,11 +1,10 @@
-$(document).ready(function(){ 
-	$("#check").click(function()
+$('#next_step').hide();
+$(document).ready(function(){
+  $("#check").click(function()
     {     
-      //$("#from_results").html('');
-      //$("#return_results").html('');
-      //$('#book_ticket').attr('disabled','disabled');
       var tours_list = [];
       var tour = [];
+
       
      $.ajax({
          type: "POST",
@@ -24,7 +23,7 @@ $(document).ready(function(){
                 tours = 'Currently there are no tours for this destination';
               } 
               else{
-
+                $('#next_step').show().attr( "disabled", "disabled" ); 
                 tours += ('<div class="col-sm-12 col-md-12">');
                 tours += ('<div class="table-responsive ">');
                 tours += ('<table class="table table-bordered">');
@@ -85,11 +84,31 @@ $(document).ready(function(){
                   }
               }
               $('.booking_results').html(tours);
-              // /$("#from_results").html(tours);
-               
-            }
+              
+              //enable NEXT button if atleast the one way tour is selected from the results list
+              $('input[type=radio][name=selected_one_way]').change(function(){
+                 if ($(this).is(':checked')) {
+                      $('#next_step').attr("disabled", false);
+                    }
+              });
+
+            }//endof function(data)
 
     });
      return false;
 	});
+  
+  
+
+  $("#next_step").click(function()
+  { 
+    var tour_id = $('input:radio[name=selected_one_way]:checked').val();
+    var tour_back_id = $('input:radio[name=selected_returning]:checked').val();
+    var from = $("#from option:selected").text()
+    var to = $("#to option:selected").text();
+    var tickets = $('#booked_seats').val();     
+    //alert(tour_id);
+    window.location = 'process_ticket?from='+from+'&to='+to+'&tickets='+tickets+'&tour_id='+tour_id+'&tour_back_id=' + tour_back_id;
+  });
+
 });

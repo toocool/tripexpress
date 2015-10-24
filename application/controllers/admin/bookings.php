@@ -118,10 +118,10 @@ class Bookings extends CI_Controller {
 	}
 
 	function process_ticket(){
-		
+		$this->load->model('search');
 		$data['main_content'] = 'backend/bookings/process_ticket';
 		$data['title'] = 'Book a ticket';
-		$this->load->model('search');
+		
 		$data['db_data'] = Search::find($this->input->get());
 		$data['get_data'] = $this->input->get();
 		$this->load->view('includes/template', $data);
