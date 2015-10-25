@@ -127,6 +127,33 @@ class Bookings extends CI_Controller {
 		$this->load->view('includes/template', $data);
 	}
 
+	function save_ticket(){
+		$data['parameters'] = $_POST;
+		
+		$this->load->model('search');
+		$booking = new Search;
+		$first_name = $this->input->post('first_name');
+		$last_name = $this->input->post('last_name');
+		$identification_nr = $this->input->post('identification_number');
+		$tickets = $this->input->post('tickets');
+		if(!empty($this->input->post('tour_back_id'))) ? $tour_back_id = $this->input->post('tour_back_id') : $tour_back_id = '';
+
+		for ($i=0;$i < $tickets; $i++) {
+			$booking->client_firstname = $first_name[$i];
+			$booking->client_lastname = $last_name[$i];
+			$booking->identification_nr = $identification_nr[$i];	
+			$booking->tour_id = $this->input->post('tour_id');
+			$booking->tour_back_id = $tour_back_id;
+			$booking->returning = $this->input->post('');
+			$booking->created_by = $this->session->userdata['user_id'];
+			$booking->save(); 
+		}
+
+		$data['title'] = 'Ticket booked successfully';
+		$data['main_content'] = 'backend/bookings/booking_success';
+		$this->load->view('includes/template', $data);	
+	}
+
 	function edit_booking($id)
 	{
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');

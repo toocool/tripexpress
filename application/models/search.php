@@ -1,11 +1,13 @@
 <?php
 Class Search extends CI_Model
 {
-	public $from_place;
-	public $to_place;
-	public $from_date;
-	public $returning_date;
-	public $returning;
+	public $tour_id = '';
+	public $tour_back_id = '';
+	public $client_firstname = '';
+	public $client_lastname = '';
+	public $returning = 1;
+	public $identification_nr = '';
+	public $created_by;
 	
 
 	/*
@@ -67,5 +69,17 @@ Class Search extends CI_Model
 		
 		return $CI->load->view('search_form', $data, true);
 	}
+
+	/*
+	* 
+	* public function which saves tickets
+	* Return: boolen
+	*/
+	public function save()
+	{
+		$this->db->insert('bookings', $this); 
+		
+	}
+
 
 }

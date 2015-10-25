@@ -6,6 +6,7 @@
           </div>
           
         	<div class="row">
+        	<form action="save_ticket" method="POST">
 				<div class="booking_details col-sm-12 col-md-5" >
 				 	<h4 style="margin-left:20px;">Booking details</h4>
     				<hr/>
@@ -70,26 +71,29 @@
 				    <div class="col-sm-4 col-md-5">
 				        <label for="identification_number">Identification number</label>
 					</div>
-					    
+					    <input type="hidden" name="tour_id" 		value="<?php echo $this->input->get('tour_id') ?>" />
+					    <input type="hidden" name="tour_back_id" 	value="<?php echo $this->input->get('tour_back_id') ?>" />
+					    <input type="hidden" name="tickets" 		value="<?php echo $this->input->get('tickets') ?>" />
+
 					    <?php for($i = 1; $i < (int) $get_data['tickets'] + 1; $i++): ?>
 							<div class="col-sm-1 col-md-1 text-right">
 						      <strong>#<?php echo $i ?></strong>
 						    </div>
 							<div class="col-sm-4 col-md-3">
 						      <div class="form-group">
-						        <input type="text" class="form-control" name="first_name" id="first_name" value="<?php echo set_value('first_name'); ?>">
+						        <input type="text" class="form-control" name="first_name[]" id="first_name" value="<?php echo set_value('first_name'); ?>">
 						        <?php echo form_error('first_name'); ?>
 						      </div>
 						    </div>
 						    <div class="col-sm-4 col-md-3">
 						      <div class="form-group">
-						        <input type="text" class="form-control" name="last_name" id="last_name" value="<?php echo set_value('last_name'); ?>">
+						        <input type="text" class="form-control" name="last_name[]" id="last_name" value="<?php echo set_value('last_name'); ?>">
 						        <?php echo form_error('last_name'); ?>
 						      </div>
 						    </div>
 						    <div class="col-sm-4 col-md-5">
 						      <div class="form-group">
-						        <input type="text" class="form-control" name="identification_number" id="identification_number" value="<?php echo set_value('identification_number'); ?>">
+						        <input type="text" class="form-control" name="identification_number[]" id="identification_number" value="<?php echo set_value('identification_number'); ?>">
 						        <?php echo form_error('identification_number'); ?>
 						      </div>
 						    </div>
@@ -99,7 +103,7 @@
 				        <button type="submit" class="btn btn-success btn-lg" id="book_ticket" value="submit"><span class="icon-cart-2"></span> Book ticket</button>
 					</div>
 				</div>
-
+			</form>
 			</div> 
           <?php //print_r($db_data)?>
           
