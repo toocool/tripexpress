@@ -102,8 +102,12 @@ $(document).ready(function(){
 
   $("#next_step").click(function()
   { 
+    var tour_back_id = '';
+    if( typeof $('input:radio[name=selected_returning]:checked').val() != 'undefined'){
+      tour_back_id = $('input:radio[name=selected_returning]:checked').val();
+    }
+    
     var tour_id = $('input:radio[name=selected_one_way]:checked').val();
-    var tour_back_id = $('input:radio[name=selected_returning]:checked').val();
     var from = $("#from option:selected").text()
     var to = $("#to option:selected").text();
     var tickets = $('#booked_seats').val();     
