@@ -148,7 +148,7 @@ class Bookings extends CI_Controller {
 			$booking->client_lastname = $last_name[$i];
 			$booking->identification_nr = $identification_nr[$i];	
 			$booking->tour_id = $this->input->post('tour_id');
-			$booking->tour_back_id = $this->input->post('tour_back_id');
+			$booking->tour_back_id = $this->input->post('tour_id');
 			$booking->returning = $returning;
 			$booking->created_by = $this->session->userdata['user_id'];
 			$booking->save(); 

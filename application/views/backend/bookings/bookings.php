@@ -26,7 +26,6 @@
                     <th>Arrival</th>
                     <th>Departure time</th>
                     <th>Return time</th>
-                    <th>Seats</th>
                     <th>Booked by</th>
                     <th>Modified by</th>
                     <th>Options</th>
@@ -58,7 +57,6 @@
                         <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($this->booking->show_booking_date($booking->to))) ?></div>
                         <?php } ?>
                       </td>
-                      <td><?php echo $booking->booked_seats ?></td>
                       <td><?php echo $this->booking->get_username($booking->created_by) ?></td>
                       <td><?php echo $this->booking->get_username($booking->modified_by) ?></td>
                       <td>
