@@ -85,7 +85,7 @@
         <td>First name: <br/> <strong><?php echo ucfirst($booking->client_firstname) ?> </strong> </td>
         <td>Last name: <br/> <strong><?php echo ucfirst($booking->client_lastname) ?></strong> </td>
         <td>Social number: <br /><strong><?php echo $booking->identification_nr ?></strong></td>
-        <td>Booked seats: <br /><strong><?php echo $booking->booked_seats ?></strong></td>
+       
       </tr>
             
     </table>

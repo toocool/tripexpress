@@ -9,7 +9,7 @@
         		
 				<div class="col-sm-12 col-md-12" >
 					<div class="alert alert-success" role="alert">
-					
+
 					<?php
 						$first_name = $this->input->post('first_name');
 						$last_name = $this->input->post('last_name');
@@ -18,7 +18,7 @@
 					
 						echo '
 								<p>#'.($i+1).' Ticket for <strong>'.ucfirst($first_name[$i]).' '.ucfirst($last_name[$i]).'</strong> was booked successfully
-									<button type="button" class="btn btn-success btn-xs">Print invoice</button>
+									<a href="'.base_url().'bookings/pdf/2" class="btn btn-success btn-xs">Print invoice</a>
 								</p>
 							';
 							

@@ -164,9 +164,10 @@ Class Booking extends CI_Model
 	}
 
 	static function show_symbol($id){
-		$this->db->select('symbol');
-		$this->db->where('currency_id', $id);
-		$query = $this->db->get('currency');
+		$CI = get_instance();
+		$CI->db->select('symbol');
+		$CI->db->where('currency_id', $id);
+		$query = $CI->db->get('currency');
 		if ($query->num_rows() > 0)
 		{
 		   $row = $query->row(); 
