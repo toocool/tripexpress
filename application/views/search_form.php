@@ -65,9 +65,13 @@
       
 
     <div class="col-sm-3 col-md-3">
-       <div class="form-group">
+       <div class="input-group spinner">
         <label for="booked_seats">Tickets</label>
-        <input type="text" class="form-control" name="booked_seats" id="booked_seats" value="<?php echo set_value('booked_seats'); ?>">
+        <input type="text" class="form-control" name="booked_seats" id="booked_seats" value="1" min="1" max="10">
+        <div class="input-group-btn-vertical">
+          <button class="btn btn-default" type="button"><i class="icon-arrow-up-4"></i></button>
+          <button class="btn btn-default" type="button"><i class="icon-arrow-down-4"></i></button>
+        </div>
         <?php echo form_error('booked_seats'); ?>
       </div>
     </div>
@@ -102,6 +106,29 @@
 </div>
 
 <script type="text/javascript">
+  $(function(){
+
+    $('.spinner .btn:first-of-type').on('click', function() {
+      var btn = $(this);
+      var input = btn.closest('.spinner').find('input');
+      if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {    
+        input.val(parseInt(input.val(), 10) + 1);
+      } else {
+        btn.next("disabled", true);
+      }
+    });
+    $('.spinner .btn:last-of-type').on('click', function() {
+      var btn = $(this);
+      var input = btn.closest('.spinner').find('input');
+      if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {    
+        input.val(parseInt(input.val(), 10) - 1);
+      } else {
+        btn.prev("disabled", true);
+      }
+    });
+
+})
+
   var base_url = "<?php echo base_url(); ?>admin/";
   var currency = "EUR"; //$this->booking->show_symbol($company_info->company_currency
 </script>
