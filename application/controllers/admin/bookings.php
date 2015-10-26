@@ -136,15 +136,20 @@ class Bookings extends CI_Controller {
 		$last_name = $this->input->post('last_name');
 		$identification_nr = $this->input->post('identification_number');
 		$tickets = $this->input->post('tickets');
-		(!empty($this->input->post('tour_back_id'))) ? $tour_back_id = $this->input->post('tour_back_id') : $tour_back_id = '';
+		
+		if(!empty($this->input->post('tour_back_id')))
+			$returning = 2;
+		else
+			$returning = 1;
+		
 
 		for ($i=0;$i < $tickets; $i++) {
 			$booking->client_firstname = $first_name[$i];
 			$booking->client_lastname = $last_name[$i];
 			$booking->identification_nr = $identification_nr[$i];	
 			$booking->tour_id = $this->input->post('tour_id');
-			$booking->tour_back_id = $tour_back_id;
-			$booking->returning = $this->input->post('');
+			$booking->tour_back_id = $this->input->post('tour_back_id');
+			$booking->returning = $returning;
 			$booking->created_by = $this->session->userdata['user_id'];
 			$booking->save(); 
 		}
