@@ -12,7 +12,7 @@
                 <button type="submit" class="btn btn-primary">Search client</button>
               </form>
             </div>
-          </div>  
+          </div>
           <div class="row">
             <div class="table-responsive">
               <table class="table table-bordered">
@@ -23,17 +23,16 @@
                     <th>First name</th>
                     <th>Last name</th>
                     <th>Total tickets</th>
-                    <th>Total seats</th>
                     <th>Options</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php $this->load->model('client'); ?>
 
-                  <?php 
-                    if ($this->pagination->per_page > $this->pagination->total_rows) $i =1 ; 
-                    else $i = 1 + ($this->pagination->cur_page-1)*$this->pagination->per_page; 
-                    foreach($clients as $client): 
+                  <?php
+                    if ($this->pagination->per_page > $this->pagination->total_rows) $i =1 ;
+                    else $i = 1 + ($this->pagination->cur_page-1)*$this->pagination->per_page;
+                    foreach($clients as $client):
                   ?>
                       <tr>
                       <td><?php echo $i ?></td>
@@ -41,16 +40,15 @@
                       <td><?php echo $client->client_firstname ?></td>
                       <td><?php echo $client->client_lastname ?></td>
                       <td><?php echo $client->total_tickets ?></td>
-                      <td><?php echo $client->total_seats ?></td>
-                      <td>
-                          <a href="<?php echo base_url('admin/clients/list_tickets/'.$client->identification_nr); ?>"><button type="button" class="btn btn-info btn-xs"><span class="icon-history"></span> Booking history</button></a>
+                      <td style="text-align:center" width="20%">
+                          <a href="<?php echo base_url('admin/clients/list_tickets/'.$client->identification_nr); ?>" class="btn btn-default btn-xs"><span class="icon-history" style="color:grey"></span> Booking history</a>
                       </td>
-                    </tr> 
+                    </tr>
                   <?php $i++; endforeach; ?>
 
                 </tbody>
               </table>
             </div>
             <ul class="pagination"><?php echo $links ?></ul>
-          </div> 
+          </div>
          </div>

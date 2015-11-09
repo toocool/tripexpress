@@ -20,11 +20,17 @@
 
     <!-- METRO UI CSS 2.0 FONTS -->
     <link href="<?php echo base_url(); ?>css/iconFont.min.css" rel="stylesheet">
-      
+
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url(); ?>css/dashboard.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>css/datetimepicker.min.css" rel="stylesheet">
-  
+
+      <!-- Morris charts -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="<?php echo base_url(); ?>js/ie10-viewport-bug-workaround.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>js/jquery.min.js"></script>
@@ -40,14 +46,9 @@
       <div class="row">
         <div class="col-sm-12 col-md-12 top-nav">
           <ul>
-            <li> <a href="<?php echo base_url(); ?>login/logout"><span class="icon-switch"></span></a></li> 
-            <li style="background:none;"> <p style="color: #FFF;padding-top: 5px;">Welcome, <?php echo  $this->session->userdata('username')?></p></li> 
+            <li> <a href="<?php echo base_url(); ?>login/logout"><span class="icon-switch"></span></a></li>
+            <li style="background:none;"> <p style="color: #FFF;padding-top: 5px;">Welcome, <?php echo  $this->session->userdata('username')?></p></li>
           </ul>
-           
+
         </div>
       </div>
-     
-          
- 
-
-

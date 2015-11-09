@@ -1,7 +1,6 @@
-  
         <div class="col-sm-10 col-md-11 main">
-          <div class="row" > 
-            <div class="col-sm-12 col-md-12" style="padding-left:0px;">
+          <div class="row" >
+           <div class="col-sm-12 col-md-12" style="padding-left:0px;">
                 <h1 class="page-header">Statistics</h1>
             </div>
           </div>
@@ -46,26 +45,43 @@
                 <thead>
                   <tr>
                     <th>Tickets sold </th>
-                    <th>Seats booked</th>
                     <th>One way tickets income</th>
                     <th>Round trip tickets income</th>
                     <th>Total income</th>
                   </tr>
                 </thead>
                 <tbody>
-                                 
-                    <tr>
-                      <td><?php echo $this->stats->total_tickets($from, $to) ?></td>
-                      <td><?php echo $this->stats->total_seats($from, $to) ?></td>
-                      <td><?php echo $this->stats->total_income_one_way($from, $to) ?> <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
-                      <td><?php echo $this->stats->total_income_round_trip($from, $to) ?> <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
-                      <td><?php echo $this->stats->total_income_one_way($from, $to) + $this->stats->total_income_round_trip($from, $to) ?>.00 <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
-                    </tr> 
-                  
-
+                  <tr>
+                    <td><?php echo $this->stats->total_tickets($from, $to) ?></td>
+                    <td><?php echo $this->stats->total_income_one_way($from, $to) ?> <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
+                    <td><?php echo $this->stats->total_income_round_trip($from, $to) ?> <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
+                    <td><?php echo $this->stats->total_income_one_way($from, $to) + $this->stats->total_income_round_trip($from, $to) ?>.00 <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
+                  </tr>
                 </tbody>
-              </table>
-            </div>
-            
-          </div> 
+              </div>
+          </div>
+
+
+          <div id="myfirstchart" style="height: 250px;"></div>
          </div>
+
+         <script type="text/javascript">
+         new Morris.Line({
+
+          // ID of the element in which to draw the chart.
+          element: 'myfirstchart',
+          // Chart data records -- each entry in this array corresponds to a point on
+          // the chart.
+
+          data: <?php echo json_encode($this->stats->total_tickets_per_day($from, $to)); ?>,
+          // The name of the data record attribute that contains x-values.
+          xkey: 'month',
+          // A list of names of data record attributes that contain y-values.
+          ykeys: ['value'],
+          // Labels for the ykeys -- will be displayed when you hover over the
+          // chart.
+          labels: ['Tickets'],
+          xLabels: "day"
+
+        });
+         </script>

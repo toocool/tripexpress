@@ -4,8 +4,8 @@
             <div class="col-sm-12 col-md-12" style="padding-left:0px;">
                 <h1 class="page-header"><a href="<?php echo base_url().'admin/tours' ?>"><i class="icon-arrow-left-3"></i></a> Passangers</h1>
             </div>
-            
-          </div> 
+
+          </div>
           <div class="row">
             <div class="table-responsive">
               <table class="table table-bordered">
@@ -15,7 +15,6 @@
                     <th>First name</th>
                     <th>Last name</th>
                     <th>Social number</th>
-                    <th>Seats booked</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -26,15 +25,14 @@
                         <td><?php echo ucfirst($client->client_firstname) ?></td>
                         <td><?php echo ucfirst($client->client_lastname) ?></td>
                         <td><?php echo $client->identification_nr ?></td>
-                        <td><?php echo $client->booked_seats ?></td>
                       </tr>
-                      
+
                     <?php $i++; endforeach; ?>
-                  <?php } else {$empty_data = 'No passangers booked yet!';} ?> 
+                  <?php } else {$empty_data = 'No passangers booked yet!';} ?>
 
                 </tbody>
               </table>
             </div>
             <?php echo $empty_data; ?>
-          </div> 
+          </div>
          </div>

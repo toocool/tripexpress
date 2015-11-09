@@ -7,12 +7,12 @@
             <div class="col-sm-2 col-md-2">
                <a href="<?php echo base_url('admin/members/add_member'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> Add member</button></a>
             </div>
-          </div> 
+          </div>
           <div class="row">
-              <?php 
-                if ($this->session->flashdata('message') != '') echo '<div class="alert alert-success" role="alert">' . $this->session->flashdata('message') . '</div>';            
+              <?php
+                if ($this->session->flashdata('message') != '') echo '<div class="alert alert-success" role="alert">' . $this->session->flashdata('message') . '</div>';
               ?>
-          </div> 
+          </div>
           <div class="row">
             <div class="table-responsive">
               <table class="table table-bordered">
@@ -28,12 +28,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php 
-                    if ($this->pagination->per_page > $this->pagination->total_rows) $i =1 ; 
-                    else $i = 1 + ($this->pagination->cur_page-1)*$this->pagination->per_page;  
-                    foreach($users as $user): 
+                  <?php
+                    if ($this->pagination->per_page > $this->pagination->total_rows) $i =1 ;
+                    else $i = 1 + ($this->pagination->cur_page-1)*$this->pagination->per_page;
+                    foreach($users as $user):
                   ?>
-                  <?php 
+                  <?php
                     if ($user->role == '0') {
                       $user->role = 'Administrator';
                     }elseif($user->role == '1'){
@@ -49,16 +49,18 @@
                       <td><?php echo ucfirst($user->lastname) ?></td>
                       <td><?php echo $user->email ?></td>
                       <td><?php echo $user->role ?></td>
-                      <td>
-                        <a href="<?php echo base_url('admin/members/edit_member/'.$user->id); ?>"><button type="button" class="btn btn-success btn-xs"><span class="icon-pencil"></span> Edit</button></a>
-                        <a href="<?php echo base_url('admin/members/delete_member/'.$user->id); ?>" onclick="return confirm('Are you sure you want to delete this member?')"><button type="button" class="btn btn-danger btn-xs"><span class="icon-cancel-2"></span> Delete</button></a>
+                      <td style="text-align:center">
+                        <div class="btn-group" role="group">
+                          <a href="<?php echo base_url('admin/members/edit_member/'.$user->id); ?>" class="btn btn-default btn-xs"><span class="icon-pencil" style="color:green"></span> Edit</a>
+                          <a href="<?php echo base_url('admin/members/delete_member/'.$user->id); ?>" onclick="return confirm('Are you sure you want to delete this member?')" class="btn btn-default btn-xs"><span class="icon-cancel-2" style="color:red"></span> Delete</a>
+                        </div>
                       </td>
-                    </tr> 
+                    </tr>
                   <?php $i++; endforeach; ?>
 
                 </tbody>
               </table>
             </div>
             <ul class="pagination"><?php echo $links ?></ul>
-          </div> 
+          </div>
          </div>

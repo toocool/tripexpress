@@ -7,12 +7,12 @@
             <div class="col-sm-2 col-md-2">
                <a href="<?php echo base_url('admin/destinations/add_destination'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> Add destination</button></a>
             </div>
-          </div> 
+          </div>
           <div class="row">
-              <?php 
-                if ($this->session->flashdata('message') != '') echo '<div class="alert alert-success" role="alert">' . $this->session->flashdata('message') . '</div>';            
+              <?php
+                if ($this->session->flashdata('message') != '') echo '<div class="alert alert-success" role="alert">' . $this->session->flashdata('message') . '</div>';
               ?>
-          </div> 
+          </div>
           <div class="row">
             <div class="table-responsive">
               <table class="table table-bordered">
@@ -30,15 +30,17 @@
                       <td><?php echo $i ?></td>
                       <td><?php echo ucfirst($destination->city) ?></td>
                       <td><?php echo strtoupper($destination->iso) ?></td>
-                      <td>
-                        <a href="<?php echo base_url('admin/destinations/edit_destination/'.$destination->destination_id); ?>"><button type="button" class="btn btn-success btn-xs"><span class="icon-pencil"></span> Edit</button></a>
-                        <a href="<?php echo base_url('admin/destinations/delete_destination/'.$destination->destination_id); ?>" onclick="return confirm('Are you sure you want to delete this destination?')"><button type="button" class="btn btn-danger btn-xs"><span class="icon-cancel-2"></span> Delete</button></a>
+                      <td style="text-align:center" width="20%">
+                        <div class="btn-group" role="group">
+                          <a href="<?php echo base_url('admin/destinations/edit_destination/'.$destination->destination_id); ?>" class="btn btn-default btn-xs"><span class="icon-pencil" style="color:green"></span> Edit</a>
+                          <a href="<?php echo base_url('admin/destinations/delete_destination/'.$destination->destination_id); ?>" class="btn btn-default btn-xs" onclick="return confirm('Are you sure you want to delete this destination?')"><span class="icon-cancel-2" style="color:red"></span> Delete</a>
+                        </div>
                       </td>
-                    </tr> 
+                    </tr>
                   <?php $i++; endforeach; ?>
 
                 </tbody>
               </table>
             </div>
-          </div> 
+          </div>
          </div>

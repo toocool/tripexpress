@@ -39,7 +39,7 @@ $active_record = TRUE;
 // The following values will probably need to be changed.
 $db['default']['hostname'] = "localhost";
 $db['default']['username'] = "root";
-$db['default']['password'] = "root";
+$db['default']['password'] = "";
 $db['default']['database'] = "tripexpress";
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

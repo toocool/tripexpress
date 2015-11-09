@@ -2,16 +2,16 @@
         <div class="col-sm-10 col-md-11 main">
           <div class="row" style="margin-right:0px;">
             <h1 class="page-header">Dashboard</h1>
-          </div>  
+          </div>
 
           <div class="row" >
             <div class="col-md-4" style="padding-left:0px;">
               <div class="panel panel-default">
                 <div class="panel-heading"><strong>Your stats</strong></div>
-                
+
 
                 <table class="table table-bordered">
-                  
+
                   <tbody>
                     <?php $this->load->model('dashboard_stats'); ?>
                       <tr>
@@ -21,14 +21,14 @@
                       <tr>
                         <td>Your role</td>
                         <td>
-                          <?php 
+                          <?php
                             if($this->dashboard_stats->member_role($this->session->userdata['username']) == 0) echo 'Administrator';
                               elseif($this->dashboard_stats->member_role($this->session->userdata['username']) == 1) echo 'Empoyee';
                                 elseif($this->dashboard_stats->member_role($this->session->userdata['username']) == 2) echo 'Reseller';
                                   else echo 'Error';
                           ?>
                         </td>
-                      </tr> 
+                      </tr>
                       <tr>
                         <td>Total tickets sold last 7 days</td>
                         <td><?php echo $this->dashboard_stats->total_tickets_per_week() ?></td>
@@ -36,17 +36,19 @@
                       <tr>
                         <td>Total tickets sold this month</td>
                         <td><?php echo $this->dashboard_stats->total_tickets_per_month() ?></td>
-                      </tr>  
+                      </tr>
                       <tr>
                         <td>Total tickets sold</td>
                         <td><?php echo $this->dashboard_stats->total_tickets() ?></td>
-                      </tr> 
-                      
-                    
+                      </tr>
+
+
 
                   </tbody>
                 </table>
+
               </div>
+              <a href="#" class="btn btn-success form-control"><i class="icon-target "></i> Search & Book Tickets</a>
             </div>
             <div class="col-md-8">
               <div class="panel panel-default">
@@ -65,7 +67,7 @@
                     <?php $this->load->model('dashboard_stats'); ?>
 
                     <?php  foreach($upcoming_tours as $dashboard_upcoming): ?>
-                      <?php 
+                      <?php
                       //short variables
                       $from_name = $this->dashboard_stats->get_city_name($dashboard_upcoming->from);
                       $to_name = $this->dashboard_stats->get_city_name($dashboard_upcoming->to);
@@ -80,7 +82,7 @@
                         <td class="text-center">
                           <a href="<?php echo base_url().'admin/bookings/process_ticket?from='.$from_name.'&to='.$to_name.'&tickets=1&tour_id='.$dashboard_upcoming->tour_id ?>" class="btn btn-success btn-xs">Book ticket</a>
                         </td>
-                      </tr> 
+                      </tr>
                     <?php  endforeach; ?>
 
                   </tbody>
@@ -89,6 +91,6 @@
             </div>
 
 
-            
-          </div> 
+
+          </div>
          </div>

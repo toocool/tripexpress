@@ -1,21 +1,6 @@
 <?php
 Class Stats extends CI_Model
 {
-	function total_seats($from, $to)
-	{
-		$this->db->select('SUM(booked_seats) as total_seats');
-		$this->db->from('bookings');
-		$this->db->where('created_time >=', $from);
-		$this->db->where('created_time <=', $to);
-		$query = $this->db->get();
-	 	if ($query->num_rows() > 0)
-		{
-		   $row = $query->row(); 
-		   if(!empty($row->total_seats))  return $row->total_seats;
-		   else return '0';
-		}
-	}
-
 	function total_tickets($from, $to)
 	{
 		$this->db->select('COUNT(booking_id) as total_tickets');
@@ -25,10 +10,27 @@ Class Stats extends CI_Model
 		$query = $this->db->get();
 	 	if ($query->num_rows() > 0)
 		{
-		   $row = $query->row(); 
+		   $row = $query->row();
 		   if(!empty($row->total_tickets))  return $row->total_tickets;
 		   else return '0';
 		}
+	}
+
+	function total_tickets_per_day($from, $to)
+	{
+		$this->db->select("date_format(created_time,'%Y-%m-%d') as month, COUNT(booking_id) as value", false);
+		$this->db->from('bookings');
+		$this->db->where('created_time >=', $from);
+		$this->db->where('created_time <=', $to);
+		$this->db->group_by("month");
+		$query = $this->db->get();
+		return $query->result();
+		// 	if ($query->num_rows() > 0)
+		// {
+		//    $row = $query->row();
+		//    if(!empty($row->total_tickets))  return $row->total_tickets;
+		//    else return '0';
+		// }
 	}
 
 	function total_income_one_way($from, $to)
@@ -41,7 +43,7 @@ Class Stats extends CI_Model
 		$query = $this->db->get();
 	 	if ($query->num_rows() > 0)
 		{
-		   $row = $query->row(); 
+		   $row = $query->row();
 		   if(!empty($row->price))  return $row->price;
 		   else return '0.00';
 		}
@@ -57,7 +59,7 @@ Class Stats extends CI_Model
 		$query = $this->db->get();
 	 	if ($query->num_rows() > 0)
 		{
-		   $row = $query->row(); 
+		   $row = $query->row();
 		   if(!empty($row->price))  return $row->price;
 		   else return '0.00';
 		}
@@ -78,11 +80,11 @@ Class Stats extends CI_Model
 		$query = $this->db->get('currency');
 		if ($query->num_rows() > 0)
 		{
-		   $row = $query->row(); 
+		   $row = $query->row();
 		   return $row->symbol;
 		}
 	}
-	
-		
+
+
 }
 ?>
