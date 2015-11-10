@@ -62,7 +62,7 @@
           </script>
       </div>
     </div>
-      
+
 
     <div class="col-sm-3 col-md-3">
        <div class="input-group spinner">
@@ -83,8 +83,8 @@
           <?php echo form_error('returning'); ?>
         </div>
     </div>
-    <div class="col-sm-12 col-md-12"></div>    
-    
+    <div class="col-sm-12 col-md-12"></div>
+
 
   	<div class="col-sm-12 col-md-12">
       <hr/>
@@ -96,12 +96,12 @@
 </div>
 
 <div class="col-sm-12 col-md-7" >
-  <div class="row booking_results"></div>
+  <div class="row booking_results"><h2 class="text-muted" style="text-align:center; margin-top: 20%;">Your search results will be displayed here</h2></div>
   <button  class="btn btn-success btn-lg" id="next_step" ><span class="icon-arrow-right-3"></span> Next</button>
-  
+
 </div>
 
-     
+
 
 </div>
 
@@ -111,7 +111,7 @@
     $('.spinner .btn:first-of-type').on('click', function() {
       var btn = $(this);
       var input = btn.closest('.spinner').find('input');
-      if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {    
+      if (input.attr('max') == undefined || parseInt(input.val()) < parseInt(input.attr('max'))) {
         input.val(parseInt(input.val(), 10) + 1);
       } else {
         btn.next("disabled", true);
@@ -120,7 +120,7 @@
     $('.spinner .btn:last-of-type').on('click', function() {
       var btn = $(this);
       var input = btn.closest('.spinner').find('input');
-      if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {    
+      if (input.attr('min') == undefined || parseInt(input.val()) > parseInt(input.attr('min'))) {
         input.val(parseInt(input.val(), 10) - 1);
       } else {
         btn.prev("disabled", true);
@@ -133,4 +133,4 @@
   var currency = "EUR"; //$this->booking->show_symbol($company_info->company_currency
 </script>
 
-<script type="text/javascript" src="<?php echo base_url() ?>js/ajax.js"></script> 
+<script type="text/javascript" src="<?php echo base_url() ?>js/ajax.js"></script>

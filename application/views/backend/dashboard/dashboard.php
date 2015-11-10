@@ -48,7 +48,7 @@
                 </table>
 
               </div>
-              <a href="#" class="btn btn-success form-control"><i class="icon-target "></i> Search & Book Tickets</a>
+              <a href="bookings/add_ticket" class="btn btn-success form-control"><i class="icon-target "></i> Search & Book Tickets</a>
             </div>
             <div class="col-md-8">
               <div class="panel panel-default">

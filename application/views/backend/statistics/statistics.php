@@ -58,11 +58,14 @@
                     <td><?php echo $this->stats->total_income_one_way($from, $to) + $this->stats->total_income_round_trip($from, $to) ?>.00 <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
                   </tr>
                 </tbody>
+              </table>
               </div>
           </div>
 
+          <div class="row">
+            <div id="myfirstchart" style="height: 250px;"></div>
+          </div>
 
-          <div id="myfirstchart" style="height: 250px;"></div>
          </div>
 
          <script type="text/javascript">
