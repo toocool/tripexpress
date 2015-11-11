@@ -20,7 +20,7 @@ class Login extends CI_Controller {
 	 				'is_logged_in' => true,
 	 				'role' => $this->user->member_role($this->input->post('username')),
 	 				'user_id' => $this->user->member_id($this->input->post('username')),
-					'language' => ($this->user->member_language($this->input->post('username')) != null) ? $this->user->member_language($this->input->post('username')) : 'albanian'
+					'language' => ($this->user->member_language($this->input->post('username')) != null) ? $this->user->member_language($this->input->post('username')) : 'english'
 	 				);
 	 		$this->session->set_userdata($data);
 	 		redirect('admin/dashboard');
