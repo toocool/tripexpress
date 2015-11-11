@@ -19,7 +19,8 @@ class Login extends CI_Controller {
 	 				'username' => $this->input->post('username'),
 	 				'is_logged_in' => true,
 	 				'role' => $this->user->member_role($this->input->post('username')),
-	 				'user_id' => $this->user->member_id($this->input->post('username'))
+	 				'user_id' => $this->user->member_id($this->input->post('username')),
+					'language' => ($this->user->member_language($this->input->post('username')) != null) ? $this->user->member_language($this->input->post('username')) : 'albanian'
 	 				);
 	 		$this->session->set_userdata($data);
 	 		redirect('admin/dashboard');
@@ -37,6 +38,8 @@ class Login extends CI_Controller {
 	    $this->session->sess_destroy();
 	    $this->index();
 	}
+
+
 
 }
 

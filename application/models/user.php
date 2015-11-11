@@ -13,7 +13,7 @@ Class User extends CI_Model
 	   {
 	     return true;
 	   }
-	   
+
 	 }
 	function show_users($limit, $start)
 	{
@@ -34,13 +34,13 @@ Class User extends CI_Model
 	}
 	function save_user($data, $id)
 	{
-		
+
 		if (empty($data['password'])) {
 			$crop_data = elements(array('firstname','lastname','username','role','email'), $data);
 		} else {
 			$crop_data = elements(array('firstname','lastname','username','password','role','email'), $data);
 		}
-		
+
 		$this->db->where('id', $id);
 		$this->db->update('users', $crop_data);
 	}
@@ -62,7 +62,7 @@ Class User extends CI_Model
 
 		if ($query->num_rows() > 0)
 		{
-		   $row = $query->row(); 
+		   $row = $query->row();
 		   return $row->role;
 		}
 	}
@@ -73,8 +73,19 @@ Class User extends CI_Model
 
 		if ($query->num_rows() > 0)
 		{
-		   $row = $query->row(); 
+		   $row = $query->row();
 		   return $row->id;
+		}
+	}
+	function member_language($username){
+		$this->db->select('language');
+		$this->db->where('username',$username);
+		$query = $this->db->get('users');
+
+		if ($query->num_rows() > 0)
+		{
+		   $row = $query->row();
+		   return $row->language;
 		}
 	}
 }

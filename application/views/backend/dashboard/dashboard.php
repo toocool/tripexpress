@@ -1,13 +1,13 @@
 
         <div class="col-sm-10 col-md-11 main">
           <div class="row" style="margin-right:0px;">
-            <h1 class="page-header">Dashboard</h1>
+            <h1 class="page-header"><?php echo lang('Dashboard'); ?></h1>
           </div>
 
           <div class="row" >
             <div class="col-md-4" style="padding-left:0px;">
               <div class="panel panel-default">
-                <div class="panel-heading"><strong>Your stats</strong></div>
+                <div class="panel-heading"><strong><?php echo lang('Your stats'); ?></strong></div>
 
 
                 <table class="table table-bordered">
@@ -15,11 +15,11 @@
                   <tbody>
                     <?php $this->load->model('dashboard_stats'); ?>
                       <tr>
-                        <td>Your username:</td>
+                        <td><?php echo lang('Your username'); ?></td>
                         <td><?php echo $this->session->userdata['username'] ?></td>
                       </tr>
                       <tr>
-                        <td>Your role</td>
+                        <td><?php echo lang('Your role'); ?></td>
                         <td>
                           <?php
                             if($this->dashboard_stats->member_role($this->session->userdata['username']) == 0) echo 'Administrator';
@@ -30,15 +30,15 @@
                         </td>
                       </tr>
                       <tr>
-                        <td>Total tickets sold last 7 days</td>
+                        <td><?php echo lang('Total tickets sold last 7 days'); ?></td>
                         <td><?php echo $this->dashboard_stats->total_tickets_per_week() ?></td>
                       </tr>
                       <tr>
-                        <td>Total tickets sold this month</td>
+                        <td><?php echo lang('Total tickets sold this month'); ?></td>
                         <td><?php echo $this->dashboard_stats->total_tickets_per_month() ?></td>
                       </tr>
                       <tr>
-                        <td>Total tickets sold</td>
+                        <td><?php echo lang('Total tickets sold'); ?></td>
                         <td><?php echo $this->dashboard_stats->total_tickets() ?></td>
                       </tr>
 
@@ -48,19 +48,19 @@
                 </table>
 
               </div>
-              <a href="bookings/add_ticket" class="btn btn-success form-control"><i class="icon-target "></i> Search & Book Tickets</a>
+              <a href="bookings/add_ticket" class="btn btn-success form-control"><i class="icon-target "></i> <?php echo lang('Search & Book Tickets'); ?></a>
             </div>
             <div class="col-md-8">
               <div class="panel panel-default">
-                <div class="panel-heading"><strong>Available tours</strong></div>
+                <div class="panel-heading"><strong><?php echo lang('Available tours'); ?></strong></div>
 
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th>From</th>
-                      <th>To</th>
-                      <th>Time</th>
-                      <th width="15%" class="text-center">Quick booking</th>
+                      <th><?php echo lang('Departure'); ?></th>
+                      <th><?php echo lang('Arrival'); ?></th>
+                      <th><?php echo lang('Departure at'); ?></th>
+                      <th width="15%" class="text-center"><?php echo lang('Quick booking'); ?></th>
                      </tr>
                   </thead>
                   <tbody>
@@ -80,7 +80,7 @@
                             <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($dashboard_upcoming->from_start_time)) ?></div>
                         </td>
                         <td class="text-center">
-                          <a href="<?php echo base_url().'admin/bookings/process_ticket?from='.$from_name.'&to='.$to_name.'&tickets=1&tour_id='.$dashboard_upcoming->tour_id ?>" class="btn btn-success btn-xs">Book ticket</a>
+                          <a href="<?php echo base_url().'admin/bookings/process_ticket?from='.$from_name.'&to='.$to_name.'&tickets=1&tour_id='.$dashboard_upcoming->tour_id ?>" class="btn btn-success btn-xs"><?php echo lang('Book ticket'); ?></a>
                         </td>
                       </tr>
                     <?php  endforeach; ?>
