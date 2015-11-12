@@ -2,10 +2,10 @@
         <div class="col-sm-10 col-md-11 main">
           <div class="row" >
             <div class="col-sm-10 col-md-10" style="padding-left:0px;">
-                <h1 class="page-header">Members</h1>
+                <h1 class="page-header"><?php echo lang('Members');?></h1>
             </div>
             <div class="col-sm-2 col-md-2">
-               <a href="<?php echo base_url('admin/members/add_member'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> Add member</button></a>
+               <a href="<?php echo base_url('admin/members/add_member'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> <?php echo lang('Add member');?></button></a>
             </div>
           </div>
           <div class="row">
@@ -19,12 +19,12 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Username</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>E-Mail</th>
-                    <th>Role</th>
-                    <th>Options</th>
+                    <th><?php echo lang('Username');?></th>
+                    <th><?php echo lang('First name');?></th>
+                    <th><?php echo lang('Last name');?></th>
+                    <th><?php echo lang('E-Mail');?></th>
+                    <th><?php echo lang('Role');?></th>
+                    <th><?php echo lang('Options');?></th>
                   </tr>
                 </thead>
                 <tbody>

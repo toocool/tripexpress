@@ -6,6 +6,8 @@ class Clients extends CI_Controller {
 	{
 		parent::__construct();
 		$this->is_logged_in();
+		$this->load->helper('language');
+		$this->lang->load('clients', $this->session->userdata('language'));
 	}
 	function index()
 	{

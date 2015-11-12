@@ -6,6 +6,7 @@ class Bookings extends CI_Controller {
 	{
 		parent::__construct();
 		$this->is_logged_in();
+		$this->load->helper('language');
 	}
 	function index(){
 		$this->list_bookings();
@@ -13,24 +14,25 @@ class Bookings extends CI_Controller {
 	function pdf($id)
 	{
 	     $this->load->helper('dompdf');
-	     $this->load->helper('file'); 
+	     $this->load->helper('file');
 	     $this->load->model('booking');
 	     $data['booking'] = $this->booking->get_booking($id);
 	     $data['booking_returned'] = $this->booking->get_booking_returned($id);
 	     $data['company_info'] = $this->booking->get_company_info();
-	     $data['id'] = $id;     
+	     $data['id'] = $id;
 	     $html = $this->load->view('backend/bookings/pdf_generator', $data, true);
 	     pdf_create($html, 'filename', TRUE);
-	     
+
 	     //$data = pdf_create($html, 'sss', TRUE);
 	     //write_file('name', $data);
-	     //if you want to write it to disk and/or send it as an attachment    
+	     //if you want to write it to disk and/or send it as an attachment
 	}
 	function list_bookings(){
+		$this->lang->load('bookings', $this->session->userdata('language'));
 		$this->load->library('pagination');
 		$config['base_url'] = base_url().'admin/bookings/list_bookings';
 		$config['total_rows'] = $this->db->count_all('bookings');
-		$config['per_page'] = 10; 
+		$config['per_page'] = 10;
 		$config["uri_segment"] = 4;
 		//pagination styling
 		$config['num_tag_open'] = '<li>'; $config['num_tag_close'] = '</li>';
@@ -53,7 +55,7 @@ class Bookings extends CI_Controller {
 	}
 
 	function ajax_check_tours()
-	{   
+	{
 		$this->load->model('booking');
 		//$data['from_tour'] = $this->booking->check_available_tours();
 	    if($_POST['from'] == "")
@@ -61,16 +63,16 @@ class Bookings extends CI_Controller {
 	      echo $message = "You can't send empty text";
 	    }
 	    else
-	    {	
+	    {
 	    	//header('Content-type: application/json');
 	        $message = $this->booking->check_available_tours($_POST['from'], $_POST['to'], $_POST['returning'], $_POST['from_date']);
 	        $data_json = json_encode($message);
        		 echo $data_json;
 	    }
-	    
+
 	}
 	function ajax_check_tours_back()
-	{   
+	{
 		$this->load->model('booking');
 		//$data['from_tour'] = $this->booking->check_available_tours();
 	    if($_POST['to'] == "")
@@ -78,13 +80,13 @@ class Bookings extends CI_Controller {
 	      echo $message = "You can't send empty text";
 	    }
 	    else
-	    {	
+	    {
 	    	//header('Content-type: application/json');
 	        $message = $this->booking->check_available_tours_back($_POST['to'],$_POST['selected_back']);
 	        $data_json = json_encode($message);
        		 echo $data_json;
 	    }
-	    
+
 	}
 
 	function add_ticket(){
@@ -96,7 +98,7 @@ class Bookings extends CI_Controller {
 		$this->form_validation->set_rules('identification_nr', 'Identification number', 'trim|required');
 		$this->form_validation->set_rules('booked_seats', 'Seats to book', 'trim|required');
 		$this->form_validation->set_rules('returning', 'Returning ticket', 'trim|required');
-		
+
 		if ($this->form_validation->run() == FALSE)
 		{
 			$this->load->model('booking');
@@ -121,7 +123,7 @@ class Bookings extends CI_Controller {
 		$this->load->model('search');
 		$data['main_content'] = 'backend/bookings/process_ticket';
 		$data['title'] = 'Book a ticket';
-		
+
 		$data['db_data'] = Search::find($this->input->get());
 		$data['get_data'] = $this->input->get();
 		$this->load->view('includes/template', $data);
@@ -129,34 +131,34 @@ class Bookings extends CI_Controller {
 
 	function save_ticket(){
 		$data['parameters'] = $_POST;
-		
+
 		$this->load->model('search');
 		$booking = new Search;
 		$first_name = $this->input->post('first_name');
 		$last_name = $this->input->post('last_name');
 		$identification_nr = $this->input->post('identification_number');
 		$tickets = $this->input->post('tickets');
-		
+
 		if(!empty($this->input->post('tour_back_id')))
 			$returning = 2;
 		else
 			$returning = 1;
-		
+
 
 		for ($i=0;$i < $tickets; $i++) {
 			$booking->client_firstname = $first_name[$i];
 			$booking->client_lastname = $last_name[$i];
-			$booking->identification_nr = $identification_nr[$i];	
+			$booking->identification_nr = $identification_nr[$i];
 			$booking->tour_id = $this->input->post('tour_id');
 			$booking->tour_back_id = $this->input->post('tour_id');
 			$booking->returning = $returning;
 			$booking->created_by = $this->session->userdata['user_id'];
-			$booking->save(); 
+			$booking->save();
 		}
 
 		$data['title'] = 'Ticket booked successfully';
 		$data['main_content'] = 'backend/bookings/booking_success';
-		$this->load->view('includes/template', $data);	
+		$this->load->view('includes/template', $data);
 	}
 
 	function edit_booking($id)
@@ -196,7 +198,7 @@ class Bookings extends CI_Controller {
 		$this->booking->delete_booking($id);
 		redirect('admin/bookings', 'refresh');
 	}
-	
+
 	public function _citynull_check($str)
 	{
 		if ($str == '0')
@@ -220,6 +222,6 @@ class Bookings extends CI_Controller {
 		}
 	}
 
-	
+
 }
 ?>

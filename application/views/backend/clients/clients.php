@@ -1,7 +1,7 @@
 
         <div class="col-sm-10 col-md-11 main">
           <div class="row" style="margin-right:0px;">
-            <h1 class="page-header">Clients</h1>
+            <h1 class="page-header"><?php echo lang('Clients'); ?></h1>
           </div>
           <div class="row" style="margin-right:0px;margin-bottom: 10px;">
             <div class="col-sm-4 col-md-4" style="padding-left:0px;">
@@ -9,7 +9,7 @@
                 <div class="form-group">
                   <input type="text" class="form-control" id="client_search" name="client_search">
                 </div>
-                <button type="submit" class="btn btn-primary">Search client</button>
+                <button type="submit" class="btn btn-primary"><?php echo lang('Search client'); ?></button>
               </form>
             </div>
           </div>
@@ -19,11 +19,11 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>Identification number</th>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>Total tickets</th>
-                    <th>Options</th>
+                    <th><?php echo lang('ID number'); ?></th>
+                    <th><?php echo lang('First name'); ?></th>
+                    <th><?php echo lang('Last name'); ?></th>
+                    <th><?php echo lang('Total tickets'); ?></th>
+                    <th><?php echo lang('Options'); ?></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,7 +41,7 @@
                       <td><?php echo $client->client_lastname ?></td>
                       <td><?php echo $client->total_tickets ?></td>
                       <td style="text-align:center" width="20%">
-                          <a href="<?php echo base_url('admin/clients/list_tickets/'.$client->identification_nr); ?>" class="btn btn-default btn-xs"><span class="icon-history" style="color:grey"></span> Booking history</a>
+                          <a href="<?php echo base_url('admin/clients/list_tickets/'.$client->identification_nr); ?>" class="btn btn-default btn-xs"><span class="icon-history" style="color:grey"></span> <?php echo lang('Booking history'); ?></a>
                       </td>
                     </tr>
                   <?php $i++; endforeach; ?>

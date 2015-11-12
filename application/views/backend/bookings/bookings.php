@@ -2,10 +2,10 @@
         <div class="col-sm-10 col-md-11 main">
           <div class="row" >
             <div class="col-sm-10 col-md-10" style="padding-left:0px;">
-                <h1 class="page-header">Bookings</h1>
+                <h1 class="page-header"><?php echo lang('Bookings');?></h1>
             </div>
             <div class="col-sm-2 col-md-2">
-               <a href="<?php echo base_url('admin/bookings/add_ticket'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> Book a ticket</button></a>
+               <a href="<?php echo base_url('admin/bookings/add_ticket'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> <?php echo lang('Book a ticket');?></button></a>
             </div>
           </div>
           <div class="row">
@@ -19,23 +19,23 @@
                 <thead>
                   <tr>
                     <th>#</th>
-                    <th>First name</th>
-                    <th>Last name</th>
-                    <th>ID number</th>
-                    <th>Departure</th>
-                    <th>Arrival</th>
-                    <th>Departure time</th>
-                    <th>Return time</th>
-                    <th>Booked by</th>
-                    <th>Modified by</th>
-                    <th>Options</th>
+                    <th><?php echo lang('First name');?></th>
+                    <th><?php echo lang('Last name');?></th>
+                    <th><?php echo lang('ID number');?></th>
+                    <th><?php echo lang('Departure');?></th>
+                    <th><?php echo lang('Arrival');?></th>
+                    <th><?php echo lang('Departure time');?></th>
+                    <th><?php echo lang('Return time');?></th>
+                    <th><?php echo lang('Booked by');?></th>
+                    <th><?php echo lang('Modified by');?></th>
+                    <th><?php echo lang('Options');?></th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php $this->load->model('booking'); ?>
 
                   <?php
-                    if ($this->pagination->per_page > $this->pagination->total_rows) $i =1 ;
+                    if ($this->pagination->per_page >= $this->pagination->total_rows) $i =1 ;
                     else $i = 1 + ($this->pagination->cur_page-1)*$this->pagination->per_page;
                     foreach($bookings as $booking):
                   ?>

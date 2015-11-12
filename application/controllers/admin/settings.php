@@ -6,6 +6,8 @@ class Settings extends CI_Controller {
 	{
 		parent::__construct();
 		$this->is_logged_in();
+		$this->load->helper('language');
+		$this->lang->load('settings', $this->session->userdata('language'));
 	}
 	function index(){
 		$this->list_settings();
@@ -20,7 +22,7 @@ class Settings extends CI_Controller {
 		$this->form_validation->set_rules('company_phone_one', 'Company phone number 1', 'required');
 		$this->form_validation->set_rules('company_phone_two', 'Company phone number 2', 'required');
 		$this->form_validation->set_rules('company_email', 'Company e-mail', 'required');
-		
+
 		$this->form_validation->set_rules('company_rules', 'Company Rules', 'required');
 		//$this->form_validation->set_rules('iso', 'ISO', 'trim|required|alpha|max_length[3]|callback__iso_check');
 
@@ -71,7 +73,7 @@ class Settings extends CI_Controller {
 			redirect('admin/settings', 'refresh');
 		}
 	}
-	
+
 	private function is_logged_in()
 	{
 		$is_logged_in = $this->session->userdata('is_logged_in');

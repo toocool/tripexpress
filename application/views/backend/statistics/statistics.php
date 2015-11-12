@@ -1,7 +1,7 @@
         <div class="col-sm-10 col-md-11 main">
           <div class="row" >
            <div class="col-sm-12 col-md-12" style="padding-left:0px;">
-                <h1 class="page-header">Statistics</h1>
+                <h1 class="page-header"><?php echo lang('Statistics');?></h1>
             </div>
           </div>
 
@@ -34,7 +34,7 @@
                           </script>
               </div>
               <div class="col-sm-2 col-md-2 date" id="datepicker2" style="padding-left:0px;">
-                <button type="submit" class="btn btn-primary" value="submit">Update</button>
+                <button type="submit" class="btn btn-primary" value="submit"><?php echo lang('Update');?></button>
               </div>
             <?php echo form_close(); ?>
           </div>
@@ -44,10 +44,10 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>Tickets sold </th>
-                    <th>One way tickets income</th>
-                    <th>Round trip tickets income</th>
-                    <th>Total income</th>
+                    <th><?php echo lang('Tickets sold');?></th>
+                    <th><?php echo lang('One way tickets income');?></th>
+                    <th><?php echo lang('Round trip tickets income');?></th>
+                    <th><?php echo lang('Total income');?></th>
                   </tr>
                 </thead>
                 <tbody>

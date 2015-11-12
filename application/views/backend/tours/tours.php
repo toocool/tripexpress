@@ -2,10 +2,10 @@
         <div class="col-sm-10 col-md-11 main">
           <div class="row" >
             <div class="col-sm-10 col-md-10" style="padding-left:0px;">
-                <h1 class="page-header">Tours</h1>
+                <h1 class="page-header"><?php echo lang('Tours') ;?></h1>
             </div>
             <div class="col-sm-2 col-md-2">
-               <a href="<?php echo base_url('admin/tours/add_tour'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> Create tour</button></a>
+               <a href="<?php echo base_url('admin/tours/add_tour'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> <?php echo lang('Create tour') ;?> </button></a>
             </div>
           </div>
           <div class="row">
@@ -18,14 +18,14 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>#</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Departure time</th>
-                    <th>Total seats</th>
-                    <th>Price</th>
-                    <th>Date created</th>
-                    <th>Options</th>
+                    <th></th>
+                    <th><?php echo lang('Departure') ;?></th>
+                    <th><?php echo lang('Arrival') ;?></th>
+                    <th><?php echo lang('Departure time') ;?></th>
+                    <th><?php echo lang('Total seats') ;?></th>
+                    <th><?php echo lang('Price') ;?></th>
+                    <th><?php echo lang('Date created') ;?></th>
+                    <th><?php echo lang('Options') ;?></th>
                   </tr>
                 </thead>
                 <tbody>

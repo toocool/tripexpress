@@ -6,17 +6,20 @@ class Members extends CI_Controller {
 	{
 		parent::__construct();
 		$this->is_logged_in();
+		$this->load->helper('language');
+		$this->lang->load('members', $this->session->userdata('language'));
 	}
 	function index(){
-		
+
 		$this->list_members();
 	}
 
 	function list_members(){
+
 		$this->load->library('pagination');
 		$config['base_url'] = base_url().'admin/members/list_members';
 		$config['total_rows'] = $this->db->count_all('users');
-		$config['per_page'] = 10; 
+		$config['per_page'] = 10;
 		$config["uri_segment"] = 4;
 		//pagination styling
 		$config['num_tag_open'] = '<li>'; $config['num_tag_close'] = '</li>';
@@ -97,7 +100,7 @@ class Members extends CI_Controller {
 		$this->user->delete_member($id);
 		redirect('admin/members', 'refresh');
 	}
-	
+
 	public function _username_check($str)
 	{
 		$id = $this->uri->segment(4);

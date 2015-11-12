@@ -6,6 +6,8 @@ class Tours extends CI_Controller {
 	{
 		parent::__construct();
 		$this->is_logged_in();
+		$this->load->helper('language');
+		$this->lang->load('tours', $this->session->userdata('language'));
 	}
 	function index(){
 		$this->list_tours();
@@ -87,7 +89,7 @@ class Tours extends CI_Controller {
 		$this->tour->delete_tour($id);
 		redirect('admin/tours', 'refresh');
 	}
-	
+
 	public function _citynull_check($str)
 	{
 		if ($str == '0')

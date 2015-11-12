@@ -6,6 +6,8 @@ class Statistics extends CI_Controller {
 	{
 		parent::__construct();
 		$this->is_logged_in();
+		$this->load->helper('language');
+		$this->lang->load('statistics', $this->session->userdata('language'));
 	}
 	function index()
 	{
@@ -22,7 +24,7 @@ class Statistics extends CI_Controller {
 		$this->load->model('stats');
 		$from_date = $this->input->post('from_date');
 		$to_date = $this->input->post('to_date');
-		
+
 		$data['main_content'] = 'backend/statistics/statistics';
 		$data['title'] = 'Statistics';
 		$data['from'] = $from_date;
@@ -30,7 +32,7 @@ class Statistics extends CI_Controller {
 		$data['company_info'] = $this->stats->get_company_info();
 		$this->load->view('includes/template', $data);
 	}
-	
+
 	private function is_logged_in()
 	{
 		$is_logged_in = $this->session->userdata('is_logged_in');
