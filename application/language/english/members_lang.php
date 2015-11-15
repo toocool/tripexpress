@@ -9,4 +9,12 @@ $lang['Options'] = "Options";
 $lang['Edit'] = "Edit";
 $lang['Delete'] = "Delete";
 $lang['Add member'] = "Add member";
+$lang['Password'] = "Password";
+$lang['Repeat Password'] = "Repeat password";
+$lang['Submit'] = "Submit";
+$lang['Administrator'] = "Administrator";
+$lang['Employee'] = "Employee";
+$lang['Reseller'] = "Reseller";
+$lang['Edit Member'] = "Edit Member";
+
 ?>

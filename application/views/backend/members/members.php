@@ -5,7 +5,7 @@
                 <h1 class="page-header"><?php echo lang('Members');?></h1>
             </div>
             <div class="col-sm-2 col-md-2">
-               <a href="<?php echo base_url('admin/members/add_member'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> <?php echo lang('Add member');?></button></a>
+               <a href="<?php echo base_url('admin/members/add_member'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> <?php echo lang('Add Member');?></button></a>
             </div>
           </div>
           <div class="row">
@@ -18,7 +18,7 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <th></th>
                     <th><?php echo lang('Username');?></th>
                     <th><?php echo lang('First name');?></th>
                     <th><?php echo lang('Last name');?></th>
@@ -48,11 +48,11 @@
                       <td><?php echo ucfirst($user->firstname) ?></td>
                       <td><?php echo ucfirst($user->lastname) ?></td>
                       <td><?php echo $user->email ?></td>
-                      <td><?php echo $user->role ?></td>
+                      <td><?php echo lang($user->role) ?></td>
                       <td style="text-align:center">
                         <div class="btn-group" role="group">
-                          <a href="<?php echo base_url('admin/members/edit_member/'.$user->id); ?>" class="btn btn-default btn-xs"><span class="icon-pencil" style="color:green"></span> Edit</a>
-                          <a href="<?php echo base_url('admin/members/delete_member/'.$user->id); ?>" onclick="return confirm('Are you sure you want to delete this member?')" class="btn btn-default btn-xs"><span class="icon-cancel-2" style="color:red"></span> Delete</a>
+                          <a href="<?php echo base_url('admin/members/edit_member/'.$user->id); ?>" class="btn btn-default btn-xs"><span class="icon-pencil" style="color:green"></span> <?php echo lang('Edit'); ?></a>
+                          <a href="<?php echo base_url('admin/members/delete_member/'.$user->id); ?>" onclick="return confirm('Are you sure you want to delete this member?')" class="btn btn-default btn-xs"><span class="icon-cancel-2" style="color:red"></span> <?php echo lang('Delete'); ?></a>
                         </div>
                       </td>
                     </tr>

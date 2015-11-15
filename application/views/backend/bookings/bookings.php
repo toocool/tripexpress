@@ -18,7 +18,7 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <th></th>
                     <th><?php echo lang('First name');?></th>
                     <th><?php echo lang('Last name');?></th>
                     <th><?php echo lang('ID number');?></th>
@@ -61,9 +61,9 @@
                       <td><?php echo $this->booking->get_username($booking->modified_by) ?></td>
                       <td style="text-align:center">
                         <div class="btn-group" role="group">
-                          <a href="<?php echo base_url('admin/bookings/pdf/'.$booking->booking_id); ?>" target="_blank" class="btn btn-default btn-xs"><span class="icon-file-pdf" style="color:red"></span> Invoice</a>
-                          <a href="<?php echo base_url('admin/bookings/edit_booking/'.$booking->booking_id); ?>" class="btn btn-default btn-xs"><span class="icon-pencil" style="color:green"></span> Edit</a>
-                          <a href="<?php echo base_url('admin/bookings/delete_booking/'.$booking->booking_id); ?>" onclick="return confirm('Are you sure you want to delete this booking ticket?')" class="btn btn-default btn-xs"><span class="icon-cancel-2" style="color:red"></span> Delete</a>
+                          <a href="<?php echo base_url('admin/bookings/pdf/'.$booking->booking_id); ?>" target="_blank" class="btn btn-default btn-xs"><span class="icon-file-pdf" style="color:red"></span> <?php echo lang('Invoice')?></a>
+                          <a href="<?php echo base_url('admin/bookings/edit_booking/'.$booking->booking_id); ?>" class="btn btn-default btn-xs"><span class="icon-pencil" style="color:green"></span> <?php echo lang('Edit')?></a>
+                          <a href="<?php echo base_url('admin/bookings/delete_booking/'.$booking->booking_id); ?>" onclick="return confirm('Are you sure you want to delete this booking ticket?')" class="btn btn-default btn-xs"><span class="icon-cancel-2" style="color:red"></span> <?php echo lang('Delete')?></a>
                         </div>
                       </td>
                     </tr>

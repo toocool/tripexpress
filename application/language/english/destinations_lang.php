@@ -4,7 +4,6 @@ $lang['City'] = "City";
 $lang['ISO name'] = "ISO name";
 $lang['Options'] = "Options";
 $lang['Add destination'] = "Add destination";
-$lang['Edit'] = "Edit";
-$lang['Delete'] = "Delete";
+$lang['Edit Destination'] = "Edit Destination";
 
 ?>

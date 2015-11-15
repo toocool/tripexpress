@@ -2,12 +2,12 @@
 <div class="row">
 
 <div class=" search_box col-sm-12 col-md-5" >
-    <h4 style="margin-left:20px;">Search</h4>
+    <h4 style="margin-left:20px;"><?php echo lang('Search'); ?></h4>
     <hr/>
 
     <div class="col-sm-4 col-md-6">
       <div class="form-group">
-        <label for="city">Departure city</label>
+        <label for="city"><?php echo lang('Departure city'); ?></label>
         <select class="form-control" name="from" id="from" >
           <option value="0"></option>
           <?php foreach($cities as $city):?>
@@ -20,7 +20,7 @@
 
     <div class="col-sm-4 col-md-6">
       <div class="form-group">
-        <label for="city">Arrival city</label>
+        <label for="city"><?php echo lang('Arrival city'); ?></label>
          <select class="form-control" name="to" id="to" value="<?php echo set_value('city'); ?>">
             <option value="0"></option>
           <?php foreach($cities as $city):?>
@@ -32,7 +32,7 @@
     </div>
 
     <div class="col-sm-4 col-md-6">
-    <label>Departure date <span class="text-muted">(Optional)</span></label>
+    <label><?php echo lang('Departure date'); ?> <span class="text-muted">(<?php echo lang('Optional'); ?>)</span></label>
       <div class="form-group date" id="datepicker1">
          <input type="text" class="form-control" name="from_date" id="from_date" data-date-format="YYYY-MM-DD" value="">
           <span class="input-group-addon"><span class="icon-calendar"></span></span>
@@ -48,7 +48,7 @@
     </div>
 
     <div class="col-sm-4 col-md-6">
-    <label>Return date</label>
+    <label><?php echo lang('Return date'); ?></label>
       <div class="form-group date" id="datepicker2">
          <input type="text" class="form-control" name="from_back_date" id="from_back_date" data-date-format="YYYY-MM-DD" value="">
           <span class="input-group-addon"><span class="icon-calendar"></span></span>
@@ -66,7 +66,7 @@
 
     <div class="col-sm-3 col-md-3">
        <div class="input-group spinner">
-        <label for="booked_seats">Tickets</label>
+        <label for="booked_seats"><?php echo lang('Tickets'); ?></label>
         <input type="text" class="form-control" name="booked_seats" id="booked_seats" value="1" min="1" max="10">
         <div class="input-group-btn-vertical">
           <button class="btn btn-default" type="button"><i class="icon-arrow-up-4"></i></button>
@@ -78,7 +78,7 @@
 
      <div class="col-sm-3 col-md-3">
         <div class="form-group">
-          <label for="returning">Returning</label><br/>
+          <label for="returning"><?php echo lang('Returning'); ?></label><br/>
            <input type="checkbox" name="returning" id="returning">
           <?php echo form_error('returning'); ?>
         </div>
@@ -88,8 +88,8 @@
 
   	<div class="col-sm-12 col-md-12">
       <hr/>
-      <button type="button" id="reset" class="btn btn-primary"><span class="icon-spin"></span> Reset</button>
-  		<button type="button" id="check" class="btn btn-success" value="submit"><span class="icon-search"></span> Check available tours</button>
+      <button type="button" id="reset" class="btn btn-primary"><span class="icon-spin"></span> <?php echo lang('Reset'); ?></button>
+  		<button type="button" id="check" class="btn btn-success" value="submit"><span class="icon-search"></span> <?php echo lang('Check available tours'); ?></button>
 
     </div>
 

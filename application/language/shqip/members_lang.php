@@ -8,5 +8,12 @@ $lang['Role'] = "Roli";
 $lang['Options'] = "Opsionet";
 $lang['Edit'] = "Ndrysho";
 $lang['Delete'] = "Fshij";
-$lang['Add member'] = "Shto përdorues";
+$lang['Add Member'] = "Shto Përdorues";
+$lang['Password'] = "Fjalëkalimi";
+$lang['Repeat Password'] = "Përsërit Fjalëkalimin";
+$lang['Submit'] = "Aktualizo";
+$lang['Administrator'] = "Administrator";
+$lang['Employee'] = "Punonjës";
+$lang['Reseller'] = "Agjent";
+$lang['Edit Member'] = "Ndrysho të dhënat";
 ?>

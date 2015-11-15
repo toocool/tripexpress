@@ -5,7 +5,7 @@
                 <h1 class="page-header"><?php echo lang('Destinations') ?></h1>
             </div>
             <div class="col-sm-2 col-md-2">
-               <a href="<?php echo base_url('admin/destinations/add_destination'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> <?php echo lang('Add destination') ?></button></a>
+               <a href="<?php echo base_url('admin/destinations/add_destination'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> <?php echo lang('Add Destination') ?></button></a>
             </div>
           </div>
           <div class="row">
@@ -18,7 +18,7 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <th></th>
                     <th><?php echo lang('City') ?></th>
                     <th><?php echo lang('ISO name') ?></th>
                     <th><?php echo lang('Options') ?></th>

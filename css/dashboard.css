@@ -94,7 +94,7 @@ color: #f74e4d;
 }
 .nav-sidebar > li > a {
   padding-right: 20px;
-  padding-left: 30px;
+  padding-left: 15px;
 }
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,

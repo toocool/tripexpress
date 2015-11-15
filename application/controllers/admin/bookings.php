@@ -7,6 +7,7 @@ class Bookings extends CI_Controller {
 		parent::__construct();
 		$this->is_logged_in();
 		$this->load->helper('language');
+		$this->lang->load('bookings', $this->session->userdata('language'));
 	}
 	function index(){
 		$this->list_bookings();
