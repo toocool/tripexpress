@@ -12,6 +12,9 @@ $lang['First name'] = "First name";
 $lang['Last name'] = "Last name";
 $lang['ID number'] = "ID number";
 $lang['Edit tour'] = "Edit tour";
+$lang['Status'] = "Status";
+$lang['Inactive'] = "Inactive";
+$lang['Active'] = "Active";
 
 
 ?>

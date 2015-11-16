@@ -1,12 +1,12 @@
 <?php
 Class Tour extends CI_Model
 {
-	
+
 	function show_tours()
 	{
 		$this->db->order_by('tour_id','desc');
 		$query = $this->db->get('tours');
-	 	
+
 	 	return $query->result();
 
 	}
@@ -15,7 +15,7 @@ Class Tour extends CI_Model
 		$this->db->order_by('booking_id','desc');
 		$this->db->where('tour_id', $id);
 		$query = $this->db->get('bookings');
-	 	
+
 	 	return $query->result();
 
 	}
@@ -32,12 +32,12 @@ Class Tour extends CI_Model
 	}
 	function save_tour($data, $id)
 	{
-		
+
 		$data['from_start_time'] = date('Y-m-d', strtotime(element('from_start_date', $data))). ' ' .strtotime(element('from_start_time', $data));
 		$crop_data = elements(array('from','to','available_seats','start_price','from_start_time'), $data);
 		$this->db->where('tour_id', $id);
 		$this->db->update('tours', $crop_data);
-		
+
 	}
 	function create_tour($data)
 	{
@@ -57,7 +57,7 @@ Class Tour extends CI_Model
 		$query = $this->db->get('destinations');
 		if ($query->num_rows() > 0)
 		{
-		   $row = $query->row(); 
+		   $row = $query->row();
 		   return $row->city;
 		}
 
@@ -66,7 +66,7 @@ Class Tour extends CI_Model
 		$query = $this->db->get('destinations');
 		if ($query->num_rows() > 0)
 		{
-		   return $query->result(); 
+		   return $query->result();
 		}
 	}
 	function get_company_info()
@@ -85,8 +85,15 @@ Class Tour extends CI_Model
 		$query = $this->db->get('currency');
 		if ($query->num_rows() > 0)
 		{
-		   $row = $query->row(); 
+		   $row = $query->row();
 		   return $row->symbol;
+		}
+	}
+	static function status($departure_time){
+		if ($departure_time < date("Y-m-d H:i:s")) {
+			echo '<span class="label label-default">'.lang('Inactive').'</span>';
+		}else{
+			echo '<span class="label label-success">'.lang('Active').'</span>';
 		}
 	}
 }

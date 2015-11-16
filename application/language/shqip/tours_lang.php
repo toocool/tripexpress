@@ -12,6 +12,9 @@ $lang['First name'] = "Emri";
 $lang['Last name'] = "Mbiemri";
 $lang['ID number'] = "Numri identifikues";
 $lang['Edit tour'] = "Ndrysho të dhënat";
+$lang['Status'] = "Statusi";
+$lang['Inactive'] = "Inaktiv";
+$lang['Active'] = "Aktiv";
 
 
 ?>

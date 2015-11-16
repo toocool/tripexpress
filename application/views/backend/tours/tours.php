@@ -25,6 +25,7 @@
                     <th><?php echo lang('Total seats') ;?></th>
                     <th><?php echo lang('Price') ;?></th>
                     <th><?php echo lang('Date created') ;?></th>
+                    <th><?php echo lang('Status') ?></th>
                     <th><?php echo lang('Options') ;?></th>
                   </tr>
                 </thead>
@@ -44,6 +45,7 @@
                       <td><?php echo strtoupper($tour->available_seats) ?></td>
                       <td><?php echo strtoupper($tour->start_price) ?> <?php echo $this->tour->show_symbol($company_info->company_currency) ?></td>
                       <td><?php echo date('d/m/Y', strtotime($tour->date_created))  ?></td>
+                      <td style="text-align:center"><?php tour::status($tour->from_start_time) ?></td>
                       <td style="text-align:center" width="20%">
                         <div class="btn-group" role="group">
                           <a href="<?php echo base_url('admin/tours/list_passangers/'.$tour->tour_id); ?>" class="btn btn-default btn-xs"><span class="icon-list" style="color:grey"></span> <?php echo lang('Passangers list') ?></a>
