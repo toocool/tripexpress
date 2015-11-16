@@ -96,8 +96,8 @@
 </div>
 
 <div class="col-sm-12 col-md-7" >
-  <div class="row booking_results"><h2 class="text-muted" style="text-align:center; margin-top: 20%;">Your search results will be displayed here</h2></div>
-  <button  class="btn btn-success btn-lg" id="next_step" ><span class="icon-arrow-right-3"></span> Next</button>
+  <div class="row booking_results"><h2 class="text-muted" style="text-align:center; margin-top: 20%;"><?php echo lang('Your search results will be displayed here'); ?></h2></div>
+  <button  class="btn btn-success btn-lg" id="next_step" ><span class="icon-arrow-right-3"></span> <?php echo lang('Next');?></button>
 
 </div>
 
@@ -131,6 +131,12 @@
 
   var base_url = "<?php echo base_url(); ?>admin/";
   var currency = "EUR"; //$this->booking->show_symbol($company_info->company_currency
+  var destination = "<?php echo lang('Destination');?>";
+  var time = "<?php echo lang('Departure time');?>";
+  var price = "<?php echo lang('Price');?>";
+  var currently = "<?php echo lang('Currently there are no tours available');?>";
+  var from = "<?php echo lang('from');?>";
+  var to = "<?php echo lang('to');?>";
 </script>
 
 <script type="text/javascript" src="<?php echo base_url() ?>js/ajax.js"></script>

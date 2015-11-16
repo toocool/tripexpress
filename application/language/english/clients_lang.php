@@ -7,5 +7,11 @@ $lang['Total tickets'] = "Total tickets";
 $lang['Options'] = "Options";
 $lang['Booking history'] = "Booking history";
 $lang['Search client'] = "Search client";
+$lang['Departure'] = "Departure";
+$lang['Arrival'] = "Arrival";
+$lang['Direction'] = "Direction";
+$lang['One way'] = "One way";
+$lang['Returning'] = "Returning";
+
 
 ?>

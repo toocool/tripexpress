@@ -21,7 +21,7 @@ $(document).ready(function(){
 
               if(obj.length === 0){
                 $('#next_step').hide().attr( "disabled", "disabled" );
-                tours = '<h2 class="text-muted" style="text-align:center; margin-top: 20%;">Currently there are no tours available<br/> from <strong>'+$("#from option:selected").text()+'</strong> to <strong>'+$("#to option:selected").text()+'</strong></h2>';
+                tours = '<h2 class="text-muted" style="text-align:center; margin-top: 20%;">'+currently+'<br/> '+from+' <strong>'+$("#from option:selected").text()+'</strong> '+to+' <strong>'+$("#to option:selected").text()+'</strong></h2>';
               }
               else{
                 $('#next_step').show().attr( "disabled", "disabled" );
@@ -30,9 +30,9 @@ $(document).ready(function(){
                 tours += ('<table class="table table-bordered">');
                 tours += ('<thead>');
                 tours += ('<th></th>');
-                tours += ('<th>Destination</th>');
-                tours += ('<th>Time</th>');
-                tours += ('<th>Price</th> ');
+                tours += ('<th>'+destination+'</th>');
+                tours += ('<th>'+time+'</th>');
+                tours += ('<th>'+price+'</th> ');
                 tours += ('</thead>');
                 tours += ('<tbody id="from_results">');
 
@@ -60,9 +60,9 @@ $(document).ready(function(){
                     tours += ('<table class="table table-bordered">');
                     tours += ('<thead>');
                     tours += ('<th></th>');
-                    tours += ('<th>Destination</th>');
-                    tours += ('<th>Time</th>');
-                    tours += ('<th>Price</th> ');
+                    tours += ('<th>'+destination+'</th>');
+                    tours += ('<th>'+time+'</th>');
+                    tours += ('<th>'+price+'</th> ');
                     tours += ('</thead>');
                     tours += ('<tbody id="from_results">');
 

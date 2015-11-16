@@ -12,6 +12,11 @@ $lang['Edit'] = "Edit";
 $lang['Delete'] = "Delete";
 $lang['Invoice'] = "Invoice";
 $lang['Submit'] = "Submit";
+$lang['Passangers list'] = "Passangers list";
+$lang['Block'] = "Block";
+$lang['Unblock'] = "Unblock";
+
+
 
 
 ?>

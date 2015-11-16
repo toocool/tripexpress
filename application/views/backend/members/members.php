@@ -51,8 +51,14 @@
                       <td><?php echo lang($user->role) ?></td>
                       <td style="text-align:center">
                         <div class="btn-group" role="group">
+                            <?php if($user->blocked == 1){?>
+                                <a href="<?php echo base_url('admin/members/unblock_member/'.$user->id); ?>" class="btn btn-default btn-xs active"><span class="icon-plus" style="color:blue"></span> <?php echo lang('Unblock'); ?></a>
+                            <?php }else{?>
+                                <a href="<?php echo base_url('admin/members/block_member/'.$user->id); ?>" class="btn btn-default btn-xs"><span class="icon-minus" style="color:blue"></span> <?php echo lang('Block'); ?></a>
+                            <?php }?>
                           <a href="<?php echo base_url('admin/members/edit_member/'.$user->id); ?>" class="btn btn-default btn-xs"><span class="icon-pencil" style="color:green"></span> <?php echo lang('Edit'); ?></a>
                           <a href="<?php echo base_url('admin/members/delete_member/'.$user->id); ?>" onclick="return confirm('Are you sure you want to delete this member?')" class="btn btn-default btn-xs"><span class="icon-cancel-2" style="color:red"></span> <?php echo lang('Delete'); ?></a>
+
                         </div>
                       </td>
                     </tr>

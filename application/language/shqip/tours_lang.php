@@ -8,8 +8,10 @@ $lang['Price'] = "Çmimi";
 $lang['Date created'] = "Data e krijimit";
 $lang['Options'] = "Opsionet";
 $lang['Create tour'] = "Shto udhëtim të ri";
-$lang['Edit'] = "Ndrysho";
-$lang['Delete'] = "Fshij";
-$lang['Passangers list'] = "Lista e pasagjerëve";
+$lang['First name'] = "Emri";
+$lang['Last name'] = "Mbiemri";
+$lang['ID number'] = "Numri identifikues";
+$lang['Edit tour'] = "Ndrysho të dhënat";
+
 
 ?>

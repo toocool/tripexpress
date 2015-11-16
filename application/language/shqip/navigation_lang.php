@@ -1,7 +1,7 @@
 <?php
 $lang['Dashboard'] = "Kopertina";
 $lang['Bookings'] = "Rezervimet";
-$lang['Members'] = "Pëdoruesit";
+$lang['Members'] = "Përdoruesit";
 $lang['Destinations'] = "Destinacionet";
 $lang['Tours'] = "Udhëtimet";
 $lang['Clients'] = "Klientela";
@@ -12,6 +12,11 @@ $lang['Edit'] = "Ndrysho";
 $lang['Delete'] = "Fshij";
 $lang['Invoice'] = "Faktura";
 $lang['Submit'] = "Aktualizo";
+$lang['Passangers list'] = "Pasagjerët";
+$lang['Block'] = "Blloko";
+$lang['Unblock'] = "Zhblloko";
+
+
 
 
 ?>

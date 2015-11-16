@@ -46,9 +46,9 @@
                       <td><?php echo date('d/m/Y', strtotime($tour->date_created))  ?></td>
                       <td style="text-align:center" width="20%">
                         <div class="btn-group" role="group">
-                          <a href="<?php echo base_url('admin/tours/list_passangers/'.$tour->tour_id); ?>" class="btn btn-default btn-xs"><span class="icon-list" style="color:grey"></span> Passangers list</a>
-                          <a href="<?php echo base_url('admin/tours/edit_tour/'.$tour->tour_id); ?>" class="btn btn-default btn-xs"><span class="icon-pencil" style="color:green"></span> Edit</a>
-                          <a href="<?php echo base_url('admin/tours/delete_tour/'.$tour->tour_id); ?>" class="btn btn-default btn-xs" onclick="return confirm('Are you sure you want to delete this tour?')"><span class="icon-cancel-2" style="color:red"></span> Delete</a>
+                          <a href="<?php echo base_url('admin/tours/list_passangers/'.$tour->tour_id); ?>" class="btn btn-default btn-xs"><span class="icon-list" style="color:grey"></span> <?php echo lang('Passangers list') ?></a>
+                          <a href="<?php echo base_url('admin/tours/edit_tour/'.$tour->tour_id); ?>" class="btn btn-default btn-xs"><span class="icon-pencil" style="color:green"></span> <?php echo lang('Edit') ?></a>
+                          <a href="<?php echo base_url('admin/tours/delete_tour/'.$tour->tour_id); ?>" class="btn btn-default btn-xs" onclick="return confirm('Are you sure you want to delete this tour?')"><span class="icon-cancel-2" style="color:red"></span> <?php echo lang('Delete') ?></a>
                         </div>
                       </td>
                     </tr>

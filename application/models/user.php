@@ -5,6 +5,7 @@ Class User extends CI_Model
 	{
 	   $this->db->where('username', $this->input->post('username'));
 	   $this->db->where('password', MD5($this->input->post('password')));
+	   $this->db->where('blocked', "0");
 	  // $this -> db -> limit(1);
 
 	   $query = $this->db->get('users');
@@ -54,6 +55,18 @@ Class User extends CI_Model
 	{
 		$this->db->where('id', $id);
      	$this->db->delete('users');
+	}
+	function block_member($id)
+	{
+		$this->db->set('blocked', "1");
+		$this->db->where('id', $id);
+     	$this->db->update('users');
+	}
+	function unblock_member($id)
+	{
+		$this->db->set('blocked', "0");
+		$this->db->where('id', $id);
+     	$this->db->update('users');
 	}
 	function member_role($username){
 		$this->db->select('role');

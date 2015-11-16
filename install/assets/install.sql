@@ -52,11 +52,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `role` enum('0','1','2') NOT NULL DEFAULT '0' COMMENT '0 - Administrator, 1 - Worker, 2 - Reseller',
+  `language` varchar(20) NOT NULL,
+  `blocked` enum('0','1') NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `password`, `role`, `language`) VALUES
-(1, 'John', 'Doe', 'admin', 'youremail@example.com', '2ab64f4ee279e5baf7ab7059b15e6d12', '0', 'english');
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `email`, `password`, `role`, `language`, `blocked`) VALUES
+(1, 'John', 'Doe', 'admin', 'youremail@example.com', '2ab64f4ee279e5baf7ab7059b15e6d12', '0', 'english', '0');
 
 DROP TABLE IF EXISTS `currency`;
 CREATE TABLE IF NOT EXISTS `currency` (

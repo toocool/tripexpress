@@ -1,16 +1,16 @@
  <div class="col-sm-10 col-md-11 main">
           <div class="row" >
             <div class="col-sm-12 col-md-12" style="padding-left:0px;">
-                <h1 class="page-header"><a href="<?php echo base_url().'admin/tours' ?>"><i class="icon-arrow-left-3"></i></a> Add Tour</h1>
+                <h1 class="page-header"><a href="<?php echo base_url().'admin/tours' ?>"><i class="icon-arrow-left-3"></i></a> <?php echo lang('Create tour'); ?></h1>
             </div>
-          </div>  
+          </div>
           <div class="row">
             <?php //echo  validation_errors(); ?>
             <?php echo form_open('admin/tours/add_tour'); ?>
               <div class="col-sm-4 col-md-4">
-             
+
                 <div class="form-group">
-                  <label for="city">Departure</label>
+                  <label for="city"><?php echo lang('Departure'); ?></label>
                   <select class="form-control" name="from" >
                     <option value="0"></option>
                     <?php foreach($cities as $city):?>
@@ -20,7 +20,7 @@
                   <?php echo form_error('from'); ?>
                 </div>
                 <div  class="form-group">
-                  <label for="dateandtime">Departure date and time</label>
+                  <label for="dateandtime"><?php echo lang('Departure time'); ?></label>
                   <div class="row">
                       <div class="col-md-6  date" id='datepicker1'>
                           <input type="text" class="form-control" name="from_start_date" data-date-format="DD-MM-YYYY" value="<?php echo set_value('from_start_date'); ?>">
@@ -57,7 +57,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="start_price">Ticket price</label>
+                  <label for="start_price"><?php echo lang('Price'); ?></label>
                   <input type="text" class="form-control" name="start_price" value="<?php echo set_value('start_price'); ?>">
                   <?php echo form_error('start_price'); ?>
                 </div>
@@ -65,7 +65,7 @@
 
               <div class="col-sm-4 col-md-4">
                 <div class="form-group">
-                  <label for="city">Arrival</label>
+                  <label for="city"><?php echo lang('Arrival'); ?></label>
                    <select class="form-control" name="to" value="<?php echo set_value('city'); ?>">
                       <option value="0"></option>
                     <?php foreach($cities as $city):?>
@@ -75,16 +75,15 @@
                   <?php echo form_error('to'); ?>
                 </div>
                 <div class="form-group">
-                  <label for="available_seats">Total available seats</label>
+                  <label for="available_seats"><?php echo lang('Total seats'); ?></label>
                   <input type="text" class="form-control" name="available_seats" value="<?php echo set_value('available_seats'); ?>">
                   <?php echo form_error('available_seats'); ?>
-                </div> 
+                </div>
               </div>
 
               <div class="col-sm-12 col-md-12">
-                <button type="submit" class="btn btn-success" value="submit"><span class="icon-checkmark"></span> Submit</button>
+                <button type="submit" class="btn btn-success" value="submit"><span class="icon-checkmark"></span> <?php echo lang('Submit'); ?></button>
               </div>
             </form>
-          </div> 
+          </div>
          </div>
-

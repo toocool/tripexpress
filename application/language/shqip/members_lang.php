@@ -1,5 +1,4 @@
 <?php
-$lang['Members'] = "Përdoruesit";
 $lang['Username'] = "Pseudonimi";
 $lang['First name'] = "Emri";
 $lang['Last name'] = "Mbiemri";

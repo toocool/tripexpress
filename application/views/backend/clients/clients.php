@@ -7,7 +7,7 @@
             <div class="col-sm-4 col-md-4" style="padding-left:0px;">
               <form class="form-inline" method="POST" action="clients/list_client">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="client_search" name="client_search">
+                  <input type="text" class="form-control" id="client_search" name="client_search" placeholder="<?php echo lang('ID number') ?>">
                 </div>
                 <button type="submit" class="btn btn-primary"><?php echo lang('Search client'); ?></button>
               </form>
@@ -18,7 +18,7 @@
               <table class="table table-bordered">
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <th></th>
                     <th><?php echo lang('ID number'); ?></th>
                     <th><?php echo lang('First name'); ?></th>
                     <th><?php echo lang('Last name'); ?></th>

@@ -101,6 +101,19 @@ class Members extends CI_Controller {
 		redirect('admin/members', 'refresh');
 	}
 
+	function block_member($id){
+		$this->load->model('user');
+		$this->session->set_flashdata('message', 'Member successfully blocked');
+		$this->user->block_member($id);
+		redirect('admin/members', 'refresh');
+	}
+	function unblock_member($id){
+		$this->load->model('user');
+		$this->session->set_flashdata('message', 'Member successfully unblocked');
+		$this->user->unblock_member($id);
+		redirect('admin/members', 'refresh');
+	}
+
 	public function _username_check($str)
 	{
 		$id = $this->uri->segment(4);
