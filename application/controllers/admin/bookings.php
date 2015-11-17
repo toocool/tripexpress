@@ -140,7 +140,7 @@ class Bookings extends CI_Controller {
 		$identification_nr = $this->input->post('identification_number');
 		$tickets = $this->input->post('tickets');
 
-		if(!empty($this->input->post('tour_back_id')))
+		if($this->input->post('tour_back_id') != null)
 			$returning = 2;
 		else
 			$returning = 1;
