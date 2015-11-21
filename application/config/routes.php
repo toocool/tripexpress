@@ -38,7 +38,10 @@
 |
 */
 
-$route['default_controller'] = "login";
+$route['default_controller'] = "index";
+$route['booking/(:any)'] = "booking/$1";
+
+$route['admin'] = "login";
 $route['admin/([a-z]+)/(\d+)'] = "$1/id_$2";
 //$route['t-admin'] = "backend";
 $route['404_override'] = '';

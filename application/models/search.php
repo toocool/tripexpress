@@ -8,10 +8,10 @@ Class Search extends CI_Model
 	public $returning = 1;
 	public $identification_nr = '';
 	public $created_by;
-	
+
 
 	/*
-	* 
+	*
 	* Static function which find tour by id
 	* Return: whole tour data
 	*/
@@ -25,8 +25,8 @@ Class Search extends CI_Model
 		$tour_id = $inputs['tour_id'];
 		!empty($inputs['tour_back_id']) ? $tour_back_id = $inputs['tour_back_id'] : $tour_back_id = FALSE;
 
-		$query = $CI->db->query("SELECT tour_id, from_start_time,start_price 
-									FROM tours 
+		$query = $CI->db->query("SELECT tour_id, from_start_time,start_price
+									FROM tours
 									WHERE tour_id = '$tour_id'");
 
 		if ($query->num_rows() > 0) {
@@ -37,8 +37,8 @@ Class Search extends CI_Model
 
 		//if it is return ticket
 		if($tour_back_id){
-			$query = $CI->db->query("SELECT tour_id, from_start_time,start_price 
-									FROM tours 
+			$query = $CI->db->query("SELECT tour_id, from_start_time,start_price
+									FROM tours
 									WHERE tour_id = '$tour_back_id'");
 			if ($query->num_rows() > 0) {
 				foreach($query->result() as $row) {
@@ -52,7 +52,7 @@ Class Search extends CI_Model
 	}
 
 	/*
-	* 
+	*
 	* Static function which loads the search view
 	* Return: the Search view
 	*/
@@ -64,21 +64,22 @@ Class Search extends CI_Model
 		$query = $CI->db->get('destinations');
 		if ($query->num_rows() > 0)
 		{
-		   $data['cities'] =  $query->result(); 
+		   $data['cities'] =  $query->result();
 		}
-		
+
 		return $CI->load->view('search_form', $data, true);
 	}
 
+
 	/*
-	* 
+	*
 	* public function which saves tickets
 	* Return: boolen
 	*/
 	public function save()
 	{
-		$this->db->insert('bookings', $this); 
-		
+		$this->db->insert('bookings', $this);
+
 	}
 
 
