@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -54,6 +53,7 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right" role="menu">
                   <li><a href="<?php echo base_url(); ?>admin/language/change/english">English</a></li>
+                  <li><a href="<?php echo base_url(); ?>admin/language/change/kinyarwanda">Kinyarwanda</a></li>
                   <li><a href="<?php echo base_url(); ?>admin/language/change/shqip">Shqip</a></li>
                 </ul>
               </div>
