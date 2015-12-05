@@ -55,7 +55,7 @@
                   <li><a href="<?php echo base_url(); ?>admin/language/change/english">English</a></li>
                   <li><a href="<?php echo base_url(); ?>admin/language/change/kinyarwanda">Kinyarwanda</a></li>
                   <li><a href="<?php echo base_url(); ?>admin/language/change/shqip">Shqip</a></li>
-                  <li><a href="<?php echo base_url(); ?>admin/language/change/mакедонски">Македонски</a></li>
+                  <li><a href="<?php echo base_url(); ?>admin/language/change/makedonski">Македонски</a></li>
                 </ul>
               </div>
             </li>
