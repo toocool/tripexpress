@@ -32,10 +32,22 @@ class Tours extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 		$this->form_validation->set_rules('from', 'Departure city', 'trim|required|callback__citynull_check');
 		$this->form_validation->set_rules('to', 'Arrival city', 'trim|required|callback__citynull_check');
-		$this->form_validation->set_rules('from_start_date', 'Start date', 'trim|required');
-		$this->form_validation->set_rules('from_start_time', 'Start time', 'trim|required');
 		$this->form_validation->set_rules('available_seats', 'Available seats', 'trim|required');
 		$this->form_validation->set_rules('start_price', 'Start price', 'trim|required');
+		$this->form_validation->set_rules('tour_type', 'Tour type', 'string|trim|required');
+
+		if( $this->input->post('tour_type') == 'Automatic')
+		{
+			$this->form_validation->set_rules('automatic_from', 'From date', 'trim|required');
+			$this->form_validation->set_rules('automatic_until', 'Until time', 'trim|required');
+			$this->form_validation->set_rules('automatic_day', 'Day', 'trim');
+			$this->form_validation->set_rules('automatic_time', 'Time', 'trim|required');
+		}
+		else
+		{
+			$this->form_validation->set_rules('from_start_date', 'Start date', 'trim|required');
+			$this->form_validation->set_rules('from_start_time', 'Start time', 'trim|required');
+		}
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -50,10 +62,14 @@ class Tours extends CI_Controller {
 			$this->load->model('tour');
 			$data = $this->input->post();
 			$this->tour->create_tour($data);
-			$this->session->set_flashdata('message', 'Tour successfully created');
+			if($data['tour_type'] == 'Manual')
+				$this->session->set_flashdata('message', 'Tour successfully created');
+			else
+				$this->session->set_flashdata('message', 'Tours successfully created');
 			redirect('admin/tours', 'refresh');
 		}
 	}
+
 	function edit_tour($id)
 	{
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');

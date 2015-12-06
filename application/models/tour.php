@@ -41,10 +41,38 @@ Class Tour extends CI_Model
 	}
 	function create_tour($data)
 	{
-		$data['from_start_time'] = date('Y-m-d', strtotime(element('from_start_date', $data))). ' ' .element('from_start_time', $data);
-		$crop_data = elements(array('from','to','available_seats','start_price','from_start_time'), $data);
-		$add_tour = $this->db->insert_string('tours', $crop_data);
-		$this->db->query($add_tour);
+		if($data['tour_type'] == 'Manual')
+		{
+			$data['from_start_time'] = date('Y-m-d', strtotime(element('from_start_date', $data))). ' ' .element('from_start_time', $data);
+			$crop_data = elements(array('from','to','available_seats','start_price','from_start_time'), $data);
+			$add_tour = $this->db->insert_string('tours', $crop_data);
+			$this->db->query($add_tour);
+		}
+		elseif($data['tour_type'] == 'Automatic')
+		{
+			$startDate = date('Y-m-d' ,strtotime( $data['automatic_from'] ));
+			$endDate = date('Y-m-d' ,strtotime( $data['automatic_until'] ));
+
+			if($data['automatic_day'] == 'Day')
+			{
+				for($i = strtotime($startDate); $i <= strtotime($endDate); $i = strtotime('+1 day', $i)){
+					$data['from_start_time'] = date('Y-m-d', $i).' '.element('automatic_time', $data);// date('Y-m-d', strtotime(element('from_start_date', $data))). ' ' .element('from_start_time', $data);
+					$crop_data = elements(array('from','to','available_seats','start_price','from_start_time'), $data);
+					$add_tour = $this->db->insert_string('tours', $crop_data);
+					$this->db->query($add_tour);
+				}
+			}else{
+				for($i = strtotime($data['automatic_day'], strtotime($startDate)); $i <= strtotime($endDate); $i = strtotime('+1 week', $i)){
+					$data['from_start_time'] = date('Y-m-d', $i).' '.element('automatic_time', $data);// date('Y-m-d', strtotime(element('from_start_date', $data))). ' ' .element('from_start_time', $data);
+					$crop_data = elements(array('from','to','available_seats','start_price','from_start_time'), $data);
+					$add_tour = $this->db->insert_string('tours', $crop_data);
+					$this->db->query($add_tour);
+				}
+			}
+		}else{
+			die('Incorrect tour type! Contact administrator');
+		}
+
 	}
 	function delete_tour($id)
 	{

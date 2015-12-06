@@ -15,7 +15,7 @@
           </div>
           <div class="row">
             <div class="table-responsive">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
                     <th></th>
@@ -27,8 +27,7 @@
                     <th><?php echo lang('Departure time');?></th>
                     <th><?php echo lang('Return time');?></th>
                     <th><?php echo lang('Booked by');?></th>
-                    <th><?php echo lang('Modified by');?></th>
-                    <th><?php echo lang('Options');?></th>
+                    <th ><?php echo lang('Options');?></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -58,11 +57,10 @@
                         <?php } ?>
                       </td>
                       <td><?php echo $this->booking->get_username($booking->created_by) ?></td>
-                      <td><?php echo $this->booking->get_username($booking->modified_by) ?></td>
                       <td style="text-align:center">
                         <div class="btn-group" role="group">
                           <a href="<?php echo base_url('admin/bookings/pdf/'.$booking->booking_id); ?>" target="_blank" class="btn btn-default btn-xs"><span class="icon-file-pdf" style="color:red"></span> <?php echo lang('Invoice')?></a>
-                          <a href="<?php echo base_url('admin/bookings/edit_booking/'.$booking->booking_id); ?>" class="btn btn-default btn-xs"><span class="icon-pencil" style="color:green"></span> <?php echo lang('Edit')?></a>
+                          <!-- <a href="<?php echo base_url('admin/bookings/edit_booking/'.$booking->booking_id); ?>" class="btn btn-default btn-xs"><span class="icon-pencil" style="color:green"></span> <?php echo lang('Edit')?></a> -->
                           <a href="<?php echo base_url('admin/bookings/delete_booking/'.$booking->booking_id); ?>" onclick="return confirm('Are you sure you want to delete this booking ticket?')" class="btn btn-default btn-xs"><span class="icon-cancel-2" style="color:red"></span> <?php echo lang('Delete')?></a>
                         </div>
                       </td>

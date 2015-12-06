@@ -1,13 +1,15 @@
 
         <div class="col-sm-10 col-md-11 main">
           <div class="row" >
-            <div class="col-sm-10 col-md-10" style="padding-left:0px;">
+            <div class="col-sm-8 col-md-10" style="padding-left:0px;">
                 <h1 class="page-header"><?php echo lang('Tours') ;?></h1>
             </div>
-            <div class="col-sm-2 col-md-2">
-               <a href="<?php echo base_url('admin/tours/add_tour'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> <?php echo lang('Create tour') ;?> </button></a>
+            <div class="col-sm-8 col-md-2  " >
+               <a href="<?php echo base_url('admin/tours/add_tour'); ?>" class="btn btn-primary top_button"><span class="icon-plus-2"></span> <?php echo lang('Create tour') ;?> </a>
             </div>
+
           </div>
+
           <div class="row">
               <?php
                 if ($this->session->flashdata('message') != '') echo '<div class="alert alert-success" role="alert">' . $this->session->flashdata('message') . '</div>';
@@ -15,7 +17,7 @@
           </div>
           <div class="row">
             <div class="table-responsive">
-              <table class="table table-bordered">
+              <table class="table table-bordered table-striped ">
                 <thead>
                   <tr>
                     <th></th>
@@ -26,7 +28,7 @@
                     <th><?php echo lang('Price') ;?></th>
                     <th><?php echo lang('Date created') ;?></th>
                     <th><?php echo lang('Status') ?></th>
-                    <th><?php echo lang('Options') ;?></th>
+                    <th width="22%"><?php echo lang('Options') ;?></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -38,13 +40,13 @@
                       <td><?php echo $this->tour->get_city_name($tour->from) ?></td>
                       <td><?php echo $this->tour->get_city_name($tour->to) ?></td>
                       <td>
-                        <span class="icon-calendar" style="color:red;"></span> <?php echo date('d/m/Y', strtotime($tour->from_start_time)) ?>
+                        <span class="icon-calendar" style="color:red;"></span> <?php echo date('d.m.Y', strtotime($tour->from_start_time)) ?>
                         <div class="pull-right"><span class="icon-clock" style="color:red;"></span> <?php echo date('H:i', strtotime($tour->from_start_time)) ?></div>
                       </td>
 
                       <td><?php echo strtoupper($tour->available_seats) ?></td>
                       <td><?php echo strtoupper($tour->start_price) ?> <?php echo $this->tour->show_symbol($company_info->company_currency) ?></td>
-                      <td><?php echo date('d/m/Y', strtotime($tour->date_created))  ?></td>
+                      <td><?php echo date('d.m.Y', strtotime($tour->date_created))  ?></td>
                       <td style="text-align:center"><?php tour::status($tour->from_start_time) ?></td>
                       <td style="text-align:center" width="20%">
                         <div class="btn-group" role="group">

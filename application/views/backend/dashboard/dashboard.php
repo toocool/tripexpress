@@ -10,7 +10,7 @@
                 <div class="panel-heading"><strong><?php echo lang('Your stats'); ?></strong></div>
 
 
-                <table class="table table-bordered">
+                <table class="table table-bordered table-striped">
 
                   <tbody>
                     <?php $this->load->model('dashboard_stats'); ?>
@@ -54,7 +54,7 @@
               <div class="panel panel-default">
                 <div class="panel-heading"><strong><?php echo lang('Available tours'); ?></strong></div>
 
-                <table class="table table-bordered">
+                <table class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th><?php echo lang('Departure'); ?></th>

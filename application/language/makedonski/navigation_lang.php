@@ -12,7 +12,7 @@ $lang['Edit'] = "Промени";
 $lang['Delete'] = "Избриши";
 $lang['Invoice'] = "Фактура";
 $lang['Submit'] = "Активирај";
-$lang['Passangers list'] = "Листа на патници";
+$lang['Passangers list'] = "Патници";
 $lang['Block'] = "Бљокирај";
 $lang['Unblock'] = "Дебљокирај";
 

@@ -16,5 +16,9 @@ $lang['Status'] = "Status";
 $lang['Inactive'] = "Inactive";
 $lang['Active'] = "Active";
 
+$lang['Period'] = "Period";
+$lang['From'] = "From date";
+$lang['Until'] = "Until date";
+
 
 ?>
