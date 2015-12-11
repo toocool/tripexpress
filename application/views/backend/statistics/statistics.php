@@ -33,6 +33,18 @@
                             });
                           </script>
               </div>
+              <div class="col-sm-2 col-md-2 ">
+                  <select class="form-control" name="members"   >
+                      <option value="null">All members</option>
+                      <?php
+                        foreach ($members as $member) {
+                            echo '<option value="'.$member->id .'" '.set_select('members', $member->id, $member->id == $member_filter).'>'.$member->username .'</option>';
+                        }
+                      ?>
+                </select>
+              </span>
+
+            </div>
               <div class="col-sm-2 col-md-2 date" id="datepicker2" style="padding-left:0px;">
                 <button type="submit" class="btn btn-primary" value="submit"><?php echo lang('Update');?></button>
               </div>
@@ -52,10 +64,10 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><?php echo $this->stats->total_tickets($from, $to) ?></td>
-                    <td><?php echo $this->stats->total_income_one_way($from, $to) ?> <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
-                    <td><?php echo $this->stats->total_income_round_trip($from, $to) ?> <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
-                    <td><?php echo $this->stats->total_income_one_way($from, $to) + $this->stats->total_income_round_trip($from, $to) ?>.00 <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
+                    <td><?php echo $this->stats->total_tickets($from, $to, $member_filter) ?></td>
+                    <td><?php echo $this->stats->total_income_one_way($from, $to, $member_filter) ?> <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
+                    <td><?php echo $this->stats->total_income_round_trip($from, $to, $member_filter) ?> <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
+                    <td><?php echo $this->stats->total_income_one_way($from, $to, $member_filter) + $this->stats->total_income_round_trip($from, $to, $member_filter) ?>.00 <?php echo $this->stats->show_symbol($company_info->company_currency) ?></td>
                   </tr>
                 </tbody>
               </table>
@@ -76,7 +88,7 @@
           // Chart data records -- each entry in this array corresponds to a point on
           // the chart.
 
-          data: <?php echo json_encode($this->stats->total_tickets_per_day($from, $to)); ?>,
+          data: <?php echo json_encode($this->stats->total_tickets_per_day($from, $to, $member_filter)); ?>,
           // The name of the data record attribute that contains x-values.
           xkey: 'month',
           // A list of names of data record attributes that contain y-values.

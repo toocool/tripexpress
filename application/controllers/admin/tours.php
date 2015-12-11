@@ -28,6 +28,7 @@ class Tours extends CI_Controller {
 		$data['title'] = 'Passangers list';
 		$this->load->view('includes/template', $data);
 	}
+
 	function add_tour(){
 		$this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
 		$this->form_validation->set_rules('from', 'Departure city', 'trim|required|callback__citynull_check');
@@ -129,4 +130,8 @@ class Tours extends CI_Controller {
 		}
 	}
 }
+
+
+
+
 ?>

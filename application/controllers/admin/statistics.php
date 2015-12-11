@@ -16,6 +16,8 @@ class Statistics extends CI_Controller {
 		$data['title'] = 'Statistics';
 		$data['from'] = date('Y-m-01');
 		$data['to'] = date('Y-m-t');
+		$data['member_filter'] = 'null';
+		$data['members'] = $this->stats->list_users();
 		$data['company_info'] = $this->stats->get_company_info();
 		$this->load->view('includes/template', $data);
 	}
@@ -24,11 +26,14 @@ class Statistics extends CI_Controller {
 		$this->load->model('stats');
 		$from_date = $this->input->post('from_date');
 		$to_date = $this->input->post('to_date');
+		$member_filter = $this->input->post('members');
 
 		$data['main_content'] = 'backend/statistics/statistics';
 		$data['title'] = 'Statistics';
 		$data['from'] = $from_date;
 		$data['to'] = $to_date;
+		$data['members'] = $this->stats->list_users();
+		$data['member_filter'] = $member_filter;
 		$data['company_info'] = $this->stats->get_company_info();
 		$this->load->view('includes/template', $data);
 	}
