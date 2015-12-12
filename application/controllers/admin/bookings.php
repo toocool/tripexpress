@@ -32,7 +32,14 @@ class Bookings extends CI_Controller {
 		$this->lang->load('bookings', $this->session->userdata('language'));
 		$this->load->library('pagination');
 		$config['base_url'] = base_url().'admin/bookings/list_bookings';
-		$config['total_rows'] = $this->db->count_all('bookings');
+
+		if($this->session->userdata['role'] == 2){
+			$this->db->where('created_by',$this->session->userdata['user_id']);
+			$config['total_rows'] = $this->db->count_all_results('bookings');
+		}else{
+			$config['total_rows'] = $this->db->count_all_results('bookings');
+		}
+
 		$config['per_page'] = 10;
 		$config["uri_segment"] = 4;
 		//pagination styling
@@ -47,7 +54,12 @@ class Bookings extends CI_Controller {
 		$this->load->model('booking');
 		$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 		//$data['bookings'] = $this->booking->show_bookings();
-		$data['bookings'] = $this->booking->show_bookings($config['per_page'], $page);
+		if($this->session->userdata['role'] == 2)
+			$data['bookings'] = $this->booking->show_bookings($config['per_page'], $page , $this->session->userdata['user_id']);
+		else
+			$data['bookings'] = $this->booking->show_bookings($config['per_page'], $page);
+
+
 		$data['links'] = $this->pagination->create_links();
 
 		$data['main_content'] = 'backend/bookings/bookings';

@@ -1,14 +1,15 @@
 <?php
 Class Booking extends CI_Model
 {
-	
-	function show_bookings($limit, $start)
+
+	function show_bookings($limit, $start, $user_id = '')
 	{
 		$this->db->limit($limit, $start);
 		$this->db->order_by('created_time','desc');
 		$this->db->from('bookings', 'tours');
 	 	$this->db->join('tours', 'tours.tour_id = bookings.tour_id');
-
+		if($user_id != '')
+			$this->db->where('created_by', $user_id);
 	 	$query = $this->db->get();
 	 	return $query->result();
 	}
@@ -29,7 +30,7 @@ Class Booking extends CI_Model
 	 	$query = $this->db->get('tours');
 	 	if ($query->num_rows() > 0)
 		{
-		   $row = $query->row(); 
+		   $row = $query->row();
 		   return $row->from_start_time;
 		}
 	}
@@ -39,7 +40,7 @@ Class Booking extends CI_Model
 		$query = $this->db->get('destinations');
 		if ($query->num_rows() > 0)
 		{
-		   $row = $query->row(); 
+		   $row = $query->row();
 		   return $row->city;
 		}
 
@@ -50,7 +51,7 @@ Class Booking extends CI_Model
 		$query = $this->db->get('users');
 		if ($query->num_rows() > 0)
 		{
-		   $row = $query->row(); 
+		   $row = $query->row();
 		   return $row->username;
 		}
 
@@ -58,27 +59,27 @@ Class Booking extends CI_Model
 
 	function check_available_tours($from, $to, $returning, $depart_date='', $return_date=''){
 	$data = array();
-		
+
 	$query_currency = $this->db->query("SELECT symbol,iso FROM currency JOIN settings ON settings.company_currency = currency.currency_id LIMIT 1");
 	$currency = $query_currency->row();
-	
-	if(isset($depart_date) && !empty($depart_date)) 
+
+	if(isset($depart_date) && !empty($depart_date))
 		$start_time = $depart_date;
-	else 
+	else
 		$start_time =  date('Y-m-d');
-	
+
 	$query = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE (`from` = '$from' AND `to` = '$to') AND `from_start_time` >= '$start_time'");
-	
+
 
 	if($returning == 'true'){ //false in quotes because php doest read it as boolean
-		if(isset($depart_date) && !empty($depart_date)) 
+		if(isset($depart_date) && !empty($depart_date))
 			$start_time = $depart_date;
-		else 
+		else
 			$start_time =  date('Y-m-d');
 
 		$query_back = $this->db->query("SELECT tour_id, from_start_time,start_price FROM tours WHERE (`from` = '$to' AND `to` = '$from') AND `from_start_time` > '$start_time'");
 	}
-	
+
 		if ($query->num_rows() > 0) {
 			$one_way = [];
 			foreach($query->result() as $row) {
@@ -90,7 +91,7 @@ Class Booking extends CI_Model
 			$returning = [];
 			foreach($query_back->result() as $row_back) {
     			$data[$row_back->tour_id] = ['ticket_type' => 'returning', 'start_time' => date('d.m.Y', strtotime($row_back->from_start_time)), 'start_price' => $row_back->start_price, 'currency' =>  $currency->symbol.' ('.$currency->iso.')'];
-    			
+
     		}
 		}
 
@@ -127,18 +128,18 @@ Class Booking extends CI_Model
 			return false;
 		}
 
-	 	
+
 	}
 	function save_booking($data, $id)
 	{
-		
+
 		$data['tour_id'] = element('choose_from', $data);
 		$data['tour_back_id']  = element('choose_back', $data);
 		$data['modified_by'] = $this->session->userdata['user_id'];
 		$crop_data = elements(array('tour_id','tour_back_id','booked_seats','client_firstname','client_lastname','identification_nr','returning','modified_by'), $data);
 		$this->db->where('booking_id', $id);
 		$this->db->update('bookings', $crop_data);
-		
+
 	}
 	function create_booking($data)
 	{
@@ -154,12 +155,12 @@ Class Booking extends CI_Model
 		$this->db->where('booking_id', $id);
      	$this->db->delete('bookings');
 	}
-	
+
 	function list_cities(){
 		$query = $this->db->get('destinations');
 		if ($query->num_rows() > 0)
 		{
-		   return $query->result(); 
+		   return $query->result();
 		}
 	}
 
@@ -170,7 +171,7 @@ Class Booking extends CI_Model
 		$query = $CI->db->get('currency');
 		if ($query->num_rows() > 0)
 		{
-		   $row = $query->row(); 
+		   $row = $query->row();
 		   return $row->symbol;
 		}
 	}

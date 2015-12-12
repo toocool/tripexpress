@@ -48,7 +48,7 @@
             <li> <a href="<?php echo base_url(); ?>login/logout"><span class="icon-switch"></span></a></li>
             <li>
               <div class="btn-group" style="margin-top:5px;padding-right:5px;padding-left:5px;">
-                <button type="button" class="btn btn-primary dropdown-toggle btn-xs" data-toggle="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle btn-xs" style="background:#2b2b2b;border:1px solid #FFF" data-toggle="dropdown">
                   <?php echo  ucfirst($this->session->userdata('language')) ?> <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right" role="menu">

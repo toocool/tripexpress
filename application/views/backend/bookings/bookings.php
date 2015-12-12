@@ -18,7 +18,7 @@
               <table class="table table-bordered table-striped">
                 <thead>
                   <tr>
-                    <th></th>
+                    <th><?php echo $this->session->userdata['user_id']?></th>
                     <th><?php echo lang('First name');?></th>
                     <th><?php echo lang('Last name');?></th>
                     <th><?php echo lang('ID number');?></th>

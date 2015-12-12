@@ -5,7 +5,7 @@
                 <h1 class="page-header"><?php echo lang('Members');?></h1>
             </div>
             <div class="col-sm-2 col-md-2">
-               <a href="<?php echo base_url('admin/members/add_member'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> <?php echo lang('Add Member');?></button></a>
+               <a href="<?php echo base_url('admin/members/add_member'); ?>"><button type="button" class="btn btn-primary top_button"><span class="icon-plus-2"></span> <?php echo lang('Add member');?></button></a>
             </div>
           </div>
           <div class="row">
