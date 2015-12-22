@@ -8,8 +8,8 @@ Bus tour reservation management system.<br/><br/>
 2. Manage destinations<br/>
 3. Manage tours<br/>
 4. Clients history log<br/>
-5. Search and make reservations<br/><br/>
-6. Sales and earnings stats<br/><br/>
+5. Search and make reservations<br/>
+6. Sales and earnings stats<br/>
 7. Multilanguage support<br/><br/>
 
 <strong>How to install?</strong><br/>
