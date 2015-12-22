@@ -19,6 +19,7 @@ Class User extends CI_Model
 	function show_users($limit, $start)
 	{
 		$this->db->limit($limit, $start);
+		$this->db->where('id !=', 1);
 	 	$query = $this->db->get('users');
 	 	return $query->result();
 	}
