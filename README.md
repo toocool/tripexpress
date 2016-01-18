@@ -1,6 +1,8 @@
 Trip express ver: 1.1
 ===========
-
+<strong> Important notice:</strong><br/>
+This project is going to be shutdown because I might start a new adventure with full time job which requires to stop this project. I had planned to switch this project to full laravel api, and the core functionality is already built but it seems that I will never get the chance to deploy it.
+<br/><br/>
 Bus tour reservation management system.<br/><br/>
 
 <strong>Features:</strong><br/>
